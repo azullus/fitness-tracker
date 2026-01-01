@@ -44,7 +44,7 @@ export const DEMO_PERSONS: Person[] = [
     weight: 180, // lbs
     bmi: 29.4, // 180 lbs at 5'7"
     dailyCalorieTarget: 2200, // Balanced for general fitness
-    training_focus: 'general',
+    training_focus: 'mixed',
     workoutDaysPerWeek: 4,
     householdId: 'household-demo',
     created_at: '2024-01-01T00:00:00Z',
