@@ -348,4 +348,17 @@ Coverage: 119 tests across 4 test suites
 - Docker ready
 - Documentation complete
 
+---
+
+## 🔗 Related Projects
+
+### Web Applications (Similar Stack)
+- **[budget-tracker](https://github.com/azullus/budget-tracker)** - Next.js 14 PWA for personal finance tracking with offline-first architecture
+
+### Infrastructure & Deployment
+- **[docker-infrastructure](https://github.com/azullus/docker-infrastructure)** - Docker Compose IaC for self-hosted deployments with Traefik
+- **[cosmicbytez-ops-toolkit](https://github.com/azullus/cosmicbytez-ops-toolkit)** - PowerShell automation for IT operations
+
+---
+
 Built with [Claude Code](https://claude.com/claude-code)
