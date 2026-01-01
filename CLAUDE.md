@@ -2,6 +2,29 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⚠️ CRITICAL: Working Guidelines
+
+**BEFORE making ANY changes:**
+
+1. **Read DEPLOYMENT.md** - Contains server-specific configuration (network names, paths, env vars)
+2. **Use TodoWrite** - Track ALL tasks, mark progress, don't batch completions
+3. **Use Agents** - Explore agent for codebase understanding, Plan agent before major changes
+4. **Test First** - Run `npm run build` locally BEFORE pushing
+5. **Commit Frequently** - Small, focused commits with clear messages
+6. **Verify State** - Check actual server config before assuming anything
+
+**NEVER change without verification:**
+- Network names (server uses `proxy`, not `traefik-public`)
+- Docker configurations
+- Environment variable paths
+- Deployment-specific settings
+
+**If you don't know something:**
+- ASK first
+- Check DEPLOYMENT.md
+- Use agents to explore
+- DON'T guess or assume
+
 ## Project Overview
 
 Personal fitness management PWA for a 2-person household in Edmonton, Alberta. The **web-app/** directory contains the primary Next.js application for tracking workouts, nutrition, weight, and pantry inventory.
