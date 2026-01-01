@@ -54,45 +54,27 @@ export const DEMO_PERSONS: Person[] = [
 // ============================================================================
 // DEMO WEIGHT ENTRIES - Last 30 days for both persons
 // ============================================================================
-// Taylor: Starting at ~177 lbs, gradual weight loss trend (-0.5 lb/week avg) with daily fluctuation
-// Dylan: Starting at ~247 lbs, slight weight loss trend (-0.25 lb/week avg) with daily fluctuation
+// Demo User: Starting at ~180 lbs with realistic daily fluctuation
 export const DEMO_WEIGHT_ENTRIES: WeightEntry[] = (() => {
   const entries: WeightEntry[] = [];
 
-  // Taylor's weight journey: gradual loss from ~177 to ~174 lbs over 30 days
+  // Demo user weight journey: gradual loss with realistic daily fluctuation
   // Daily fluctuation of +/- 1-2 lbs is normal due to water, sodium, etc.
-  const taylorStartWeight = 177.2;
-  const taylorWeeklyLoss = 0.5; // lbs per week
-
-  // Dylan's weight journey: maintaining/slight loss from ~247 to ~245 lbs
-  // Heavier individuals have larger daily fluctuations (+/- 2-3 lbs)
-  const dylanStartWeight = 247.4;
-  const dylanWeeklyLoss = 0.25; // lbs per week
+  const startWeight = 180.0;
+  const weeklyLoss = 0.5; // lbs per week
 
   // Seed for consistent "random" variations
-  const taylorVariations = [
+  const variations = [
     0.8, -0.4, 1.2, -0.8, 0.2, -1.0, 0.6, -0.2, 1.4, -0.6,
     0.4, -1.2, 0.8, 0.0, -0.4, 1.0, -0.8, 0.6, -1.4, 0.2,
     -0.6, 1.2, -0.2, 0.8, -1.0, 0.4, -0.4, 1.0, -0.8, 0.0
   ];
 
-  const dylanVariations = [
-    1.2, -1.8, 2.4, -0.6, 1.0, -2.2, 1.6, -0.8, 2.0, -1.4,
-    0.8, -2.0, 1.4, 0.4, -1.0, 2.2, -1.6, 1.2, -2.4, 0.6,
-    -1.2, 2.0, -0.4, 1.8, -1.8, 0.8, -0.6, 1.6, -2.0, 0.2
-  ];
-
   // Notes for variety
-  const taylorNotes = [
-    'Morning weigh-in', 'After HIIT class', 'Ate salty dinner last night',
+  const notes = [
+    'Morning weigh-in', 'After workout', 'Ate salty dinner last night',
     'Well hydrated', 'Feeling good!', 'Post-cardio', 'Rest day',
-    'Early morning', 'Before breakfast', 'After spin class'
-  ];
-
-  const dylanNotes = [
-    'Post-workout weigh-in', 'Morning before gym', 'Heavy squat day yesterday',
-    'Leg day pump', 'Rest day', 'After deadlift session', 'Pre-workout',
-    'Feeling strong', 'Good training week', 'Competition prep'
+    'Early morning', 'Before breakfast', 'After gym session'
   ];
 
   for (let i = 29; i >= 0; i--) {
@@ -102,33 +84,19 @@ export const DEMO_WEIGHT_ENTRIES: WeightEntry[] = (() => {
     const weeksIn = dayIndex / 7;
 
     // Calculate trend weight with daily variation
-    const taylorTrendWeight = taylorStartWeight - (weeksIn * taylorWeeklyLoss);
-    const taylorWeight = Math.round((taylorTrendWeight + taylorVariations[dayIndex]) * 10) / 10;
-
-    const dylanTrendWeight = dylanStartWeight - (weeksIn * dylanWeeklyLoss);
-    const dylanWeight = Math.round((dylanTrendWeight + dylanVariations[dayIndex]) * 10) / 10;
+    const trendWeight = startWeight - (weeksIn * weeklyLoss);
+    const weight = Math.round((trendWeight + variations[dayIndex]) * 10) / 10;
 
     // Add notes occasionally (every 3rd day or so)
-    const taylorNote = dayIndex % 3 === 0 ? taylorNotes[Math.floor(dayIndex / 3) % taylorNotes.length] : undefined;
-    const dylanNote = dayIndex % 3 === 0 ? dylanNotes[Math.floor(dayIndex / 3) % dylanNotes.length] : undefined;
+    const note = dayIndex % 3 === 0 ? notes[Math.floor(dayIndex / 3) % notes.length] : undefined;
 
-    // Taylor's entry
+    // Demo user entry
     entries.push({
-      id: generateId('weight-taylor', dayIndex),
+      id: generateId('weight-demo', dayIndex),
       person_id: 'person-demo',
       date: dateStr,
-      weight_lbs: taylorWeight,
-      notes: taylorNote,
-      created_at: `${dateStr}T06:30:00Z`,
-    });
-
-    // Dylan's entry
-    entries.push({
-      id: generateId('weight-dylan', dayIndex),
-      person_id: 'person-dylan',
-      date: dateStr,
-      weight_lbs: dylanWeight,
-      notes: dylanNote,
+      weight_lbs: weight,
+      notes: note,
       created_at: `${dateStr}T07:00:00Z`,
     });
   }
@@ -139,14 +107,12 @@ export const DEMO_WEIGHT_ENTRIES: WeightEntry[] = (() => {
 // ============================================================================
 // DEMO WORKOUTS - Last 30 days of workout history
 // ============================================================================
-// Taylor: Cardio-focused (5 days/week) - HIIT, spin, running, dance, yoga
-// Dylan: Powerlifting-focused (4 days/week) - squat, bench, deadlift, accessories
+// Demo User: Mixed training (cardio-focused) - HIIT, spin, running, dance, yoga
 export const DEMO_WORKOUTS: Workout[] = (() => {
   const workouts: Workout[] = [];
-  let taylorWorkoutId = 1;
-  let dylanWorkoutId = 1;
+  let workoutId = 1;
 
-  // Taylor's weekly workout schedule (cardio focus)
+  // Demo user's weekly workout schedule (cardio focus)
   // Mon: HIIT, Tue: Spin, Wed: Rest, Thu: Running, Fri: Dance Cardio, Sat: Yoga, Sun: Rest
   const taylorSchedule = [
     {
@@ -213,126 +179,34 @@ export const DEMO_WORKOUTS: Workout[] = (() => {
     },
   ];
 
-  // Dylan's weekly workout schedule (powerlifting focus)
-  // Mon: Squat, Tue: Bench, Wed: Rest, Thu: Deadlift, Fri: Accessories, Sat-Sun: Rest
-  const dylanSchedule = [
-    {
-      day: 1, // Monday
-      type: 'Squat Day',
-      exercises: [
-        { name: 'Back Squat', sets: 5, reps: 5, weight_lbs: 365, rpe: 8, notes: 'Working sets' },
-        { name: 'Pause Squat', sets: 3, reps: 3, weight_lbs: 295, rpe: 7, notes: '2 sec pause' },
-        { name: 'Leg Press', sets: 4, reps: 10, weight_lbs: 540, rpe: 7 },
-        { name: 'Romanian Deadlift', sets: 3, reps: 10, weight_lbs: 225, rpe: 6 },
-        { name: 'Leg Curls', sets: 3, reps: 12, weight_lbs: 100, rpe: 6 },
-      ],
-      duration: 80,
-      intensity: 'high' as const,
-    },
-    {
-      day: 2, // Tuesday
-      type: 'Bench Day',
-      exercises: [
-        { name: 'Bench Press', sets: 5, reps: 5, weight_lbs: 275, rpe: 8, notes: 'Comp grip' },
-        { name: 'Close Grip Bench', sets: 3, reps: 8, weight_lbs: 205, rpe: 7 },
-        { name: 'Overhead Press', sets: 4, reps: 6, weight_lbs: 155, rpe: 7 },
-        { name: 'Incline DB Press', sets: 3, reps: 10, weight_lbs: 75, rpe: 6 },
-        { name: 'Tricep Pushdowns', sets: 3, reps: 15, weight_lbs: 70, rpe: 6 },
-        { name: 'Face Pulls', sets: 3, reps: 20, weight_lbs: 50, rpe: 5 },
-      ],
-      duration: 75,
-      intensity: 'high' as const,
-    },
-    {
-      day: 4, // Thursday
-      type: 'Deadlift Day',
-      exercises: [
-        { name: 'Conventional Deadlift', sets: 5, reps: 3, weight_lbs: 455, rpe: 8, notes: 'Heavy triples' },
-        { name: 'Deficit Deadlift', sets: 3, reps: 5, weight_lbs: 365, rpe: 7, notes: '2 inch deficit' },
-        { name: 'Barbell Row', sets: 4, reps: 8, weight_lbs: 205, rpe: 7 },
-        { name: 'Weighted Pull-ups', sets: 4, reps: 6, weight_lbs: 45, rpe: 7 },
-        { name: 'Barbell Shrugs', sets: 3, reps: 12, weight_lbs: 275, rpe: 6 },
-      ],
-      duration: 85,
-      intensity: 'high' as const,
-    },
-    {
-      day: 5, // Friday
-      type: 'Accessories + Volume',
-      exercises: [
-        { name: 'Front Squat', sets: 4, reps: 6, weight_lbs: 225, rpe: 7 },
-        { name: 'Dumbbell Bench', sets: 4, reps: 10, weight_lbs: 85, rpe: 6 },
-        { name: 'Lat Pulldown', sets: 4, reps: 12, weight_lbs: 160, rpe: 6 },
-        { name: 'Cable Rows', sets: 3, reps: 12, weight_lbs: 150, rpe: 6 },
-        { name: 'Hammer Curls', sets: 3, reps: 12, weight_lbs: 40, rpe: 5 },
-        { name: 'Ab Wheel', sets: 3, reps: 15, rpe: 6 },
-      ],
-      duration: 70,
-      intensity: 'medium' as const,
-    },
-  ];
-
   // Generate 30 days of workouts (going backwards from today)
   for (let i = 29; i >= 0; i--) {
     const date = subDays(today, i);
     const dateStr = format(date, 'yyyy-MM-dd');
     const dayOfWeek = (date.getDay() + 6) % 7 + 1; // 1=Mon, 7=Sun
 
-    // Check if Taylor has a workout scheduled for this day
-    const taylorWorkout = taylorSchedule.find(w => w.day === dayOfWeek);
-    if (taylorWorkout) {
+    // Check if demo user has a workout scheduled for this day
+    const demoWorkout = taylorSchedule.find(w => w.day === dayOfWeek);
+    if (demoWorkout) {
       // Vary the exercises slightly each week
       const weekNumber = Math.floor((29 - i) / 7);
-      const exercises = taylorWorkout.exercises.map(ex => ({
+      const exercises = demoWorkout.exercises.map(ex => ({
         ...ex,
         // Add slight variation to reps
         reps: ex.reps ? ex.reps + (weekNumber % 2 === 0 ? 0 : 2) : ex.reps,
       }));
 
       workouts.push({
-        id: generateId('workout-taylor', taylorWorkoutId++),
+        id: generateId('workout-demo', workoutId++),
         person_id: 'person-demo',
         date: dateStr,
-        type: taylorWorkout.type,
+        type: demoWorkout.type,
         exercises,
-        duration_minutes: taylorWorkout.duration,
-        intensity: taylorWorkout.intensity,
+        duration_minutes: demoWorkout.duration,
+        intensity: demoWorkout.intensity,
         notes: weekNumber === 3 ? 'Feeling extra energized today!' : undefined,
         completed: i > 0, // Future workouts not completed
-        created_at: `${dateStr}T06:00:00Z`,
-      });
-    }
-
-    // Check if Dylan has a workout scheduled for this day
-    const dylanWorkout = dylanSchedule.find(w => w.day === dayOfWeek);
-    if (dylanWorkout) {
-      // Add progressive overload - increase weight slightly each week
-      const weekNumber = Math.floor((29 - i) / 7);
-      const exercises = dylanWorkout.exercises.map(ex => ({
-        ...ex,
-        // Add 5 lbs per week progression for main lifts
-        weight_lbs: ex.weight_lbs
-          ? ex.weight_lbs + (weekNumber * 5 * (ex.name.includes('Squat') || ex.name.includes('Deadlift') || ex.name.includes('Bench Press') ? 1 : 0))
-          : ex.weight_lbs,
-      }));
-
-      const notes = [
-        weekNumber === 0 ? 'Starting new training block' : undefined,
-        weekNumber === 2 ? 'PR on working sets!' : undefined,
-        weekNumber === 3 ? 'Deload week' : undefined,
-      ].find(n => n);
-
-      workouts.push({
-        id: generateId('workout-dylan', dylanWorkoutId++),
-        person_id: 'person-dylan',
-        date: dateStr,
-        type: dylanWorkout.type,
-        exercises,
-        duration_minutes: dylanWorkout.duration,
-        intensity: dylanWorkout.intensity,
-        notes,
-        completed: i > 0, // Future workouts not completed
-        created_at: `${dateStr}T17:00:00Z`,
+        created_at: `${dateStr}T07:00:00Z`,
       });
     }
   }
@@ -343,7 +217,7 @@ export const DEMO_WORKOUTS: Workout[] = (() => {
 // ============================================================================
 // DEMO MEALS - Last 30 days of meal history
 // ============================================================================
-// Meals are shared by household (same meals for both Taylor and Dylan)
+// Meals are household-shared (no person_id) - typical for families/couples
 // Calorie distribution: Breakfast 25%, Lunch 30%, Dinner 35%, Snacks 10%
 export const DEMO_MEALS: Meal[] = (() => {
   const meals: Meal[] = [];

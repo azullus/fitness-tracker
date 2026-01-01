@@ -189,47 +189,15 @@ function initializeSchema(database: Database.Database): void {
 
 /**
  * Seed default persons if the table is empty
+ *
+ * NOTE: Default seeding is disabled to allow proper onboarding flow.
+ * New users (both authenticated and demo mode) should see the onboarding wizard
+ * to create their first person instead of pre-populated demo data.
  */
 function seedDefaultData(database: Database.Database): void {
-  const count = database.prepare('SELECT COUNT(*) as count FROM persons').get() as { count: number };
-
-  if (count.count === 0) {
-    // Insert default persons (Taylor and Dylan from demo data)
-    const insertPerson = database.prepare(`
-      INSERT INTO persons (id, name, gender, age, height, weight, bmi, daily_calorie_target, training_focus, workout_days_per_week, household_id, created_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    insertPerson.run(
-      'person-taylor',
-      'Taylor',
-      'female',
-      30,
-      155,
-      174,
-      32.7,
-      1900,
-      'cardio',
-      5,
-      'household-demo',
-      new Date().toISOString()
-    );
-
-    insertPerson.run(
-      'person-dylan',
-      'Dylan',
-      'male',
-      32,
-      178,
-      245,
-      34.9,
-      3400,
-      'powerlifting',
-      4,
-      'household-demo',
-      new Date().toISOString()
-    );
-  }
+  // Database starts empty - users will go through onboarding
+  // Demo mode will use DEMO_PERSONS from demo-data.ts if API returns empty
+  return;
 }
 
 /**

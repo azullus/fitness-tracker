@@ -17,7 +17,7 @@ import { supabase } from '@/lib/supabase';
 import { DEMO_PERSONS as RICH_DEMO_PERSONS } from '@/lib/demo-data';
 import { useToastActions } from '@/components/ui/Toast';
 
-// Use rich demo data from demo-data.ts (Taylor and Dylan with full history)
+// Use demo data from demo-data.ts (single demo user with history)
 const DEMO_PERSONS: Person[] = RICH_DEMO_PERSONS;
 
 const DEMO_HOUSEHOLD: Household = {
@@ -126,12 +126,14 @@ export function PersonProvider({ children }: PersonProviderProps) {
         const data = Array.isArray(json) ? json : json?.data;
         const source = json?.source as 'supabase' | 'sqlite' | 'demo' | undefined;
 
-        if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data)) {
           // Check if API returned demo data (indicates fallback occurred)
           if (source === 'demo') {
             setConnectionError('Database unavailable, using demo data');
             return { persons: data, source: 'demo', error: 'Database unavailable' };
           }
+          // For authenticated users with zero persons, return empty array (triggers onboarding)
+          // For demo mode users, this will show onboarding as well
           setConnectionError(null);
           return { persons: data, source: 'api' };
         }
@@ -140,8 +142,12 @@ export function PersonProvider({ children }: PersonProviderProps) {
       const errorMsg = error instanceof Error ? error.message : 'Network error';
       setConnectionError(errorMsg);
     }
-    // Fallback to demo data
-    return { persons: DEMO_PERSONS, source: 'demo', error: connectionError || 'Using demo data' };
+    // Only return demo data if not authenticated
+    if (!isAuthenticated || !isAuthEnabled) {
+      return { persons: DEMO_PERSONS, source: 'demo', error: connectionError || 'Using demo data' };
+    }
+    // For authenticated users, return empty array if all else fails
+    return { persons: [], source: 'api', error: connectionError || 'Failed to load persons' };
   }, [isAuthenticated, isAuthEnabled, profile?.household_id, connectionError]);
 
   // Add a new person
