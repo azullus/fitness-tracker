@@ -3,13 +3,13 @@
 
 import '@testing-library/jest-dom';
 
-// Polyfill for Request/Response in Node.js test environment
-// This is needed for testing Next.js API routes and rate limiting
+// Polyfill TextEncoder/TextDecoder FIRST (required by undici)
 import { TextEncoder, TextDecoder } from 'util';
-import { Request, Response, Headers, FormData } from 'undici';
-
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
+
+// Now import undici for Request/Response polyfills (needs TextEncoder)
+import { Request, Response, Headers, FormData } from 'undici';
 global.Request = Request;
 global.Response = Response;
 global.Headers = Headers;
