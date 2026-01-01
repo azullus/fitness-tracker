@@ -1,6 +1,6 @@
 # Fitness Tracker PWA
 
-> Personal fitness management Progressive Web App for tracking workouts, nutrition, weight, and pantry inventory.
+> Next.js 14 PWA for household fitness tracking: workouts, nutrition, meal planning, pantry inventory, offline-capable, self-hosted SQLite backend.
 
 [![Release](https://img.shields.io/github/v/release/azullus/fitness-tracker?logo=github)](https://github.com/azullus/fitness-tracker/releases)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js&logoColor=white)](https://nextjs.org/)
