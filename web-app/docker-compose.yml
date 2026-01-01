@@ -27,7 +27,7 @@ services:
       # Persistent data storage
       - fitness-data:/app/data
     networks:
-      - traefik-public
+      - proxy
     labels:
       # Traefik configuration
       - "traefik.enable=true"
@@ -64,7 +64,7 @@ services:
       # Docker provider
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=traefik-public"
+      - "--providers.docker.network=proxy"
       # Entrypoints
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
@@ -85,7 +85,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - traefik-certs:/letsencrypt
     networks:
-      - traefik-public
+      - proxy
     labels:
       - "traefik.enable=true"
       # Dashboard (optional - remove in production if not needed)
@@ -143,6 +143,6 @@ volumes:
     name: traefik-certificates
 
 networks:
-  traefik-public:
-    name: traefik-public
+  proxy:
+    name: proxy
     external: true
