@@ -169,24 +169,31 @@ export default function HouseholdSettingsPage() {
       return;
     }
 
-    if (!supabase) {
-      setError('Cannot delete in demo mode');
-      return;
-    }
-
     setError(null);
     try {
-      const { error } = await supabase
-        .from('persons')
-        .delete()
-        .eq('id', personId);
+      // Get CSRF token
+      const csrfResponse = await fetch('/api/csrf');
+      const { token } = await csrfResponse.json();
 
-      if (error) throw error;
+      // Use API route (handles both SQLite and Supabase)
+      const response = await fetch(`/api/persons?id=${personId}`, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': token,
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to delete person');
+      }
+
       setSuccess('Person removed from household');
       setTimeout(() => setSuccess(null), 3000);
       window.location.reload();
     } catch (err) {
-      setError('Failed to remove person');
+      setError(err instanceof Error ? err.message : 'Failed to remove person');
     }
   };
 
