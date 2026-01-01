@@ -114,48 +114,10 @@ export function PersonProvider({ children }: PersonProviderProps) {
     return persons.filter((p) => household.memberIds.includes(p.id));
   }, [persons, household]);
 
-  // Load persons from Supabase (authenticated) or API/demo
+  // Load persons from API (handles both SQLite and Supabase backend)
   const loadPersons = useCallback(async (): Promise<{ persons: Person[]; source: 'supabase' | 'api' | 'demo'; error?: string }> => {
-    // If authenticated with Supabase, load from Supabase directly
-    if (isAuthenticated && isAuthEnabled && profile?.household_id && supabase) {
-      try {
-        const { data, error } = await supabase
-          .from('persons')
-          .select('*')
-          .eq('household_id', profile.household_id)
-          .order('name', { ascending: true });
-
-        if (error) {
-          setConnectionError(error.message);
-          // Fall through to API/demo fallback
-        } else if (data && data.length > 0) {
-          setConnectionError(null);
-          // Map Supabase fields to our Person type
-          return {
-            persons: data.map((p: Record<string, unknown>) => ({
-              id: p.id as string,
-              name: p.name as string,
-              gender: ((p.gender as string) || 'male') as 'male' | 'female',
-              age: (p.age as number) || 30,
-              height: (p.height as number) || 170,
-              weight: (p.weight as number) || 150,
-              bmi: (p.bmi as number) || 25,
-              dailyCalorieTarget: (p.daily_calorie_target as number) || 2000,
-              training_focus: (p.training_focus as Person['training_focus']) || 'mixed',
-              workoutDaysPerWeek: (p.workout_days_per_week as number) || 4,
-              householdId: (p.household_id as string) || '',
-              created_at: p.created_at as string,
-            })),
-            source: 'supabase',
-          };
-        }
-      } catch (error) {
-        const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-        setConnectionError(errorMsg);
-      }
-    }
-
-    // Fallback: try API endpoint
+    // ALWAYS use API endpoint - it handles SQLite vs Supabase logic on the backend
+    // This allows Supabase auth with SQLite data storage
     try {
       const response = await fetch('/api/persons');
       if (response.ok) {
