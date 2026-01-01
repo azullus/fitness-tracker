@@ -1,0 +1,19 @@
+# See web-app/.gitignore for Next.js specific ignores
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temporary files
+.tmp/
+temp/
