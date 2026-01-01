@@ -1,7 +1,9 @@
 #!/bin/bash
 # Test script to verify API endpoints on live site
+# Usage: ./test-api-live.sh [URL]
+# Example: ./test-api-live.sh https://your-fitness-tracker.example.com
 
-SITE_URL="${1:-https://fitness.cosmicbytez.ca}"
+SITE_URL="${1:-http://localhost:3000}"
 
 echo "Testing Fitness Tracker API at $SITE_URL"
 echo "========================================="

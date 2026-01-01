@@ -45,7 +45,7 @@ test.describe('Fitness Tracker E2E Tests', () => {
     // Check no Supabase 404 errors
     const errors = (page as any).consoleErrors as string[];
     const supabase404s = errors.filter(e =>
-      e.includes('qgynhdkgtkytkcuaztgu.supabase.co') && e.includes('404')
+      e.includes('supabase.co') && e.includes('404')
     );
     expect(supabase404s).toHaveLength(0);
   });
