@@ -29,38 +29,22 @@ const yesterdayStr = format(subDays(today, 1), 'yyyy-MM-dd');
 const weekStart = startOfWeek(today, { weekStartsOn: 1 }); // Monday start
 
 // ============================================================================
-// DEMO PERSONS - Taylor and Dylan
+// DEMO PERSON - Single demo user for testing
 // ============================================================================
 // Calorie calculations using Mifflin-St Jeor equation:
-// Taylor: BMR = 10*78.93 + 6.25*155 - 5*30 - 161 = 1447, TDEE (active) = 2496
-//         Target for weight loss with cardio: ~1900 cal
-// Dylan:  BMR = 10*111.13 + 6.25*178 - 5*32 + 5 = 2069, TDEE (active) = 3569
-//         Target for powerlifting maintenance: ~3400 cal
+// Demo User: BMR = 10*81.65 + 6.25*170 - 5*28 - 161 = 1587, TDEE (active) = 2737
+//            Target for general fitness: ~2200 cal
 export const DEMO_PERSONS: Person[] = [
   {
-    id: 'person-taylor',
-    name: 'Taylor',
+    id: 'person-demo',
+    name: 'Demo User',
     gender: 'female',
-    age: 30,
-    height: 155, // cm (5'1")
-    weight: 174, // lbs
-    bmi: 32.7, // 174 lbs at 5'1"
-    dailyCalorieTarget: 1900, // Moderate deficit for cardio-focused weight loss
-    training_focus: 'cardio',
-    workoutDaysPerWeek: 5,
-    householdId: 'household-demo',
-    created_at: '2024-01-01T00:00:00Z',
-  },
-  {
-    id: 'person-dylan',
-    name: 'Dylan',
-    gender: 'male',
-    age: 32,
-    height: 178, // cm (5'10")
-    weight: 245, // lbs
-    bmi: 34.9, // 245 lbs at 5'10"
-    dailyCalorieTarget: 3400, // High intake for powerlifting performance
-    training_focus: 'powerlifting',
+    age: 28,
+    height: 170, // cm (5'7")
+    weight: 180, // lbs
+    bmi: 29.4, // 180 lbs at 5'7"
+    dailyCalorieTarget: 2200, // Balanced for general fitness
+    training_focus: 'general',
     workoutDaysPerWeek: 4,
     householdId: 'household-demo',
     created_at: '2024-01-01T00:00:00Z',
@@ -131,7 +115,7 @@ export const DEMO_WEIGHT_ENTRIES: WeightEntry[] = (() => {
     // Taylor's entry
     entries.push({
       id: generateId('weight-taylor', dayIndex),
-      person_id: 'person-taylor',
+      person_id: 'person-demo',
       date: dateStr,
       weight_lbs: taylorWeight,
       notes: taylorNote,
@@ -307,7 +291,7 @@ export const DEMO_WORKOUTS: Workout[] = (() => {
 
       workouts.push({
         id: generateId('workout-taylor', taylorWorkoutId++),
-        person_id: 'person-taylor',
+        person_id: 'person-demo',
         date: dateStr,
         type: taylorWorkout.type,
         exercises,
