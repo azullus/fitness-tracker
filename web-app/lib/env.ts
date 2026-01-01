@@ -77,12 +77,14 @@ export function validateEnv(): { config: EnvConfig; errors: EnvValidationError[]
 
   // Validate Supabase anon key format if provided
   if (supabaseAnonKey) {
-    // Supabase anon keys are JWTs, should have 3 parts separated by dots
-    const parts = supabaseAnonKey.split('.');
-    if (parts.length !== 3) {
+    // Supabase anon keys can be JWTs (eyJ...) or publishable keys (sb_publishable_...)
+    const isJWT = supabaseAnonKey.split('.').length === 3;
+    const isPublishable = supabaseAnonKey.startsWith('sb_publishable_');
+
+    if (!isJWT && !isPublishable) {
       errors.push({
         variable: 'NEXT_PUBLIC_SUPABASE_ANON_KEY',
-        message: 'Invalid key format (expected JWT)',
+        message: 'Invalid key format (expected JWT or sb_publishable_ format)',
         required: false,
       });
     }
