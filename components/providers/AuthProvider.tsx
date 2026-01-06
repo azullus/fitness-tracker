@@ -19,8 +19,11 @@ interface AuthContextType {
   isLoading: boolean;
   user: User | null;
   profile: Profile | null;
+  signUp: (email: string, password: string, name?: string) => Promise<{ needsConfirmation: boolean }>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+  updatePassword: (newPassword: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -29,8 +32,11 @@ const AuthContext = createContext<AuthContextType>({
   isLoading: true,
   user: null,
   profile: null,
+  signUp: async () => ({ needsConfirmation: false }),
   signIn: async () => {},
   signOut: async () => {},
+  resetPassword: async () => {},
+  updatePassword: async () => {},
 });
 
 export function useAuth() {
@@ -76,6 +82,42 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return () => subscription.unsubscribe();
   }, [isAuthEnabled]);
 
+  async function signUp(email: string, password: string, name?: string): Promise<{ needsConfirmation: boolean }> {
+    if (!supabase) throw new Error('Auth not configured');
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name: name || email.split('@')[0],
+        },
+      },
+    });
+
+    if (error) throw error;
+
+    // If user was created and we have their ID, create a person record
+    if (data.user) {
+      const { error: personError } = await supabase
+        .from('persons')
+        .insert({
+          id: data.user.id,
+          name: name || email.split('@')[0],
+          training_focus: '',
+          allergies: '',
+          supplements: '',
+        });
+
+      if (personError) {
+        console.error('Error creating person record:', personError);
+      }
+    }
+
+    // Return whether email confirmation is needed
+    return { needsConfirmation: !data.session };
+  }
+
   async function signIn(email: string, password: string) {
     if (!supabase) throw new Error('Auth not configured');
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -87,6 +129,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     await supabase.auth.signOut();
   }
 
+  async function resetPassword(email: string) {
+    if (!supabase) throw new Error('Auth not configured');
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/auth/reset-password`,
+    });
+    if (error) throw error;
+  }
+
+  async function updatePassword(newPassword: string) {
+    if (!supabase) throw new Error('Auth not configured');
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) throw error;
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -95,8 +151,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
         isLoading,
         user,
         profile,
+        signUp,
         signIn,
         signOut,
+        resetPassword,
+        updatePassword,
       }}
     >
       {children}

@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import { Calendar, TrendingUp, Utensils, Dumbbell, Database, RefreshCw } from 'lucide-react';
+import Link from 'next/link';
+import { Calendar, TrendingUp, Utensils, Dumbbell, Database, RefreshCw, LogIn, LogOut, User } from 'lucide-react';
 import WeightLogger from '@/components/WeightLogger';
 import WorkoutCard from '@/components/WorkoutCard';
 import MealCard from '@/components/MealCard';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import { useAuth } from '@/components/providers';
 import { cn, getDayOfWeek, calculateWeightTrend } from '@/lib/utils';
 import { fetchWeightLogs, logWeight, seedDatabase } from '@/lib/api';
 
@@ -13,6 +16,7 @@ export default function Dashboard() {
   const today = new Date();
   const dayOfWeek = getDayOfWeek(today);
   const todayStr = format(today, 'yyyy-MM-dd');
+  const { isAuthenticated, isAuthEnabled, user, signOut } = useAuth();
 
   const [activeTab, setActiveTab] = useState<'him' | 'her'>('him');
   const [loading, setLoading] = useState(true);
@@ -125,6 +129,7 @@ export default function Dashboard() {
   } : { calories: 0, protein: 0, carbs: 0, fat: 0 };
 
   return (
+    <ProtectedRoute>
     <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -135,18 +140,47 @@ export default function Dashboard() {
             {format(today, 'EEEE, MMMM d')}
           </p>
         </div>
-        <button
-          onClick={handleSeed}
-          disabled={seeding}
-          className="btn-secondary btn-sm flex items-center gap-1"
-        >
-          {seeding ? (
-            <RefreshCw className="w-4 h-4 animate-spin" />
-          ) : (
-            <Database className="w-4 h-4" />
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleSeed}
+            disabled={seeding}
+            className="btn-secondary btn-sm flex items-center gap-1"
+          >
+            {seeding ? (
+              <RefreshCw className="w-4 h-4 animate-spin" />
+            ) : (
+              <Database className="w-4 h-4" />
+            )}
+            {seeding ? 'Seeding...' : 'Seed Data'}
+          </button>
+          {isAuthEnabled && (
+            isAuthenticated ? (
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600 flex items-center gap-1">
+                  <User className="w-4 h-4" />
+                  {user?.email?.split('@')[0]}
+                </span>
+                <button
+                  onClick={() => signOut()}
+                  className="btn-secondary btn-sm flex items-center gap-1"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link href="/auth/login" className="btn-secondary btn-sm flex items-center gap-1">
+                  <LogIn className="w-4 h-4" />
+                  Login
+                </Link>
+                <Link href="/auth/signup" className="btn-primary btn-sm">
+                  Sign Up
+                </Link>
+              </div>
+            )
           )}
-          {seeding ? 'Seeding...' : 'Seed Data'}
-        </button>
+        </div>
       </div>
 
       {/* Seed message */}
@@ -296,5 +330,6 @@ export default function Dashboard() {
         </>
       )}
     </div>
+    </ProtectedRoute>
   );
 }

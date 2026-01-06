@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Clock, Users, Flame, Check } from 'lucide-react';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import { cn } from '@/lib/utils';
 import type { Recipe } from '@/lib/types';
 
@@ -66,26 +67,31 @@ export default function RecipeDetailPage() {
 
   if (loading) {
     return (
-      <div className="px-4 py-6 max-w-lg mx-auto">
-        <div className="text-center py-12 text-gray-500">Loading recipe...</div>
-      </div>
+      <ProtectedRoute>
+        <div className="px-4 py-6 max-w-lg mx-auto">
+          <div className="text-center py-12 text-gray-500">Loading recipe...</div>
+        </div>
+      </ProtectedRoute>
     );
   }
 
   if (!recipe) {
     return (
-      <div className="px-4 py-6 max-w-lg mx-auto">
-        <div className="text-center py-12">
-          <p className="text-gray-500 mb-4">Recipe not found</p>
-          <button onClick={() => router.back()} className="btn-primary">
-            Go Back
-          </button>
+      <ProtectedRoute>
+        <div className="px-4 py-6 max-w-lg mx-auto">
+          <div className="text-center py-12">
+            <p className="text-gray-500 mb-4">Recipe not found</p>
+            <button onClick={() => router.back()} className="btn-primary">
+              Go Back
+            </button>
+          </div>
         </div>
-      </div>
+      </ProtectedRoute>
     );
   }
 
   return (
+    <ProtectedRoute>
     <div className="px-4 py-6 max-w-lg mx-auto pb-24">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
@@ -254,5 +260,6 @@ export default function RecipeDetailPage() {
         </div>
       )}
     </div>
+    </ProtectedRoute>
   );
 }

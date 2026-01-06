@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { format, startOfWeek, addDays } from 'date-fns';
 import { ShoppingCart, Flame, BookOpen, RefreshCw } from 'lucide-react';
 import MealCard from '@/components/MealCard';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import { cn } from '@/lib/utils';
 
 const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -60,6 +61,7 @@ export default function MealsPage() {
   };
 
   return (
+    <ProtectedRoute>
     <div className="px-4 py-6 max-w-lg mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
@@ -215,5 +217,6 @@ export default function MealsPage() {
         </>
       )}
     </div>
+    </ProtectedRoute>
   );
 }

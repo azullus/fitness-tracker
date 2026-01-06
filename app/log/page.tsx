@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { Scale, Dumbbell, Package, Utensils, Check, Plus, Minus, RefreshCw, CheckCircle } from 'lucide-react';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import { cn, getDayOfWeek } from '@/lib/utils';
 import { logWeight, logWorkout, updatePantryQuantity, addPantryItem, fetchPantryItems } from '@/lib/api';
 
@@ -153,6 +154,7 @@ export default function LogPage() {
   };
 
   return (
+    <ProtectedRoute>
     <div className="px-4 py-6 max-w-lg mx-auto">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Quick Log</h1>
       <p className="text-sm text-gray-500 mb-6">{today}</p>
@@ -596,5 +598,6 @@ export default function LogPage() {
         </div>
       )}
     </div>
+    </ProtectedRoute>
   );
 }
