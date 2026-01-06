@@ -24,14 +24,3 @@ services:
       timeout: 10s
       start_period: 10s
       retries: 3
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.fitness.rule=Host(`fitness.cosmicbytez.ca`)"
-      - "traefik.http.routers.fitness.entrypoints=websecure"
-      - "traefik.http.routers.fitness.tls.certresolver=cloudflare"
-      - "traefik.http.services.fitness.loadbalancer.server.port=3000"
-
-networks:
-  default:
-    external: true
-    name: traefik-network
