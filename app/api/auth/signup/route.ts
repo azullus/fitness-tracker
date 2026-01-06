@@ -41,17 +41,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // If signup successful, create a person record
+    // If signup successful, upsert a person record
+    // (trigger may have already created it, so use upsert to avoid conflicts)
     if (authData.user) {
       const { error: personError } = await supabase
         .from('persons')
-        .insert({
+        .upsert({
           id: authData.user.id,
           name: name || email.split('@')[0],
           training_focus: '',
           allergies: '',
           supplements: '',
-        });
+        }, { onConflict: 'id' });
 
       if (personError) {
         console.error('Error creating person record:', personError);

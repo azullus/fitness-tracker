@@ -97,17 +97,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     if (error) throw error;
 
-    // If user was created and we have their ID, create a person record
+    // If user was created and we have their ID, upsert a person record
+    // (trigger may have already created it, so use upsert to avoid conflicts)
     if (data.user) {
       const { error: personError } = await supabase
         .from('persons')
-        .insert({
+        .upsert({
           id: data.user.id,
           name: name || email.split('@')[0],
           training_focus: '',
           allergies: '',
           supplements: '',
-        });
+        }, { onConflict: 'id' });
 
       if (personError) {
         console.error('Error creating person record:', personError);
