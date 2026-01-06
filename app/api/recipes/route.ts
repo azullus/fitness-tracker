@@ -101,6 +101,7 @@ export async function POST(request: NextRequest) {
     const { data, error } = await supabase
       .from('recipes')
       .insert({
+        created_by: user.id,
         name,
         category,
         prep_time_min: prep_time_min || 0,

@@ -55,6 +55,7 @@ export async function POST(request: NextRequest) {
     const { data, error } = await supabase
       .from('pantry_items')
       .insert({
+        created_by: user.id,
         item,
         quantity: quantity || 1,
         unit: unit || 'each',

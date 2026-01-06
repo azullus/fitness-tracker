@@ -100,6 +100,7 @@ export async function POST(request: NextRequest) {
     const { data, error } = await supabase
       .from('meal_plans')
       .upsert({
+        created_by: user.id,
         date,
         meal_type,
         recipe_id,

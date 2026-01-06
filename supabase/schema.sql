@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS workout_exercises (
 -- Recipes
 CREATE TABLE IF NOT EXISTS recipes (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
   name TEXT NOT NULL,
   category TEXT NOT NULL CHECK (category IN ('Breakfast', 'Lunch', 'Dinner', 'Snack')),
   prep_time_min INTEGER DEFAULT 0,
@@ -87,6 +88,7 @@ CREATE TABLE IF NOT EXISTS recipes (
 -- Meal plans
 CREATE TABLE IF NOT EXISTS meal_plans (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
   date DATE NOT NULL,
   meal_type TEXT NOT NULL CHECK (meal_type IN ('Breakfast', 'Lunch', 'Dinner', 'Snack')),
   recipe_id UUID REFERENCES recipes(id) ON DELETE SET NULL,
@@ -98,6 +100,7 @@ CREATE TABLE IF NOT EXISTS meal_plans (
 -- Pantry items
 CREATE TABLE IF NOT EXISTS pantry_items (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
   item TEXT NOT NULL,
   quantity DECIMAL(10,2) DEFAULT 1,
   unit TEXT DEFAULT 'each',
@@ -112,6 +115,7 @@ CREATE TABLE IF NOT EXISTS pantry_items (
 -- Grocery items
 CREATE TABLE IF NOT EXISTS grocery_items (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_by UUID REFERENCES auth.users(id) ON DELETE SET NULL,
   name TEXT NOT NULL,
   quantity DECIMAL(10,2) DEFAULT 1,
   unit TEXT,
@@ -194,58 +198,57 @@ CREATE POLICY "Users can update own workout exercises" ON workout_exercises
 CREATE POLICY "Users can delete own workout exercises" ON workout_exercises
   FOR DELETE USING (auth.uid() = person_id);
 
--- Recipes: All authenticated users can view, only owners can modify
--- (Recipes are shared across users for simplicity)
+-- Recipes: All authenticated users can view, only creators can modify
 CREATE POLICY "Authenticated users can view recipes" ON recipes
   FOR SELECT TO authenticated USING (true);
 
-CREATE POLICY "Authenticated users can insert recipes" ON recipes
-  FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Users can insert own recipes" ON recipes
+  FOR INSERT TO authenticated WITH CHECK (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can update recipes" ON recipes
-  FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Users can update own recipes" ON recipes
+  FOR UPDATE TO authenticated USING (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can delete recipes" ON recipes
-  FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Users can delete own recipes" ON recipes
+  FOR DELETE TO authenticated USING (auth.uid() = created_by);
 
--- Meal plans: All authenticated users can access (shared household)
+-- Meal plans: All authenticated users can view, only creators can modify
 CREATE POLICY "Authenticated users can view meal plans" ON meal_plans
   FOR SELECT TO authenticated USING (true);
 
-CREATE POLICY "Authenticated users can insert meal plans" ON meal_plans
-  FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Users can insert own meal plans" ON meal_plans
+  FOR INSERT TO authenticated WITH CHECK (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can update meal plans" ON meal_plans
-  FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Users can update own meal plans" ON meal_plans
+  FOR UPDATE TO authenticated USING (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can delete meal plans" ON meal_plans
-  FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Users can delete own meal plans" ON meal_plans
+  FOR DELETE TO authenticated USING (auth.uid() = created_by);
 
--- Pantry items: All authenticated users can access (shared household)
+-- Pantry items: All authenticated users can view, only creators can modify
 CREATE POLICY "Authenticated users can view pantry items" ON pantry_items
   FOR SELECT TO authenticated USING (true);
 
-CREATE POLICY "Authenticated users can insert pantry items" ON pantry_items
-  FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Users can insert own pantry items" ON pantry_items
+  FOR INSERT TO authenticated WITH CHECK (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can update pantry items" ON pantry_items
-  FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Users can update own pantry items" ON pantry_items
+  FOR UPDATE TO authenticated USING (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can delete pantry items" ON pantry_items
-  FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Users can delete own pantry items" ON pantry_items
+  FOR DELETE TO authenticated USING (auth.uid() = created_by);
 
--- Grocery items: All authenticated users can access (shared household)
+-- Grocery items: All authenticated users can view, only creators can modify
 CREATE POLICY "Authenticated users can view grocery items" ON grocery_items
   FOR SELECT TO authenticated USING (true);
 
-CREATE POLICY "Authenticated users can insert grocery items" ON grocery_items
-  FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Users can insert own grocery items" ON grocery_items
+  FOR INSERT TO authenticated WITH CHECK (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can update grocery items" ON grocery_items
-  FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Users can update own grocery items" ON grocery_items
+  FOR UPDATE TO authenticated USING (auth.uid() = created_by);
 
-CREATE POLICY "Authenticated users can delete grocery items" ON grocery_items
-  FOR DELETE TO authenticated USING (true);
+CREATE POLICY "Users can delete own grocery items" ON grocery_items
+  FOR DELETE TO authenticated USING (auth.uid() = created_by);
 
 -- ============================================
 -- FUNCTIONS & TRIGGERS
