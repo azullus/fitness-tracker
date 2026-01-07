@@ -1,167 +1,222 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { isSupabaseConfigured, supabase } from '@/lib/supabase';
-
-interface User {
-  id: string;
-  email: string;
-}
-
-interface Profile {
-  id: string;
-  name: string;
-}
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  ReactNode,
+} from 'react';
+import type { User, Session } from '@supabase/supabase-js';
+import {
+  isAuthAvailable,
+  getSession,
+  getUser,
+  getProfile,
+  signIn as authSignIn,
+  signUp as authSignUp,
+  signOut as authSignOut,
+  onAuthStateChange,
+  ProfileData,
+} from '@/lib/auth';
 
 interface AuthContextType {
+  user: User | null;
+  session: Session | null;
+  profile: ProfileData | null;
+  isLoading: boolean;
   isAuthenticated: boolean;
   isAuthEnabled: boolean;
-  isLoading: boolean;
-  user: User | null;
-  profile: Profile | null;
-  signUp: (email: string, password: string, name?: string) => Promise<{ needsConfirmation: boolean }>;
-  signIn: (email: string, password: string) => Promise<void>;
-  signOut: () => Promise<void>;
-  resetPassword: (email: string) => Promise<void>;
-  updatePassword: (newPassword: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  signUp: (email: string, password: string, displayName?: string) => Promise<{ success: boolean; error?: string }>;
+  signOut: () => Promise<{ success: boolean; error?: string }>;
+  refreshProfile: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType>({
-  isAuthenticated: false,
-  isAuthEnabled: false,
-  isLoading: true,
-  user: null,
-  profile: null,
-  signUp: async () => ({ needsConfirmation: false }),
-  signIn: async () => {},
-  signOut: async () => {},
-  resetPassword: async () => {},
-  updatePassword: async () => {},
-});
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [profile, setProfile] = useState<ProfileData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const isAuthEnabled = isSupabaseConfigured();
+  const isAuthEnabled = isAuthAvailable();
 
-  useEffect(() => {
-    if (!isAuthEnabled || !supabase) {
-      setIsLoading(false);
-      return;
-    }
+  // Load user profile
+  const loadProfile = useCallback(async () => {
+    if (!isAuthEnabled) return;
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) {
-        setUser({ id: session.user.id, email: session.user.email || '' });
-        setIsAuthenticated(true);
-      }
-      setIsLoading(false);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session?.user) {
-        setUser({ id: session.user.id, email: session.user.email || '' });
-        setIsAuthenticated(true);
-      } else {
-        setUser(null);
-        setIsAuthenticated(false);
-      }
-    });
-
-    return () => subscription.unsubscribe();
+    const profileData = await getProfile();
+    setProfile(profileData);
   }, [isAuthEnabled]);
 
-  async function signUp(email: string, password: string, name?: string): Promise<{ needsConfirmation: boolean }> {
-    if (!supabase) throw new Error('Auth not configured');
+  // Refresh profile data
+  const refreshProfile = useCallback(async () => {
+    await loadProfile();
+  }, [loadProfile]);
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          name: name || email.split('@')[0],
-        },
-      },
-    });
-
-    if (error) throw error;
-
-    // If user was created and we have their ID, upsert a person record
-    // (trigger may have already created it, so use upsert to avoid conflicts)
-    if (data.user) {
-      const { error: personError } = await supabase
-        .from('persons')
-        .upsert({
-          id: data.user.id,
-          name: name || email.split('@')[0],
-          training_focus: '',
-          allergies: '',
-          supplements: '',
-        }, { onConflict: 'id' });
-
-      if (personError) {
-        console.error('Error creating person record:', personError);
-      }
+  // Sign in
+  const signIn = useCallback(async (email: string, password: string) => {
+    const result = await authSignIn(email, password);
+    if (result.success && result.user) {
+      setUser(result.user);
+      setSession(result.session || null);
+      await loadProfile();
     }
+    return { success: result.success, error: result.error };
+  }, [loadProfile]);
 
-    // Return whether email confirmation is needed
-    return { needsConfirmation: !data.session };
-  }
+  // Sign up
+  const signUp = useCallback(async (email: string, password: string, displayName?: string) => {
+    const result = await authSignUp(email, password, displayName);
+    if (result.success && result.user) {
+      setUser(result.user);
+      setSession(result.session || null);
+      // Profile is created automatically by database trigger
+      await loadProfile();
+    }
+    return { success: result.success, error: result.error };
+  }, [loadProfile]);
 
-  async function signIn(email: string, password: string) {
-    if (!supabase) throw new Error('Auth not configured');
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-  }
+  // Sign out
+  const signOut = useCallback(async () => {
+    const result = await authSignOut();
+    if (result.success) {
+      setUser(null);
+      setSession(null);
+      setProfile(null);
+    }
+    return { success: result.success, error: result.error };
+  }, []);
 
-  async function signOut() {
-    if (!supabase) return;
-    await supabase.auth.signOut();
-  }
+  // Initialize auth state
+  useEffect(() => {
+    const initialize = async () => {
+      setIsLoading(true);
 
-  async function resetPassword(email: string) {
-    if (!supabase) throw new Error('Auth not configured');
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/reset-password`,
+      if (!isAuthEnabled) {
+        // Auth not configured, skip authentication
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        // Get current session
+        const currentSession = await getSession();
+        setSession(currentSession);
+
+        if (currentSession) {
+          // Get user data
+          const currentUser = await getUser();
+          setUser(currentUser);
+
+          // Load profile
+          await loadProfile();
+        }
+      } catch {
+        // Auth initialization failed
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initialize();
+  }, [isAuthEnabled, loadProfile]);
+
+  // Subscribe to auth state changes
+  useEffect(() => {
+    if (!isAuthEnabled) return;
+
+    const { data: { subscription } } = onAuthStateChange(async (_event, newSession) => {
+      setSession(newSession);
+
+      if (newSession?.user) {
+        setUser(newSession.user);
+        await loadProfile();
+      } else {
+        setUser(null);
+        setProfile(null);
+      }
     });
-    if (error) throw error;
-  }
 
-  async function updatePassword(newPassword: string) {
-    if (!supabase) throw new Error('Auth not configured');
-    const { error } = await supabase.auth.updateUser({ password: newPassword });
-    if (error) throw error;
-  }
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [isAuthEnabled, loadProfile]);
+
+  const isAuthenticated = useMemo(() => {
+    // If auth is not enabled, consider user as "authenticated" for demo mode
+    if (!isAuthEnabled) return true;
+    return !!session && !!user;
+  }, [isAuthEnabled, session, user]);
+
+  const contextValue = useMemo<AuthContextType>(
+    () => ({
+      user,
+      session,
+      profile,
+      isLoading,
+      isAuthenticated,
+      isAuthEnabled,
+      signIn,
+      signUp,
+      signOut,
+      refreshProfile,
+    }),
+    [user, session, profile, isLoading, isAuthenticated, isAuthEnabled, signIn, signUp, signOut, refreshProfile]
+  );
 
   return (
-    <AuthContext.Provider
-      value={{
-        isAuthenticated,
-        isAuthEnabled,
-        isLoading,
-        user,
-        profile,
-        signUp,
-        signIn,
-        signOut,
-        resetPassword,
-        updatePassword,
-      }}
-    >
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );
+}
+
+/**
+ * Hook to access the full auth context
+ * @throws Error if used outside AuthProvider
+ */
+export function useAuth(): AuthContextType {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+}
+
+/**
+ * Hook to get just the current user
+ * @returns The currently authenticated user or null
+ */
+export function useUser(): User | null {
+  const { user } = useAuth();
+  return user;
+}
+
+/**
+ * Hook to check if user is authenticated
+ * @returns Boolean indicating if user is authenticated
+ */
+export function useIsAuthenticated(): boolean {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated;
+}
+
+/**
+ * Hook to get user's household ID
+ * @returns The household ID or null
+ */
+export function useHouseholdId(): string | null {
+  const { profile } = useAuth();
+  return profile?.household_id || null;
 }
 
 export default AuthProvider;

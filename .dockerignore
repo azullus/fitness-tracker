@@ -1,0 +1,55 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+.next
+out
+build
+dist
+
+# Testing
+coverage
+__tests__
+*.test.ts
+*.test.tsx
+jest.config.js
+jest.setup.js
+
+# Development
+.env.local
+.env.development
+.env.test
+*.log
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Documentation (not needed in container)
+*.md
+!README.md
+
+# Scripts (not needed in runtime)
+scripts/
+
+# Data (mounted as volume)
+data/
+*.db
+
+# Misc
+.dockerignore
+Dockerfile*
+docker-compose*

@@ -1,38 +1,90 @@
 version: '3.8'
 
 services:
+  # =============================================================================
+  # Fitness Tracker Application
+  # =============================================================================
   fitness-tracker:
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://fitness.cosmicbytez.ca}
-        - NEXT_PUBLIC_APP_NAME=${NEXT_PUBLIC_APP_NAME:-Fitness Tracker}
-        - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
-        - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        - NEXT_PUBLIC_APP_URL=${APP_URL:-https://fitness.yourdomain.com}
+        - NEXT_PUBLIC_APP_NAME=${APP_NAME:-Fitness Tracker}
+        - NEXT_PUBLIC_SUPABASE_URL=${SUPABASE_URL}
+        - NEXT_PUBLIC_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
     container_name: fitness-tracker
     restart: unless-stopped
-    ports:
-      - "3000:3000"
     environment:
+      # Database mode - Use .env to control (sqlite or supabase)
+      - DATABASE_TYPE=${DATABASE_TYPE:-sqlite}
+      - DATABASE_PATH=${DATABASE_PATH:-/app/data}
+      # Optional: Supabase for cloud auth (leave empty for demo mode)
+      - NEXT_PUBLIC_SUPABASE_URL=${SUPABASE_URL:-}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY:-}
+      # Runtime-accessible Supabase vars (non-prefixed to avoid build-time inlining)
+      - SUPABASE_URL=${SUPABASE_URL:-}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY:-}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY:-}
+      # App settings
+      - NEXT_PUBLIC_APP_URL=${APP_URL:-https://fitness.yourdomain.com}
       - NODE_ENV=production
-      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
-      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.fitness.rule=Host(`fitness.cosmicbytez.ca`)"
-      - "traefik.http.routers.fitness.entrypoints=websecure"
-      - "traefik.http.routers.fitness.tls.certresolver=letsencrypt"
-      - "traefik.http.services.fitness.loadbalancer.server.port=3000"
+    volumes:
+      # Persistent data storage
+      - fitness-data:/app/data
     networks:
       - proxy
+    labels:
+      # Traefik configuration
+      - "traefik.enable=true"
+      - "traefik.http.routers.fitness.rule=Host(`${DOMAIN:-fitness.localhost}`)"
+      - "traefik.http.routers.fitness.entrypoints=websecure"
+      - "traefik.http.routers.fitness.tls=true"
+      - "traefik.http.routers.fitness.tls.certresolver=letsencrypt"
+      - "traefik.http.services.fitness.loadbalancer.server.port=3000"
+      # Security headers
+      - "traefik.http.middlewares.fitness-headers.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.fitness-headers.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.fitness-headers.headers.contentSecurityPolicy=upgrade-insecure-requests"
+      - "traefik.http.routers.fitness.middlewares=fitness-headers"
+      # Watchtower auto-update
+      - "com.centurylinklabs.watchtower.enable=true"
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000/"]
       interval: 30s
       timeout: 10s
-      start_period: 10s
       retries: 3
+      start_period: 40s
+
+  # =============================================================================
+  # Backup Service - Daily SQLite backups
+  # =============================================================================
+  # NOTE: Traefik and Watchtower are managed externally and already running
+  backup:
+    image: alpine:latest
+    container_name: fitness-backup
+    restart: unless-stopped
+    volumes:
+      - fitness-data:/data:ro
+      - fitness-backups:/backups
+    entrypoint: /bin/sh
+    command: |
+      -c 'while true; do
+        TIMESTAMP=$$(date +%Y%m%d_%H%M%S)
+        cp /data/fitness.db /backups/fitness_$$TIMESTAMP.db 2>/dev/null || true
+        # Keep only last 7 days of backups
+        find /backups -name "fitness_*.db" -mtime +7 -delete
+        echo "[$$TIMESTAMP] Backup completed"
+        sleep 86400
+      done'
+
+volumes:
+  fitness-data:
+    name: fitness-tracker-data
+  fitness-backups:
+    name: fitness-tracker-backups
 
 networks:
   proxy:
+    name: proxy
     external: true

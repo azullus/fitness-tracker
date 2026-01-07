@@ -1,98 +1,127 @@
 'use client';
 
 import { useState } from 'react';
-import { TrendingUp, TrendingDown, Minus, Plus } from 'lucide-react';
+import { Scale, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface WeightLoggerProps {
+type Props = {
   person: 'Him' | 'Her';
-  currentWeight: number;
-  sevenDayAvg: number;
-  trend: 'up' | 'down' | 'stable';
-  onLog: (weight: number, notes?: string) => void;
-}
+  currentWeight?: number;
+  sevenDayAvg?: number;
+  trend?: 'up' | 'down' | 'stable';
+  onLog?: (weight: number, notes?: string) => void;
+};
 
 export default function WeightLogger({
   person,
   currentWeight,
   sevenDayAvg,
-  trend,
+  trend = 'stable',
   onLog,
-}: WeightLoggerProps) {
-  const [weight, setWeight] = useState(currentWeight || 150);
+}: Props) {
+  const [weight, setWeight] = useState(currentWeight?.toString() || '');
   const [notes, setNotes] = useState('');
-  const [showNotes, setShowNotes] = useState(false);
-
-  const isHim = person === 'Him';
-  const accentColor = isHim ? 'text-red-600' : 'text-purple-600';
-  const bgColor = isHim ? 'bg-red-50' : 'bg-purple-50';
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const TrendIcon = trend === 'up' ? TrendingUp : trend === 'down' ? TrendingDown : Minus;
+  const trendColor = trend === 'up' ? 'text-red-500' : trend === 'down' ? 'text-green-500' : 'text-gray-400';
 
-  function handleSubmit() {
-    onLog(weight, notes || undefined);
-    setNotes('');
-    setShowNotes(false);
-  }
+  const handleSubmit = () => {
+    const w = parseFloat(weight);
+    if (w > 0 && onLog) {
+      onLog(w, notes || undefined);
+      setIsExpanded(false);
+      setNotes('');
+    }
+  };
+
+  const isHim = person === 'Him';
 
   return (
-    <div className={cn('card', bgColor)}>
-      <div className="flex items-center justify-between mb-3">
-        <h3 className={cn('font-semibold', accentColor)}>{person}</h3>
-        <div className="flex items-center gap-1 text-sm text-gray-500">
-          <TrendIcon className="w-4 h-4" />
-          <span>7d avg: {sevenDayAvg} lbs</span>
+    <div className={cn('card', isHim ? 'border-l-4 border-l-strength-500' : 'border-l-4 border-l-cardio-500')}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className={cn(
+            'w-10 h-10 rounded-full flex items-center justify-center',
+            isHim ? 'bg-red-100' : 'bg-purple-100'
+          )}>
+            <Scale className={cn('w-5 h-5', isHim ? 'text-red-600' : 'text-purple-600')} />
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">{person}</p>
+            <p className="text-2xl font-bold text-gray-900">
+              {currentWeight ? `${currentWeight} lbs` : '--'}
+            </p>
+          </div>
+        </div>
+
+        <div className="text-right">
+          <div className="flex items-center gap-1 text-sm text-gray-500">
+            <span>7-day avg</span>
+            <TrendIcon className={cn('w-4 h-4', trendColor)} />
+          </div>
+          <p className="text-lg font-semibold text-gray-700">
+            {sevenDayAvg ? `${sevenDayAvg} lbs` : '--'}
+          </p>
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-4 mb-3">
-        <button
-          onClick={() => setWeight((w) => Math.max(0, w - 0.5))}
-          className="p-2 rounded-full bg-white shadow-sm hover:bg-gray-50"
-        >
-          <Minus className="w-5 h-5" />
-        </button>
+      {/* Quick log button */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className={cn(
+          'mt-3 w-full py-2 rounded-lg text-sm font-medium transition-colors',
+          isExpanded
+            ? 'bg-gray-100 text-gray-600'
+            : isHim
+              ? 'bg-red-50 text-red-600 hover:bg-red-100'
+              : 'bg-purple-50 text-purple-600 hover:bg-purple-100'
+        )}
+      >
+        {isExpanded ? 'Cancel' : 'Log Weight'}
+      </button>
 
-        <div className="text-center">
+      {/* Expanded input */}
+      {isExpanded && (
+        <div className="mt-3 space-y-3 animate-fade-in">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setWeight((prev) => (parseFloat(prev) - 0.5).toFixed(1))}
+              className="btn-secondary btn-sm"
+            >
+              -0.5
+            </button>
+            <input
+              type="number"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              placeholder="Weight"
+              step="0.1"
+              className="input-number flex-1"
+            />
+            <button
+              onClick={() => setWeight((prev) => (parseFloat(prev) + 0.5).toFixed(1))}
+              className="btn-secondary btn-sm"
+            >
+              +0.5
+            </button>
+          </div>
           <input
-            type="number"
-            value={weight}
-            onChange={(e) => setWeight(parseFloat(e.target.value) || 0)}
-            className="w-24 text-3xl font-bold text-center bg-transparent border-b-2 border-gray-300 focus:border-blue-500 outline-none"
-            step="0.1"
+            type="text"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Notes (optional)"
+            className="input input-sm"
           />
-          <p className="text-sm text-gray-500">lbs</p>
+          <button
+            onClick={handleSubmit}
+            disabled={!weight || parseFloat(weight) <= 0}
+            className={cn('w-full', isHim ? 'btn bg-red-600 text-white hover:bg-red-700' : 'btn bg-purple-600 text-white hover:bg-purple-700')}
+          >
+            Save
+          </button>
         </div>
-
-        <button
-          onClick={() => setWeight((w) => w + 0.5)}
-          className="p-2 rounded-full bg-white shadow-sm hover:bg-gray-50"
-        >
-          <Plus className="w-5 h-5" />
-        </button>
-      </div>
-
-      {showNotes && (
-        <input
-          type="text"
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          placeholder="Add a note (optional)"
-          className="w-full px-3 py-2 mb-3 text-sm border rounded-lg"
-        />
       )}
-
-      <div className="flex gap-2">
-        <button
-          onClick={() => setShowNotes(!showNotes)}
-          className="flex-1 btn-secondary btn-sm"
-        >
-          {showNotes ? 'Hide Notes' : 'Add Note'}
-        </button>
-        <button onClick={handleSubmit} className="flex-1 btn-primary btn-sm">
-          Log Weight
-        </button>
-      </div>
     </div>
   );
 }

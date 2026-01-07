@@ -1,265 +1,465 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { ArrowLeft, Clock, Users, Flame, Check } from 'lucide-react';
-import ProtectedRoute from '@/components/ProtectedRoute';
-import { cn } from '@/lib/utils';
-import type { Recipe } from '@/lib/types';
+import { useState, useMemo, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { ArrowLeft, Clock, Users, ChefHat, Flame, Minus, Plus, Check, UtensilsCrossed, Loader2 } from 'lucide-react';
+import { clsx } from 'clsx';
+import { Button } from '@/components/ui/Button';
+import { LogRecipeMeal } from '@/components/forms';
+import { getRecipeById, fetchRecipeById } from '@/lib/recipes';
+import { getUserRecipeById, isUserRecipe } from '@/lib/user-recipes';
+import { formatQuantity } from '@/lib/recipe-utils';
+import { useCurrentPerson } from '@/components/providers/PersonProvider';
+import type { Recipe, RecipeIngredient } from '@/lib/types';
 
-const categoryColors: Record<string, string> = {
-  Breakfast: 'bg-amber-100 text-amber-700 border-amber-200',
-  Lunch: 'bg-green-100 text-green-700 border-green-200',
-  Dinner: 'bg-blue-100 text-blue-700 border-blue-200',
-  Snack: 'bg-pink-100 text-pink-700 border-pink-200',
+const categoryColors: Record<Recipe['category'], { bg: string; text: string; darkBg: string; darkText: string }> = {
+  breakfast: { bg: 'bg-yellow-100', text: 'text-yellow-700', darkBg: 'dark:bg-yellow-900/30', darkText: 'dark:text-yellow-400' },
+  lunch: { bg: 'bg-green-100', text: 'text-green-700', darkBg: 'dark:bg-green-900/30', darkText: 'dark:text-green-400' },
+  dinner: { bg: 'bg-purple-100', text: 'text-purple-700', darkBg: 'dark:bg-purple-900/30', darkText: 'dark:text-purple-400' },
+  snack: { bg: 'bg-pink-100', text: 'text-pink-700', darkBg: 'dark:bg-pink-900/30', darkText: 'dark:text-pink-400' },
+};
+
+const categoryLabels: Record<Recipe['category'], string> = {
+  breakfast: 'Breakfast',
+  lunch: 'Lunch',
+  dinner: 'Dinner',
+  snack: 'Snack',
 };
 
 export default function RecipeDetailPage() {
-  const params = useParams();
   const router = useRouter();
-  const [recipe, setRecipe] = useState<Recipe | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [checkedIngredients, setCheckedIngredients] = useState<Set<number>>(new Set());
-  const [checkedSteps, setCheckedSteps] = useState<Set<number>>(new Set());
+  const params = useParams();
+  const recipeId = params.id as string;
+  const currentPerson = useCurrentPerson();
 
+  // State for user recipe (loaded from localStorage)
+  const [userRecipe, setUserRecipe] = useState<Recipe | null>(null);
+  // State for lazy-loaded recipe (from JSON)
+  const [lazyLoadedRecipe, setLazyLoadedRecipe] = useState<Recipe | null>(null);
+  // Track loading states
+  const [isLoadingUserRecipe, setIsLoadingUserRecipe] = useState(isUserRecipe(recipeId));
+  const [isLoadingLazyRecipe, setIsLoadingLazyRecipe] = useState(false);
+
+  // State for log meal modal
+  const [showLogMeal, setShowLogMeal] = useState(false);
+
+  // Servings state for scaling - initialized with a default, updated when recipe loads
+  const [currentServings, setCurrentServings] = useState(1);
+  const [servingsInitialized, setServingsInitialized] = useState(false);
+
+  // Checked ingredients state
+  const [checkedIngredients, setCheckedIngredients] = useState<Set<number>>(
+    new Set()
+  );
+
+  // Load user recipe from localStorage on mount (only for user-created recipes)
   useEffect(() => {
-    if (params.id) {
-      fetch(`/api/recipes?id=${params.id}`)
-        .then(res => {
-          if (!res.ok) throw new Error('Recipe not found');
-          return res.json();
-        })
-        .then(data => {
-          setRecipe(data);
-          setLoading(false);
-        })
-        .catch(err => {
-          console.error('Error loading recipe:', err);
-          setLoading(false);
-        });
+    if (isUserRecipe(recipeId)) {
+      const recipe = getUserRecipeById(recipeId);
+      setUserRecipe(recipe);
+      setIsLoadingUserRecipe(false);
     }
-  }, [params.id]);
+  }, [recipeId]);
 
-  const toggleIngredient = (index: number) => {
-    setCheckedIngredients(prev => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
+  // Find the recipe by ID - check bundled recipes first, then lazy load if not found
+  const bundledRecipe = useMemo(() => {
+    if (isUserRecipe(recipeId)) {
+      return userRecipe;
+    }
+    return getRecipeById(recipeId);
+  }, [recipeId, userRecipe]);
+
+  // Lazy load recipe if not found in bundle
+  useEffect(() => {
+    const loadRecipe = async () => {
+      // Don't load if it's a user recipe or if we found it in the bundle
+      if (isUserRecipe(recipeId) || bundledRecipe || lazyLoadedRecipe) {
+        return;
       }
-      return next;
-    });
-  };
 
-  const toggleStep = (index: number) => {
-    setCheckedSteps(prev => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
+      setIsLoadingLazyRecipe(true);
+      try {
+        const recipe = await fetchRecipeById(recipeId);
+        setLazyLoadedRecipe(recipe || null);
+      } catch {
+        // Failed to lazy load recipe
+      } finally {
+        setIsLoadingLazyRecipe(false);
       }
-      return next;
-    });
-  };
+    };
 
-  if (loading) {
+    loadRecipe();
+  }, [recipeId, bundledRecipe, lazyLoadedRecipe]);
+
+  // Final recipe (bundled or lazy loaded)
+  const recipe = bundledRecipe || lazyLoadedRecipe;
+
+  // Update servings when recipe loads (only once)
+  useEffect(() => {
+    if (recipe && !servingsInitialized) {
+      setCurrentServings(recipe.servings);
+      setServingsInitialized(true);
+    }
+  }, [recipe, servingsInitialized]);
+
+  // Show loading state for user recipes or lazy-loaded recipes
+  if (isLoadingUserRecipe || isLoadingLazyRecipe) {
     return (
-      <ProtectedRoute>
-        <div className="px-4 py-6 max-w-lg mx-auto">
-          <div className="text-center py-12 text-gray-500">Loading recipe...</div>
-        </div>
-      </ProtectedRoute>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-4">
+        <Loader2 className="h-8 w-8 text-blue-500 animate-spin mb-4" aria-hidden="true" />
+        <p className="text-gray-500 dark:text-gray-400">Loading recipe...</p>
+      </div>
     );
   }
 
   if (!recipe) {
     return (
-      <ProtectedRoute>
-        <div className="px-4 py-6 max-w-lg mx-auto">
-          <div className="text-center py-12">
-            <p className="text-gray-500 mb-4">Recipe not found</p>
-            <button onClick={() => router.back()} className="btn-primary">
-              Go Back
-            </button>
-          </div>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center px-4">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
+          <ChefHat className="h-8 w-8 text-gray-400 dark:text-gray-500" aria-hidden="true" />
         </div>
-      </ProtectedRoute>
+        <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+          Recipe not found
+        </h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 text-center">
+          The recipe you&apos;re looking for doesn&apos;t exist or has been removed.
+        </p>
+        <Button onClick={() => router.push('/recipes')}>
+          <ArrowLeft className="h-4 w-4 mr-2" aria-hidden="true" />
+          Back to Recipes
+        </Button>
+      </div>
     );
   }
 
+  // Guard against division by zero
+  const originalServings = recipe.servings > 0 ? recipe.servings : 1;
+  const scaleFactor = currentServings / originalServings;
+  const totalTime =
+    (recipe.prep_time_minutes ?? 0) + (recipe.cook_time_minutes ?? 0);
+  const categoryStyle = categoryColors[recipe.category];
+
+  const handleServingsChange = (delta: number) => {
+    const newServings = currentServings + delta;
+    if (newServings >= 1 && newServings <= 20) {
+      setCurrentServings(newServings);
+    }
+  };
+
+  const toggleIngredient = (index: number) => {
+    setCheckedIngredients((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
+  const scaleIngredient = (ingredient: RecipeIngredient): string => {
+    const scaledQuantity = ingredient.quantity * scaleFactor;
+    return `${formatQuantity(scaledQuantity)} ${ingredient.unit}`;
+  };
+
+  const scaleNutrition = (value: number | undefined): number => {
+    if (value === undefined) return 0;
+    // Nutrition is per recipe, so divide by original servings (already guarded above)
+    return Math.round(value / originalServings);
+  };
+
+  const handleLogMeal = () => {
+    if (!currentPerson) {
+      alert('Please select a person to log meals for.');
+      return;
+    }
+    setShowLogMeal(true);
+  };
+
   return (
-    <ProtectedRoute>
-    <div className="px-4 py-6 max-w-lg mx-auto pb-24">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
-        <button onClick={() => router.back()} className="p-2 -ml-2 hover:bg-gray-100 rounded-lg">
-          <ArrowLeft className="w-5 h-5 text-gray-600" />
-        </button>
-        <span className={cn('badge border', categoryColors[recipe.category])}>
-          {recipe.category}
-        </span>
-      </div>
+      <header className="sticky top-0 z-10 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => router.push('/recipes')}
+            className="flex items-center justify-center h-10 w-10 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Back to recipes"
+          >
+            <ArrowLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+          </button>
+          <h1 className="font-semibold text-lg text-gray-900 dark:text-white truncate">
+            {recipe.name}
+          </h1>
+        </div>
+      </header>
 
-      {/* Title */}
-      <h1 className="text-2xl font-bold text-gray-900 mb-4">{recipe.name}</h1>
+      <main className="px-4 py-6 space-y-6">
+        {/* Recipe Header */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            {recipe.name}
+          </h2>
+          {recipe.description && (
+            <p className="text-gray-600 dark:text-gray-300 mb-4">{recipe.description}</p>
+          )}
 
-      {/* Quick stats */}
-      <div className="grid grid-cols-4 gap-3 mb-6">
-        <div className="card text-center py-3">
-          <Clock className="w-5 h-5 mx-auto text-gray-400 mb-1" />
-          <p className="text-lg font-bold text-gray-900">{recipe.prep_time_min + recipe.cook_time_min}</p>
-          <p className="text-xs text-gray-500">min</p>
-        </div>
-        <div className="card text-center py-3">
-          <Users className="w-5 h-5 mx-auto text-gray-400 mb-1" />
-          <p className="text-lg font-bold text-gray-900">{recipe.servings}</p>
-          <p className="text-xs text-gray-500">servings</p>
-        </div>
-        <div className="card text-center py-3">
-          <Flame className="w-5 h-5 mx-auto text-gray-400 mb-1" />
-          <p className="text-lg font-bold text-gray-900">{recipe.calories}</p>
-          <p className="text-xs text-gray-500">cal</p>
-        </div>
-        <div className="card text-center py-3">
-          <p className="text-lg font-bold text-blue-600">{recipe.protein_g}g</p>
-          <p className="text-xs text-gray-500">protein</p>
-        </div>
-      </div>
-
-      {/* Macros breakdown */}
-      <div className="card mb-6">
-        <h2 className="font-semibold text-gray-900 mb-3">Nutrition per serving</h2>
-        <div className="flex gap-1 h-3 rounded-full overflow-hidden bg-gray-100 mb-3">
-          <div
-            className="bg-blue-500 rounded-full"
-            style={{ width: `${(recipe.protein_g * 4 / recipe.calories) * 100}%` }}
-          />
-          <div
-            className="bg-amber-500 rounded-full"
-            style={{ width: `${(recipe.carbs_g * 4 / recipe.calories) * 100}%` }}
-          />
-          <div
-            className="bg-red-400 rounded-full"
-            style={{ width: `${(recipe.fat_g * 9 / recipe.calories) * 100}%` }}
-          />
-        </div>
-        <div className="grid grid-cols-4 gap-2 text-center text-sm">
-          <div>
-            <p className="font-bold text-blue-600">{recipe.protein_g}g</p>
-            <p className="text-xs text-gray-500">Protein</p>
-          </div>
-          <div>
-            <p className="font-bold text-amber-600">{recipe.carbs_g}g</p>
-            <p className="text-xs text-gray-500">Carbs</p>
-          </div>
-          <div>
-            <p className="font-bold text-red-500">{recipe.fat_g}g</p>
-            <p className="text-xs text-gray-500">Fat</p>
-          </div>
-          <div>
-            <p className="font-bold text-green-600">{recipe.fiber_g}g</p>
-            <p className="text-xs text-gray-500">Fiber</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Ingredients */}
-      <div className="card mb-6">
-        <h2 className="font-semibold text-gray-900 mb-3">
-          Ingredients
-          <span className="text-sm font-normal text-gray-500 ml-2">
-            ({checkedIngredients.size}/{recipe.ingredients.length})
-          </span>
-        </h2>
-        <ul className="space-y-2">
-          {recipe.ingredients.map((ing, idx) => (
-            <li
-              key={idx}
-              onClick={() => toggleIngredient(idx)}
-              className={cn(
-                'flex items-center gap-3 p-2 -mx-2 rounded-lg cursor-pointer transition-colors',
-                checkedIngredients.has(idx) ? 'bg-green-50' : 'hover:bg-gray-50'
+          {/* Category and Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            <span
+              className={clsx(
+                'inline-flex items-center rounded-full px-3 py-1 text-sm font-medium',
+                categoryStyle.bg,
+                categoryStyle.text,
+                categoryStyle.darkBg,
+                categoryStyle.darkText
               )}
             >
-              <div className={cn(
-                'w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors',
-                checkedIngredients.has(idx)
-                  ? 'bg-green-500 border-green-500'
-                  : 'border-gray-300'
-              )}>
-                {checkedIngredients.has(idx) && <Check className="w-3 h-3 text-white" />}
-              </div>
-              <span className={cn(
-                'flex-1',
-                checkedIngredients.has(idx) && 'line-through text-gray-400'
-              )}>
-                <span className="font-medium">{ing.amount} {ing.unit}</span>{' '}
-                {ing.item}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Instructions */}
-      <div className="card">
-        <h2 className="font-semibold text-gray-900 mb-3">
-          Instructions
-          <span className="text-sm font-normal text-gray-500 ml-2">
-            ({checkedSteps.size}/{recipe.instructions.length})
-          </span>
-        </h2>
-        <ol className="space-y-4">
-          {recipe.instructions.map((step, idx) => (
-            <li
-              key={idx}
-              onClick={() => toggleStep(idx)}
-              className={cn(
-                'flex gap-3 p-2 -mx-2 rounded-lg cursor-pointer transition-colors',
-                checkedSteps.has(idx) ? 'bg-green-50' : 'hover:bg-gray-50'
-              )}
-            >
-              <div className={cn(
-                'w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold transition-colors',
-                checkedSteps.has(idx)
-                  ? 'bg-green-500 text-white'
-                  : 'bg-gray-200 text-gray-600'
-              )}>
-                {checkedSteps.has(idx) ? <Check className="w-4 h-4" /> : idx + 1}
-              </div>
-              <span className={cn(
-                'flex-1 pt-0.5',
-                checkedSteps.has(idx) && 'line-through text-gray-400'
-              )}>
-                {step}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </div>
-
-      {/* Notes */}
-      {recipe.notes && (
-        <div className="card mt-6 bg-amber-50 border border-amber-200">
-          <h2 className="font-semibold text-amber-800 mb-2">Notes</h2>
-          <p className="text-amber-700 text-sm">{recipe.notes}</p>
-        </div>
-      )}
-
-      {/* Tags */}
-      {recipe.tags && recipe.tags.length > 0 && (
-        <div className="mt-6 flex flex-wrap gap-2">
-          {recipe.tags.map((tag, idx) => (
-            <span key={idx} className="badge bg-gray-100 text-gray-600">
-              {tag}
+              {categoryLabels[recipe.category]}
             </span>
-          ))}
+            {recipe.tags?.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full px-3 py-1 text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Time Info */}
+          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+            {recipe.prep_time_minutes !== undefined &&
+              recipe.prep_time_minutes > 0 && (
+                <div className="flex items-center gap-1.5">
+                  <Clock className="h-4 w-4 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+                  <span>Prep: {recipe.prep_time_minutes} min</span>
+                </div>
+              )}
+            {recipe.cook_time_minutes !== undefined &&
+              recipe.cook_time_minutes > 0 && (
+                <div className="flex items-center gap-1.5">
+                  <Flame className="h-4 w-4 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+                  <span>Cook: {recipe.cook_time_minutes} min</span>
+                </div>
+              )}
+            {totalTime > 0 && (
+              <div className="flex items-center gap-1.5 font-medium text-gray-900 dark:text-white">
+                <Clock className="h-4 w-4 text-blue-500 dark:text-blue-400" aria-hidden="true" />
+                <span>Total: {totalTime} min</span>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Servings Control */}
+        <section className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Users className="h-5 w-5 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+              <span className="font-medium text-gray-900 dark:text-white">Servings</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => handleServingsChange(-1)}
+                disabled={currentServings <= 1}
+                className={clsx(
+                  'flex items-center justify-center h-8 w-8 rounded-full',
+                  'border border-gray-300 dark:border-gray-600 transition-colors',
+                  currentServings <= 1
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                )}
+                aria-label="Decrease servings"
+              >
+                <Minus className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+              </button>
+              <span className="text-lg font-semibold text-gray-900 dark:text-white min-w-[2rem] text-center">
+                {currentServings}
+              </span>
+              <button
+                onClick={() => handleServingsChange(1)}
+                disabled={currentServings >= 20}
+                className={clsx(
+                  'flex items-center justify-center h-8 w-8 rounded-full',
+                  'border border-gray-300 dark:border-gray-600 transition-colors',
+                  currentServings >= 20
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                )}
+                aria-label="Increase servings"
+              >
+                <Plus className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+              </button>
+            </div>
+          </div>
+          {currentServings !== originalServings && (
+            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              Original recipe: {originalServings} serving
+              {originalServings !== 1 ? 's' : ''}
+            </p>
+          )}
+        </section>
+
+        {/* Nutrition Facts - support both nutrition and macrosPerServing fields */}
+        {(recipe.nutrition || recipe.macrosPerServing) && (
+          <section className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
+              Nutrition Facts{' '}
+              <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                (per serving)
+              </span>
+            </h3>
+            <div className="grid grid-cols-5 gap-2">
+              <NutritionItem
+                label="Calories"
+                value={recipe.macrosPerServing?.calories ?? scaleNutrition(recipe.nutrition?.calories)}
+                unit=""
+                highlight
+              />
+              <NutritionItem
+                label="Protein"
+                value={recipe.macrosPerServing?.protein ?? scaleNutrition(recipe.nutrition?.protein_g)}
+                unit="g"
+              />
+              <NutritionItem
+                label="Carbs"
+                value={recipe.macrosPerServing?.carbs ?? scaleNutrition(recipe.nutrition?.carbs_g)}
+                unit="g"
+              />
+              <NutritionItem
+                label="Fat"
+                value={recipe.macrosPerServing?.fat ?? scaleNutrition(recipe.nutrition?.fat_g)}
+                unit="g"
+              />
+              <NutritionItem
+                label="Fiber"
+                value={recipe.macrosPerServing?.fiber ?? scaleNutrition(recipe.nutrition?.fiber_g)}
+                unit="g"
+              />
+            </div>
+          </section>
+        )}
+
+        {/* Ingredients */}
+        <section className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
+            Ingredients
+            {currentServings !== originalServings && (
+              <span className="text-sm font-normal text-blue-600 dark:text-blue-400 ml-2">
+                (scaled for {currentServings})
+              </span>
+            )}
+          </h3>
+          <ul className="space-y-2">
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => toggleIngredient(index)}
+                  className={clsx(
+                    'flex items-start gap-3 w-full text-left p-2 -m-2 rounded-lg',
+                    'hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors'
+                  )}
+                >
+                  <div
+                    className={clsx(
+                      'flex items-center justify-center h-5 w-5 rounded border mt-0.5 flex-shrink-0',
+                      checkedIngredients.has(index)
+                        ? 'bg-green-500 border-green-500'
+                        : 'border-gray-300 dark:border-gray-600'
+                    )}
+                  >
+                    {checkedIngredients.has(index) && (
+                      <Check className="h-3 w-3 text-white" aria-hidden="true" />
+                    )}
+                  </div>
+                  <span
+                    className={clsx(
+                      'text-gray-700 dark:text-gray-300',
+                      checkedIngredients.has(index) && 'line-through text-gray-400 dark:text-gray-500'
+                    )}
+                  >
+                    <span className="font-medium">
+                      {scaleIngredient(ingredient)}
+                    </span>{' '}
+                    {ingredient.item}
+                    {ingredient.notes && (
+                      <span className="text-gray-400 dark:text-gray-500"> ({ingredient.notes})</span>
+                    )}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Instructions */}
+        <section className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Instructions</h3>
+          <ol className="space-y-4">
+            {recipe.instructions.map((instruction, index) => (
+              <li key={index} className="flex gap-3">
+                <span className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-400 text-sm font-medium flex-shrink-0">
+                  {index + 1}
+                </span>
+                <p className="text-gray-700 dark:text-gray-300 pt-0.5">{instruction}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* Notes (if present - not in current demo data but supporting it) */}
+        {/* The Recipe type doesn't have a notes field, but we can add support if needed */}
+
+        {/* Log This Meal Button */}
+        <div className="pt-4">
+          <Button
+            variant="primary"
+            size="lg"
+            className="w-full"
+            onClick={handleLogMeal}
+          >
+            <UtensilsCrossed className="h-5 w-5 mr-2" aria-hidden="true" />
+            Log This Meal
+          </Button>
         </div>
+      </main>
+
+      {/* Log Meal Modal */}
+      {currentPerson && recipe && (
+        <LogRecipeMeal
+          isOpen={showLogMeal}
+          onClose={() => setShowLogMeal(false)}
+          recipe={recipe}
+          personId={currentPerson.id}
+        />
       )}
     </div>
-    </ProtectedRoute>
+  );
+}
+
+// Helper component for nutrition display
+interface NutritionItemProps {
+  label: string;
+  value: number;
+  unit: string;
+  highlight?: boolean;
+}
+
+function NutritionItem({ label, value, unit, highlight }: NutritionItemProps) {
+  return (
+    <div className="text-center">
+      <div
+        className={clsx(
+          'text-lg font-semibold',
+          highlight ? 'text-orange-600 dark:text-orange-400' : 'text-gray-900 dark:text-white'
+        )}
+      >
+        {value}
+        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">{unit}</span>
+      </div>
+      <div className="text-xs text-gray-500 dark:text-gray-400">{label}</div>
+    </div>
   );
 }

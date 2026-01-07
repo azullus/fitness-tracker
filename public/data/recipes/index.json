@@ -1,300 +1,4327 @@
-{
-  "categories": ["Breakfast", "Lunch", "Dinner", "Snack"],
-  "totalRecipes": 21,
-  "recipes": [
-    {
-      "id": "breakfast-001",
-      "name": "Protein Oatmeal Bowl",
-      "category": "Breakfast",
-      "prep_time_min": 5,
-      "cook_time_min": 10,
-      "servings": 1,
-      "calories": 420,
-      "protein_g": 32,
-      "carbs_g": 48,
-      "fat_g": 12,
-      "fiber_g": 6,
-      "tags": ["high-protein", "quick", "meal-prep-friendly"]
-    },
-    {
-      "id": "breakfast-002",
-      "name": "Greek Yogurt Parfait",
-      "category": "Breakfast",
-      "prep_time_min": 5,
-      "cook_time_min": 0,
-      "servings": 1,
-      "calories": 380,
-      "protein_g": 28,
-      "carbs_g": 42,
-      "fat_g": 10,
-      "fiber_g": 4,
-      "tags": ["no-cook", "high-protein", "quick"]
-    },
-    {
-      "id": "breakfast-003",
-      "name": "Veggie Egg White Scramble",
-      "category": "Breakfast",
-      "prep_time_min": 10,
-      "cook_time_min": 8,
-      "servings": 1,
-      "calories": 280,
-      "protein_g": 30,
-      "carbs_g": 12,
-      "fat_g": 12,
-      "fiber_g": 3,
-      "tags": ["high-protein", "low-carb", "keto-friendly"]
-    },
-    {
-      "id": "breakfast-004",
-      "name": "Avocado Toast with Eggs",
-      "category": "Breakfast",
-      "prep_time_min": 5,
-      "cook_time_min": 5,
-      "servings": 1,
-      "calories": 450,
-      "protein_g": 18,
-      "carbs_g": 35,
-      "fat_g": 28,
-      "fiber_g": 10,
-      "tags": ["healthy-fats", "quick", "vegetarian"]
-    },
-    {
-      "id": "breakfast-005",
-      "name": "Banana Protein Pancakes",
-      "category": "Breakfast",
-      "prep_time_min": 5,
-      "cook_time_min": 10,
-      "servings": 2,
-      "calories": 340,
-      "protein_g": 28,
-      "carbs_g": 38,
-      "fat_g": 8,
-      "fiber_g": 4,
-      "tags": ["high-protein", "gluten-free", "meal-prep-friendly"]
-    },
-    {
-      "id": "lunch-001",
-      "name": "Grilled Chicken Salad",
-      "category": "Lunch",
-      "prep_time_min": 15,
-      "cook_time_min": 15,
-      "servings": 1,
-      "calories": 420,
-      "protein_g": 42,
-      "carbs_g": 18,
-      "fat_g": 22,
-      "fiber_g": 6,
-      "tags": ["high-protein", "low-carb", "meal-prep-friendly"]
-    },
-    {
-      "id": "lunch-002",
-      "name": "Turkey Wrap",
-      "category": "Lunch",
-      "prep_time_min": 10,
-      "cook_time_min": 0,
-      "servings": 1,
-      "calories": 380,
-      "protein_g": 32,
-      "carbs_g": 28,
-      "fat_g": 16,
-      "fiber_g": 4,
-      "tags": ["no-cook", "high-protein", "quick"]
-    },
-    {
-      "id": "lunch-003",
-      "name": "Quinoa Buddha Bowl",
-      "category": "Lunch",
-      "prep_time_min": 15,
-      "cook_time_min": 20,
-      "servings": 2,
-      "calories": 480,
-      "protein_g": 18,
-      "carbs_g": 58,
-      "fat_g": 20,
-      "fiber_g": 12,
-      "tags": ["vegan", "high-fiber", "meal-prep-friendly"]
-    },
-    {
-      "id": "lunch-004",
-      "name": "Tuna Salad Lettuce Wraps",
-      "category": "Lunch",
-      "prep_time_min": 10,
-      "cook_time_min": 0,
-      "servings": 1,
-      "calories": 320,
-      "protein_g": 38,
-      "carbs_g": 8,
-      "fat_g": 16,
-      "fiber_g": 2,
-      "tags": ["no-cook", "low-carb", "high-protein", "keto-friendly"]
-    },
-    {
-      "id": "lunch-005",
-      "name": "Chicken Burrito Bowl",
-      "category": "Lunch",
-      "prep_time_min": 15,
-      "cook_time_min": 15,
-      "servings": 2,
-      "calories": 520,
-      "protein_g": 40,
-      "carbs_g": 52,
-      "fat_g": 18,
-      "fiber_g": 10,
-      "tags": ["high-protein", "meal-prep-friendly", "customizable"]
-    },
-    {
-      "id": "dinner-001",
-      "name": "Baked Salmon with Asparagus",
-      "category": "Dinner",
-      "prep_time_min": 10,
-      "cook_time_min": 20,
-      "servings": 2,
-      "calories": 450,
-      "protein_g": 42,
-      "carbs_g": 12,
-      "fat_g": 26,
-      "fiber_g": 4,
-      "tags": ["high-protein", "low-carb", "omega-3", "sheet-pan"]
-    },
-    {
-      "id": "dinner-002",
-      "name": "Lean Beef Stir Fry",
-      "category": "Dinner",
-      "prep_time_min": 15,
-      "cook_time_min": 12,
-      "servings": 2,
-      "calories": 420,
-      "protein_g": 38,
-      "carbs_g": 28,
-      "fat_g": 18,
-      "fiber_g": 5,
-      "tags": ["high-protein", "quick", "asian-inspired"]
-    },
-    {
-      "id": "dinner-003",
-      "name": "Turkey Meatballs with Zucchini Noodles",
-      "category": "Dinner",
-      "prep_time_min": 20,
-      "cook_time_min": 25,
-      "servings": 4,
-      "calories": 380,
-      "protein_g": 35,
-      "carbs_g": 18,
-      "fat_g": 20,
-      "fiber_g": 4,
-      "tags": ["high-protein", "low-carb", "italian-inspired"]
-    },
-    {
-      "id": "dinner-004",
-      "name": "Grilled Chicken Breast with Sweet Potato",
-      "category": "Dinner",
-      "prep_time_min": 10,
-      "cook_time_min": 35,
-      "servings": 2,
-      "calories": 480,
-      "protein_g": 45,
-      "carbs_g": 42,
-      "fat_g": 14,
-      "fiber_g": 6,
-      "tags": ["high-protein", "balanced", "meal-prep-friendly"]
-    },
-    {
-      "id": "dinner-005",
-      "name": "Shrimp and Vegetable Skewers",
-      "category": "Dinner",
-      "prep_time_min": 20,
-      "cook_time_min": 10,
-      "servings": 2,
-      "calories": 320,
-      "protein_g": 36,
-      "carbs_g": 16,
-      "fat_g": 14,
-      "fiber_g": 4,
-      "tags": ["high-protein", "low-carb", "grilling", "quick"]
-    },
-    {
-      "id": "snack-001",
-      "name": "Protein Energy Balls",
-      "category": "Snack",
-      "prep_time_min": 15,
-      "cook_time_min": 0,
-      "servings": 12,
-      "calories": 120,
-      "protein_g": 6,
-      "carbs_g": 14,
-      "fat_g": 6,
-      "fiber_g": 2,
-      "tags": ["no-cook", "meal-prep-friendly", "portable"]
-    },
-    {
-      "id": "snack-002",
-      "name": "Greek Yogurt with Almonds",
-      "category": "Snack",
-      "prep_time_min": 2,
-      "cook_time_min": 0,
-      "servings": 1,
-      "calories": 220,
-      "protein_g": 18,
-      "carbs_g": 12,
-      "fat_g": 12,
-      "fiber_g": 2,
-      "tags": ["no-cook", "quick", "high-protein"]
-    },
-    {
-      "id": "snack-003",
-      "name": "Hummus with Veggie Sticks",
-      "category": "Snack",
-      "prep_time_min": 10,
-      "cook_time_min": 0,
-      "servings": 2,
-      "calories": 180,
-      "protein_g": 6,
-      "carbs_g": 22,
-      "fat_g": 8,
-      "fiber_g": 6,
-      "tags": ["no-cook", "vegan", "high-fiber"]
-    },
-    {
-      "id": "snack-004",
-      "name": "Cottage Cheese with Fruit",
-      "category": "Snack",
-      "prep_time_min": 3,
-      "cook_time_min": 0,
-      "servings": 1,
-      "calories": 200,
-      "protein_g": 20,
-      "carbs_g": 18,
-      "fat_g": 4,
-      "fiber_g": 2,
-      "tags": ["no-cook", "quick", "high-protein"]
-    },
-    {
-      "id": "snack-005",
-      "name": "Apple Slices with Almond Butter",
-      "category": "Snack",
-      "prep_time_min": 5,
-      "cook_time_min": 0,
-      "servings": 1,
-      "calories": 280,
-      "protein_g": 7,
-      "carbs_g": 32,
-      "fat_g": 16,
-      "fiber_g": 5,
-      "tags": ["no-cook", "quick", "healthy-fats"]
-    },
-    {
-      "id": "snack-006",
-      "name": "Hard Boiled Eggs",
-      "category": "Snack",
-      "prep_time_min": 2,
-      "cook_time_min": 12,
-      "servings": 2,
-      "calories": 140,
-      "protein_g": 12,
-      "carbs_g": 1,
-      "fat_g": 10,
-      "fiber_g": 0,
-      "tags": ["high-protein", "low-carb", "meal-prep-friendly", "keto-friendly"]
-    }
-  ]
-}
+[
+  {
+    "id": "breakfast-0001",
+    "name": "Classic Protein Pancakes",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "muscle-building",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 19
+  },
+  {
+    "id": "breakfast-0002",
+    "name": "Overnight Protein Oats",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "quick",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "breakfast-0003",
+    "name": "High-Protein Egg Muffins",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "low-carb",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "breakfast-0004",
+    "name": "Greek Yogurt Protein Bowl",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "quick",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 40
+  },
+  {
+    "id": "breakfast-0005",
+    "name": "Muscle Builder Breakfast Burrito",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "muscle-building",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "breakfast-0006",
+    "name": "Cottage Cheese Power Bowl",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "quick",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0007",
+    "name": "Protein Smoothie Bowl",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "quick",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "breakfast-0008",
+    "name": "Avocado Toast with Eggs",
+    "category": "breakfast",
+    "tags": [
+      "quick",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 13,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0009",
+    "name": "Quick Protein Shake",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "quick",
+      "no-cook",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 50
+  },
+  {
+    "id": "breakfast-0010",
+    "name": "Microwave Egg White Omelette",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "quick",
+      "low-carb"
+    ],
+    "difficulty": "easy",
+    "totalTime": 7,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0011",
+    "name": "Peanut Butter Banana Toast",
+    "category": "breakfast",
+    "tags": [
+      "quick",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 7,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "breakfast-0012",
+    "name": "Turkey Bacon and Egg Sandwich",
+    "category": "breakfast",
+    "tags": [
+      "quick",
+      "high-protein",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "breakfast-0013",
+    "name": "Meal Prep Steel Cut Oats",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 7
+  },
+  {
+    "id": "breakfast-0014",
+    "name": "Freezer-Friendly Breakfast Burritos",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "high-protein",
+      "freezer-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "breakfast-0015",
+    "name": "Baked Oatmeal Cups",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "portable",
+      "freezer-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 8
+  },
+  {
+    "id": "breakfast-0016",
+    "name": "Protein Chia Pudding",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "high-protein",
+      "high-fiber",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0017",
+    "name": "Egg White Veggie Scramble",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "weight-loss"
+    ],
+    "difficulty": "easy",
+    "totalTime": 20,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "breakfast-0018",
+    "name": "Smoked Salmon and Cream Cheese Roll-Ups",
+    "category": "breakfast",
+    "tags": [
+      "low-carb",
+      "high-protein",
+      "weight-loss",
+      "no-cook",
+      "keto"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "breakfast-0019",
+    "name": "Cauliflower Hash with Eggs",
+    "category": "breakfast",
+    "tags": [
+      "low-carb",
+      "high-protein",
+      "weight-loss",
+      "keto"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "breakfast-0020",
+    "name": "Zucchini and Egg Breakfast Boats",
+    "category": "breakfast",
+    "tags": [
+      "low-carb",
+      "high-protein",
+      "weight-loss",
+      "keto"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0021",
+    "name": "Japanese Tamagoyaki (Rolled Omelette)",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "japanese"
+    ],
+    "difficulty": "medium",
+    "totalTime": 20,
+    "proteinPerServing": 14
+  },
+  {
+    "id": "breakfast-0022",
+    "name": "Mexican Chilaquiles with Eggs",
+    "category": "breakfast",
+    "tags": [
+      "mexican",
+      "high-protein"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "breakfast-0023",
+    "name": "Mediterranean Shakshuka",
+    "category": "breakfast",
+    "tags": [
+      "mediterranean",
+      "high-protein",
+      "one-pan"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "breakfast-0024",
+    "name": "Korean Egg Rice Bowl (Gyeran Bap)",
+    "category": "breakfast",
+    "tags": [
+      "korean",
+      "quick",
+      "comfort-food"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "breakfast-0025",
+    "name": "British Full Breakfast (Lighter Version)",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "british"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "breakfast-0026",
+    "name": "Sweet Potato and Egg Hash",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "one-pan"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "breakfast-0027",
+    "name": "Protein-Packed Acai Bowl",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "antioxidant-rich",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "breakfast-0028",
+    "name": "Savory Oatmeal with Egg",
+    "category": "breakfast",
+    "tags": [
+      "high-fiber",
+      "savory"
+    ],
+    "difficulty": "easy",
+    "totalTime": 20,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0029",
+    "name": "Spinach and Feta Stuffed Peppers",
+    "category": "breakfast",
+    "tags": [
+      "low-carb",
+      "high-protein",
+      "mediterranean",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0030",
+    "name": "Chocolate Protein Waffles",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "muscle-building",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "breakfast-0031",
+    "name": "Powerlifter Protein Pancakes",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "powerlifting",
+      "muscle-building",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0032",
+    "name": "Egg White Veggie Omelette",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "powerlifting",
+      "weight-loss",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "totalTime": 18,
+    "proteinPerServing": 34
+  },
+  {
+    "id": "breakfast-0033",
+    "name": "Cottage Cheese Protein Bowl",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "post-workout",
+      "powerlifting"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "breakfast-0034",
+    "name": "High-Protein Breakfast Burrito",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "muscle-building",
+      "powerlifting",
+      "meal-prep",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 52
+  },
+  {
+    "id": "breakfast-0035",
+    "name": "Ultimate Overnight Protein Oats",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "no-cook",
+      "powerlifting",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "breakfast-0036",
+    "name": "Smoked Salmon Bagel Stack",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "omega-3",
+      "quick",
+      "powerlifting",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 13,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0037",
+    "name": "Turkey Bacon Egg Cups",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "meal-prep",
+      "portable",
+      "powerlifting",
+      "keto"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "breakfast-0038",
+    "name": "High-Protein Smoothie Bowl",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "post-workout",
+      "powerlifting",
+      "no-cook",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 45
+  },
+  {
+    "id": "breakfast-0039",
+    "name": "5-Minute Protein Yogurt Parfait",
+    "category": "breakfast",
+    "tags": [
+      "quick",
+      "high-protein",
+      "no-cook",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 34
+  },
+  {
+    "id": "breakfast-0040",
+    "name": "Instant Protein Oatmeal",
+    "category": "breakfast",
+    "tags": [
+      "quick",
+      "high-protein",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 6,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "breakfast-0041",
+    "name": "Quick Scrambled Egg Whites",
+    "category": "breakfast",
+    "tags": [
+      "quick",
+      "high-protein",
+      "low-carb",
+      "keto"
+    ],
+    "difficulty": "easy",
+    "totalTime": 8,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "breakfast-0042",
+    "name": "PB Fit Protein Toast",
+    "category": "breakfast",
+    "tags": [
+      "quick",
+      "high-protein",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 7,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "breakfast-0043",
+    "name": "Steak and Eggs Breakfast",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto",
+      "powerlifting"
+    ],
+    "difficulty": "medium",
+    "totalTime": 25,
+    "proteinPerServing": 52
+  },
+  {
+    "id": "breakfast-0044",
+    "name": "Triple Protein Scramble",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "powerlifting"
+    ],
+    "difficulty": "easy",
+    "totalTime": 22,
+    "proteinPerServing": 48
+  },
+  {
+    "id": "breakfast-0045",
+    "name": "Protein-Loaded French Toast",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "muscle-building"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 19
+  },
+  {
+    "id": "breakfast-0046",
+    "name": "Greek Yogurt Protein Pancakes",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "muscle-building"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "breakfast-0047",
+    "name": "Meal Prep Egg White Bites",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "high-protein",
+      "low-carb",
+      "portable"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 14
+  },
+  {
+    "id": "breakfast-0048",
+    "name": "Mason Jar Overnight Oats",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "high-protein",
+      "no-cook",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 20,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0049",
+    "name": "Freezer-Friendly Protein Waffles",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "freezer-friendly",
+      "high-protein"
+    ],
+    "difficulty": "easy",
+    "totalTime": 45,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "breakfast-0050",
+    "name": "Sheet Pan Breakfast Prep",
+    "category": "breakfast",
+    "tags": [
+      "meal-prep",
+      "high-protein",
+      "one-pan"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "breakfast-0051",
+    "name": "Keto Cloud Eggs",
+    "category": "breakfast",
+    "tags": [
+      "keto",
+      "low-carb",
+      "high-protein"
+    ],
+    "difficulty": "medium",
+    "totalTime": 25,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "breakfast-0052",
+    "name": "Avocado Egg Boats",
+    "category": "breakfast",
+    "tags": [
+      "keto",
+      "low-carb",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 23,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "breakfast-0053",
+    "name": "Keto Breakfast Sausage Patties",
+    "category": "breakfast",
+    "tags": [
+      "keto",
+      "low-carb",
+      "high-protein",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 27,
+    "proteinPerServing": 14
+  },
+  {
+    "id": "breakfast-0054",
+    "name": "Crustless Quiche Lorraine",
+    "category": "breakfast",
+    "tags": [
+      "keto",
+      "low-carb",
+      "high-protein",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 55,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0055",
+    "name": "Mexican Huevos Rancheros",
+    "category": "breakfast",
+    "tags": [
+      "mexican",
+      "high-fiber",
+      "high-protein"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "breakfast-0056",
+    "name": "Japanese Breakfast Bowl",
+    "category": "breakfast",
+    "tags": [
+      "japanese",
+      "high-protein",
+      "traditional"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "breakfast-0057",
+    "name": "Mediterranean Avocado Toast",
+    "category": "breakfast",
+    "tags": [
+      "mediterranean",
+      "high-fiber",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "totalTime": 13,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "breakfast-0058",
+    "name": "Indian Masala Egg Scramble",
+    "category": "breakfast",
+    "tags": [
+      "indian",
+      "high-protein",
+      "low-carb"
+    ],
+    "difficulty": "easy",
+    "totalTime": 22,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "breakfast-0059",
+    "name": "Turkish Menemen",
+    "category": "breakfast",
+    "tags": [
+      "turkish",
+      "mediterranean",
+      "high-protein"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "breakfast-0060",
+    "name": "Green Protein Power Smoothie",
+    "category": "breakfast",
+    "tags": [
+      "smoothie",
+      "high-protein",
+      "high-fiber",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "breakfast-0061",
+    "name": "Chocolate PB Fit Protein Shake",
+    "category": "breakfast",
+    "tags": [
+      "smoothie",
+      "high-protein",
+      "quick",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 48
+  },
+  {
+    "id": "breakfast-0062",
+    "name": "Berry Blast Protein Bowl",
+    "category": "breakfast",
+    "tags": [
+      "smoothie-bowl",
+      "high-protein",
+      "high-fiber",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 35
+  },
+  {
+    "id": "breakfast-0063",
+    "name": "Tropical Mango Protein Smoothie",
+    "category": "breakfast",
+    "tags": [
+      "smoothie",
+      "high-protein",
+      "tropical",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "breakfast-0064",
+    "name": "Classic Eggs Benedict (Lighter)",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "classic",
+      "brunch"
+    ],
+    "difficulty": "hard",
+    "totalTime": 35,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0065",
+    "name": "Spanish Tortilla (Potato Omelette)",
+    "category": "breakfast",
+    "tags": [
+      "spanish",
+      "high-protein",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 10
+  },
+  {
+    "id": "breakfast-0066",
+    "name": "Denver Omelette",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "classic"
+    ],
+    "difficulty": "easy",
+    "totalTime": 20,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "breakfast-0067",
+    "name": "Egg White Frittata with Vegetables",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "meal-prep",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "breakfast-0068",
+    "name": "Apple Cinnamon Protein Oatmeal",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "comfort-food"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0069",
+    "name": "Blueberry Almond Oatmeal",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "antioxidant-rich"
+    ],
+    "difficulty": "easy",
+    "totalTime": 17,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "breakfast-0070",
+    "name": "Pumpkin Spice Protein Oats",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "seasonal"
+    ],
+    "difficulty": "easy",
+    "totalTime": 17,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0071",
+    "name": "Chocolate Coconut Oatmeal",
+    "category": "breakfast",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "indulgent"
+    ],
+    "difficulty": "easy",
+    "totalTime": 17,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "breakfast-0072",
+    "name": "Savory Cheese and Herb Waffles",
+    "category": "breakfast",
+    "tags": [
+      "savory",
+      "high-protein",
+      "vegetarian"
+    ],
+    "difficulty": "medium",
+    "totalTime": 25,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "breakfast-0073",
+    "name": "Sweet Ricotta Toast",
+    "category": "breakfast",
+    "tags": [
+      "sweet",
+      "quick",
+      "high-protein",
+      "vegetarian"
+    ],
+    "difficulty": "easy",
+    "totalTime": 7,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "breakfast-0074",
+    "name": "Bacon Spinach Protein Muffins",
+    "category": "breakfast",
+    "tags": [
+      "savory",
+      "meal-prep",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 9
+  },
+  {
+    "id": "breakfast-0075",
+    "name": "Stuffed French Toast Roll-Ups",
+    "category": "breakfast",
+    "tags": [
+      "sweet",
+      "high-protein",
+      "brunch"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0001",
+    "name": "Classic Chicken Caesar Salad",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "salad",
+      "classic"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0002",
+    "name": "Turkey Avocado Wrap",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "high-protein",
+      "no-cook",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 17
+  },
+  {
+    "id": "lunch-0003",
+    "name": "Chicken Burrito Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "mexican",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "lunch-0004",
+    "name": "Asian Salmon Salad",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "omega-3",
+      "asian"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0005",
+    "name": "Mediterranean Quinoa Bowl",
+    "category": "lunch",
+    "tags": [
+      "vegetarian",
+      "meal-prep",
+      "mediterranean",
+      "high-fiber"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 11
+  },
+  {
+    "id": "lunch-0006",
+    "name": "Tuna Stuffed Avocado",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "low-carb",
+      "high-protein",
+      "no-cook",
+      "weight-loss"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0007",
+    "name": "Grilled Chicken Teriyaki Rice Bowl",
+    "category": "lunch",
+    "tags": [
+      "meal-prep",
+      "high-protein",
+      "asian",
+      "muscle-building"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0008",
+    "name": "Greek Chicken Pita",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "mediterranean",
+      "quick"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "lunch-0009",
+    "name": "Shrimp Fried Rice",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "high-protein",
+      "asian",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 25,
+    "proteinPerServing": 19
+  },
+  {
+    "id": "lunch-0010",
+    "name": "Southwest Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "mexican",
+      "salad"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 25
+  },
+  {
+    "id": "lunch-0011",
+    "name": "Turkey and Hummus Sandwich",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "no-cook",
+      "high-protein",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "lunch-0012",
+    "name": "Thai Peanut Chicken Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "asian",
+      "meal-prep",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 25
+  },
+  {
+    "id": "lunch-0013",
+    "name": "Caprese Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "low-carb",
+      "high-protein",
+      "quick",
+      "italian"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "lunch-0014",
+    "name": "Beef and Broccoli Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "asian",
+      "meal-prep",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0015",
+    "name": "Spicy Tuna Poke Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "omega-3",
+      "asian",
+      "fresh"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "lunch-0016",
+    "name": "Grilled Chicken Cobb Salad",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "salad",
+      "keto-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "lunch-0017",
+    "name": "Veggie Tofu Stir-Fry",
+    "category": "lunch",
+    "tags": [
+      "vegetarian",
+      "high-fiber",
+      "asian",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 14
+  },
+  {
+    "id": "lunch-0018",
+    "name": "BBQ Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "american",
+      "quick",
+      "salad"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 25
+  },
+  {
+    "id": "lunch-0019",
+    "name": "Lemon Herb Salmon with Vegetables",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "omega-3",
+      "sheet-pan"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "lunch-0020",
+    "name": "Korean Beef Lettuce Wraps",
+    "category": "lunch",
+    "tags": [
+      "low-carb",
+      "high-protein",
+      "korean",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "lunch-0021",
+    "name": "Chicken Shawarma Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "mediterranean",
+      "meal-prep",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "lunch-0022",
+    "name": "Quick Egg Salad Sandwich",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "high-protein",
+      "budget-friendly",
+      "classic"
+    ],
+    "difficulty": "easy",
+    "totalTime": 27,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "lunch-0023",
+    "name": "Grilled Chicken and Avocado Salad",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "low-carb",
+      "high-protein",
+      "weight-loss"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0024",
+    "name": "Black Bean and Chicken Quesadilla",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "high-protein",
+      "mexican",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0025",
+    "name": "Chicken and Vegetable Soup",
+    "category": "lunch",
+    "tags": [
+      "meal-prep",
+      "comfort-food",
+      "high-protein",
+      "low-carb"
+    ],
+    "difficulty": "easy",
+    "totalTime": 45,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "lunch-0026",
+    "name": "Spicy Turkey Taco Salad",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "high-protein",
+      "mexican",
+      "weight-loss"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "lunch-0027",
+    "name": "Honey Garlic Shrimp with Rice",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "high-protein",
+      "asian",
+      "seafood"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 19
+  },
+  {
+    "id": "lunch-0028",
+    "name": "Italian Turkey Meatball Sub",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "italian",
+      "comfort-food",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 27
+  },
+  {
+    "id": "lunch-0029",
+    "name": "Asian Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "quick",
+      "high-protein",
+      "asian",
+      "salad"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "lunch-0030",
+    "name": "Power Protein Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "muscle-building",
+      "meal-prep",
+      "post-workout"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "lunch-0031",
+    "name": "Beef Burrito Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "mexican",
+      "meal-prep",
+      "muscle-building",
+      "bowl"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 29
+  },
+  {
+    "id": "lunch-0032",
+    "name": "Salmon Protein Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "omega-3",
+      "asian",
+      "meal-prep",
+      "bowl",
+      "muscle-building"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "lunch-0033",
+    "name": "Greek Chicken Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "mediterranean",
+      "greek",
+      "meal-prep",
+      "bowl",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 29
+  },
+  {
+    "id": "lunch-0034",
+    "name": "Tuna Poke Bowl",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "omega-3",
+      "asian",
+      "hawaiian",
+      "bowl",
+      "fresh",
+      "no-cook-protein"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "lunch-0035",
+    "name": "Chicken Lettuce Wraps",
+    "category": "lunch",
+    "tags": [
+      "asian",
+      "chinese",
+      "high-protein",
+      "low-carb",
+      "quick",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 27,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "lunch-0036",
+    "name": "Vietnamese Fresh Spring Rolls",
+    "category": "lunch",
+    "tags": [
+      "asian",
+      "vietnamese",
+      "fresh",
+      "light",
+      "healthy",
+      "no-cook"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 11
+  },
+  {
+    "id": "lunch-0037",
+    "name": "Restaurant-Style Shrimp Fried Rice",
+    "category": "lunch",
+    "tags": [
+      "asian",
+      "chinese",
+      "high-protein",
+      "wok",
+      "quick",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 27,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "lunch-0038",
+    "name": "Mediterranean Falafel Bowl",
+    "category": "lunch",
+    "tags": [
+      "mediterranean",
+      "vegetarian",
+      "high-fiber",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "lunch-0039",
+    "name": "Grilled Steak Cobb Salad",
+    "category": "lunch",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "salad"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0040",
+    "name": "Korean Beef Bibimbap",
+    "category": "lunch",
+    "tags": [
+      "korean",
+      "asian",
+      "high-protein",
+      "rice-bowl",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0041",
+    "name": "Caprese Chicken Sandwich",
+    "category": "lunch",
+    "tags": [
+      "italian",
+      "sandwich",
+      "high-protein",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "lunch-0042",
+    "name": "Thai Basil Chicken (Pad Krapow)",
+    "category": "lunch",
+    "tags": [
+      "thai",
+      "asian",
+      "high-protein",
+      "spicy",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 22,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0043",
+    "name": "Greek Chicken Gyro Bowl",
+    "category": "lunch",
+    "tags": [
+      "greek",
+      "mediterranean",
+      "high-protein",
+      "bowl",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "lunch-0044",
+    "name": "Southwest Black Bean Soup",
+    "category": "lunch",
+    "tags": [
+      "soup",
+      "high-fiber",
+      "high-protein",
+      "meal-prep",
+      "mexican"
+    ],
+    "difficulty": "easy",
+    "totalTime": 45,
+    "proteinPerServing": 36
+  },
+  {
+    "id": "lunch-0045",
+    "name": "Tuna Nicoise Salad",
+    "category": "lunch",
+    "tags": [
+      "french",
+      "high-protein",
+      "omega-3",
+      "salad",
+      "elegant"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0046",
+    "name": "Turkey Meatball Sub",
+    "category": "lunch",
+    "tags": [
+      "italian",
+      "high-protein",
+      "sandwich",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "lunch-0047",
+    "name": "Japanese Chicken Katsu Curry",
+    "category": "lunch",
+    "tags": [
+      "japanese",
+      "asian",
+      "comfort-food",
+      "high-protein"
+    ],
+    "difficulty": "medium",
+    "totalTime": 50,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0048",
+    "name": "Chipotle Shrimp Tacos",
+    "category": "lunch",
+    "tags": [
+      "mexican",
+      "seafood",
+      "high-protein",
+      "quick",
+      "tacos"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "lunch-0049",
+    "name": "Quinoa Power Bowl",
+    "category": "lunch",
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "high-fiber",
+      "meal-prep",
+      "bowl"
+    ],
+    "difficulty": "easy",
+    "totalTime": 50,
+    "proteinPerServing": 10
+  },
+  {
+    "id": "lunch-0050",
+    "name": "Italian Wedding Soup",
+    "category": "lunch",
+    "tags": [
+      "italian",
+      "soup",
+      "high-protein",
+      "comfort-food",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 50,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "lunch-0051",
+    "name": "Spicy Tuna Crunch Roll Bowl",
+    "category": "lunch",
+    "tags": [
+      "japanese",
+      "asian",
+      "high-protein",
+      "sushi",
+      "bowl"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "lunch-0052",
+    "name": "Pulled Chicken BBQ Bowl",
+    "category": "lunch",
+    "tags": [
+      "american",
+      "bbq",
+      "high-protein",
+      "bowl",
+      "comfort-food"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0053",
+    "name": "Egg Drop Soup with Chicken",
+    "category": "lunch",
+    "tags": [
+      "chinese",
+      "asian",
+      "soup",
+      "high-protein",
+      "quick",
+      "low-calorie"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "lunch-0054",
+    "name": "Mediterranean Stuffed Bell Peppers",
+    "category": "lunch",
+    "tags": [
+      "mediterranean",
+      "high-protein",
+      "meal-prep",
+      "low-carb"
+    ],
+    "difficulty": "medium",
+    "totalTime": 60,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "lunch-0055",
+    "name": "Vietnamese Banh Mi Bowl",
+    "category": "lunch",
+    "tags": [
+      "vietnamese",
+      "asian",
+      "high-protein",
+      "bowl",
+      "fresh"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 19
+  },
+  {
+    "id": "lunch-0056",
+    "name": "Turkey and White Bean Chili",
+    "category": "lunch",
+    "tags": [
+      "soup",
+      "chili",
+      "high-protein",
+      "high-fiber",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 50,
+    "proteinPerServing": 36
+  },
+  {
+    "id": "lunch-0057",
+    "name": "Sesame Ginger Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "asian",
+      "salad",
+      "high-protein",
+      "crunchy",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0058",
+    "name": "Lemon Herb Grilled Chicken Wrap",
+    "category": "lunch",
+    "tags": [
+      "wrap",
+      "high-protein",
+      "mediterranean",
+      "quick",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0059",
+    "name": "Cauliflower Fried Rice with Shrimp",
+    "category": "lunch",
+    "tags": [
+      "low-carb",
+      "keto-friendly",
+      "high-protein",
+      "asian",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 19
+  },
+  {
+    "id": "lunch-0060",
+    "name": "Cuban Mojo Pork Bowl",
+    "category": "lunch",
+    "tags": [
+      "cuban",
+      "latin",
+      "high-protein",
+      "bowl",
+      "high-fiber"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "lunch-0061",
+    "name": "Spinach Artichoke Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "salad",
+      "high-protein",
+      "low-carb",
+      "italian"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "lunch-0062",
+    "name": "Buffalo Chicken Lettuce Wraps",
+    "category": "lunch",
+    "tags": [
+      "low-carb",
+      "keto-friendly",
+      "high-protein",
+      "spicy",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "lunch-0063",
+    "name": "Middle Eastern Shawarma Bowl",
+    "category": "lunch",
+    "tags": [
+      "middle-eastern",
+      "high-protein",
+      "bowl",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "lunch-0064",
+    "name": "Protein-Packed Minestrone",
+    "category": "lunch",
+    "tags": [
+      "italian",
+      "soup",
+      "high-protein",
+      "high-fiber",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 45,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "lunch-0065",
+    "name": "Thai Larb Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "thai",
+      "asian",
+      "high-protein",
+      "low-carb",
+      "spicy",
+      "fresh"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "lunch-0066",
+    "name": "Grilled Vegetable and Hummus Wrap",
+    "category": "lunch",
+    "tags": [
+      "vegetarian",
+      "mediterranean",
+      "high-fiber",
+      "wrap"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 7
+  },
+  {
+    "id": "lunch-0067",
+    "name": "Blackened Fish Taco Bowl",
+    "category": "lunch",
+    "tags": [
+      "seafood",
+      "mexican",
+      "high-protein",
+      "bowl",
+      "spicy"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0068",
+    "name": "Greek Lemon Chicken Soup (Avgolemono)",
+    "category": "lunch",
+    "tags": [
+      "greek",
+      "soup",
+      "high-protein",
+      "comfort-food"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "lunch-0069",
+    "name": "BBQ Chicken Salad",
+    "category": "lunch",
+    "tags": [
+      "american",
+      "bbq",
+      "salad",
+      "high-protein",
+      "southwest"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "lunch-0070",
+    "name": "Asian Beef Zoodle Bowl",
+    "category": "lunch",
+    "tags": [
+      "low-carb",
+      "keto-friendly",
+      "asian",
+      "high-protein",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 27,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "lunch-0071",
+    "name": "Moroccan Chickpea Stew",
+    "category": "lunch",
+    "tags": [
+      "moroccan",
+      "vegetarian",
+      "vegan",
+      "high-fiber",
+      "meal-prep",
+      "stew"
+    ],
+    "difficulty": "easy",
+    "totalTime": 50,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "lunch-0072",
+    "name": "Italian Antipasto Salad",
+    "category": "lunch",
+    "tags": [
+      "italian",
+      "salad",
+      "no-cook",
+      "low-carb",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "lunch-0073",
+    "name": "Honey Garlic Salmon Rice Bowl",
+    "category": "lunch",
+    "tags": [
+      "asian",
+      "seafood",
+      "high-protein",
+      "omega-3",
+      "bowl"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0074",
+    "name": "Loaded Sweet Potato with Chicken",
+    "category": "lunch",
+    "tags": [
+      "mexican",
+      "high-protein",
+      "high-fiber",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 60,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "lunch-0075",
+    "name": "Edamame Crunch Salad",
+    "category": "lunch",
+    "tags": [
+      "asian",
+      "vegetarian",
+      "high-fiber",
+      "salad",
+      "no-cook",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 9
+  },
+  {
+    "id": "dinner-0001",
+    "name": "Grilled Chicken Breast with Roasted Vegetables",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "muscle-building",
+      "meal-prep",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 45,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "dinner-0002",
+    "name": "Salmon with Quinoa and Asparagus",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "omega-3",
+      "muscle-building",
+      "meal-prep",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 45
+  },
+  {
+    "id": "dinner-0003",
+    "name": "Beef Stir Fry with Vegetables",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "low-carb",
+      "asian",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 27,
+    "proteinPerServing": 40
+  },
+  {
+    "id": "dinner-0004",
+    "name": "Turkey Meatballs with Marinara and Zucchini Noodles",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "italian",
+      "meal-prep",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "dinner-0005",
+    "name": "Sheet Pan Chicken Fajitas",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "mexican",
+      "family-friendly",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "dinner-0006",
+    "name": "Garlic Butter Shrimp with White Rice",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "family-friendly",
+      "seafood"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 35
+  },
+  {
+    "id": "dinner-0007",
+    "name": "Slow Cooker Beef Pot Roast",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "slow-cooker",
+      "meal-prep",
+      "family-friendly",
+      "comfort-food"
+    ],
+    "difficulty": "easy",
+    "totalTime": 500,
+    "proteinPerServing": 45
+  },
+  {
+    "id": "dinner-0008",
+    "name": "Baked Cod with Lemon and Herbs",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "quick",
+      "mediterranean",
+      "weight-loss",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 35
+  },
+  {
+    "id": "dinner-0009",
+    "name": "Chicken Teriyaki Rice Bowl",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "asian",
+      "family-friendly",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 40
+  },
+  {
+    "id": "dinner-0010",
+    "name": "Mediterranean Chicken with Olives and Tomatoes",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "mediterranean",
+      "gluten-free",
+      "one-pan"
+    ],
+    "difficulty": "medium",
+    "totalTime": 45,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "dinner-0011",
+    "name": "Pork Tenderloin with Apple Cider Glaze",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "muscle-building",
+      "family-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "dinner-0012",
+    "name": "Black Bean and Chicken Burrito Bowl",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "mexican",
+      "meal-prep",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 45
+  },
+  {
+    "id": "dinner-0013",
+    "name": "Grilled Steak with Chimichurri",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto",
+      "muscle-building",
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "totalTime": 27,
+    "proteinPerServing": 50
+  },
+  {
+    "id": "dinner-0014",
+    "name": "Honey Garlic Glazed Salmon",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "asian",
+      "omega-3",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 17,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "dinner-0015",
+    "name": "Tofu Stir Fry with Vegetables",
+    "category": "dinner",
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "asian",
+      "high-fiber",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "dinner-0016",
+    "name": "Lemon Herb Roasted Chicken Thighs",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto",
+      "gluten-free",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 50,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "dinner-0017",
+    "name": "Spaghetti with Turkey Bolognese",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "italian",
+      "family-friendly",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 45,
+    "proteinPerServing": 35
+  },
+  {
+    "id": "dinner-0018",
+    "name": "Cajun Shrimp and Sausage Skillet",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "quick",
+      "one-pan",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "dinner-0019",
+    "name": "Korean Beef Bulgogi Bowl",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "asian",
+      "korean",
+      "meal-prep",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "dinner-0020",
+    "name": "Balsamic Glazed Chicken with Roasted Sweet Potatoes",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "family-friendly",
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "totalTime": 50,
+    "proteinPerServing": 40
+  },
+  {
+    "id": "dinner-0021",
+    "name": "Thai Basil Chicken (Pad Krapow Gai)",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "asian",
+      "thai",
+      "spicy"
+    ],
+    "difficulty": "easy",
+    "totalTime": 20,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "dinner-0022",
+    "name": "Herb Crusted Pork Chops",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "muscle-building",
+      "family-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 40
+  },
+  {
+    "id": "dinner-0023",
+    "name": "Stuffed Bell Peppers",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "family-friendly",
+      "comfort-food"
+    ],
+    "difficulty": "medium",
+    "totalTime": 65,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "dinner-0024",
+    "name": "Miso Glazed Black Cod",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "asian",
+      "japanese",
+      "omega-3",
+      "special-occasion"
+    ],
+    "difficulty": "hard",
+    "totalTime": 25,
+    "proteinPerServing": 35
+  },
+  {
+    "id": "dinner-0025",
+    "name": "Greek Chicken Souvlaki Plate",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "mediterranean",
+      "greek",
+      "meal-prep",
+      "grilled"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 45
+  },
+  {
+    "id": "dinner-0026",
+    "name": "One-Pan Italian Sausage with Peppers and Onions",
+    "category": "dinner",
+    "tags": [
+      "one-pan",
+      "italian",
+      "family-friendly",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "dinner-0027",
+    "name": "Chicken Tikka Masala",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "indian",
+      "comfort-food",
+      "family-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 55,
+    "proteinPerServing": 42
+  },
+  {
+    "id": "dinner-0028",
+    "name": "Blackened Tilapia Tacos",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "mexican",
+      "seafood",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "dinner-0029",
+    "name": "Slow Cooker Chicken Cacciatore",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "slow-cooker",
+      "italian",
+      "meal-prep",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 375,
+    "proteinPerServing": 38
+  },
+  {
+    "id": "dinner-0030",
+    "name": "Asian Glazed Pork Belly Bites",
+    "category": "dinner",
+    "tags": [
+      "asian",
+      "comfort-food",
+      "special-occasion",
+      "chinese"
+    ],
+    "difficulty": "medium",
+    "totalTime": 105,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "dinner-0031",
+    "name": "Homemade California Roll",
+    "category": "dinner",
+    "tags": [
+      "sushi",
+      "asian",
+      "japanese",
+      "seafood",
+      "date-night"
+    ],
+    "difficulty": "medium",
+    "totalTime": 65,
+    "proteinPerServing": 9
+  },
+  {
+    "id": "dinner-0032",
+    "name": "Spicy Tuna Roll",
+    "category": "dinner",
+    "tags": [
+      "sushi",
+      "asian",
+      "japanese",
+      "seafood",
+      "spicy",
+      "high-protein"
+    ],
+    "difficulty": "medium",
+    "totalTime": 50,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "dinner-0033",
+    "name": "Beef and Broccoli Stir Fry",
+    "category": "dinner",
+    "tags": [
+      "asian",
+      "chinese",
+      "high-protein",
+      "stir-fry",
+      "quick"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "dinner-0034",
+    "name": "Thai Basil Chicken Stir Fry",
+    "category": "dinner",
+    "tags": [
+      "asian",
+      "thai",
+      "high-protein",
+      "spicy",
+      "quick",
+      "street-food"
+    ],
+    "difficulty": "easy",
+    "totalTime": 27,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "dinner-0035",
+    "name": "Salmon Teriyaki",
+    "category": "dinner",
+    "tags": [
+      "asian",
+      "japanese",
+      "high-protein",
+      "omega-3",
+      "quick",
+      "seafood"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "dinner-0036",
+    "name": "Chicken Teriyaki Bowl",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "asian",
+      "japanese",
+      "meal-prep",
+      "bowl",
+      "muscle-building"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0037",
+    "name": "Tofu Buddha Bowl",
+    "category": "dinner",
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "high-fiber",
+      "meal-prep",
+      "bowl",
+      "plant-based"
+    ],
+    "difficulty": "medium",
+    "totalTime": 55,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "dinner-0038",
+    "name": "Korean Beef Bowl",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "asian",
+      "korean",
+      "meal-prep",
+      "bowl",
+      "muscle-building"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 29
+  },
+  {
+    "id": "dinner-0039",
+    "name": "Loaded Chicken Burrito Bowl",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "mexican",
+      "meal-prep",
+      "bowl",
+      "muscle-building"
+    ],
+    "difficulty": "easy",
+    "totalTime": 45,
+    "proteinPerServing": 31
+  },
+  {
+    "id": "dinner-0040",
+    "name": "Honey Garlic Chicken Thighs",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "family-friendly",
+      "asian-inspired"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0041",
+    "name": "Pan-Seared Ribeye Steak with Herb Butter",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto",
+      "date-night",
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "dinner-0042",
+    "name": "Miso Glazed Salmon",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "omega-3",
+      "japanese",
+      "quick",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "dinner-0043",
+    "name": "Carnitas Tacos",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "slow-cooker",
+      "mexican",
+      "meal-prep",
+      "family-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 260,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "dinner-0044",
+    "name": "Sheet Pan Lemon Herb Chicken and Vegetables",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "one-pan",
+      "meal-prep",
+      "gluten-free",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 55,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "dinner-0045",
+    "name": "Thai Basil Beef Stir Fry",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "thai",
+      "spicy",
+      "asian"
+    ],
+    "difficulty": "medium",
+    "totalTime": 27,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0046",
+    "name": "Garlic Parmesan Baked Tilapia",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "quick",
+      "seafood",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "dinner-0047",
+    "name": "Stuffed Bell Peppers with Ground Turkey",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "meal-prep",
+      "family-friendly",
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "totalTime": 60,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0048",
+    "name": "Spicy Shrimp and Broccoli",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "quick",
+      "spicy",
+      "seafood",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 20,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "dinner-0049",
+    "name": "Italian Sausage and Peppers",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "italian",
+      "comfort-food",
+      "one-pan",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 19
+  },
+  {
+    "id": "dinner-0050",
+    "name": "Chicken Tikka Masala",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "indian",
+      "comfort-food",
+      "family-friendly",
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "totalTime": 60,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "dinner-0051",
+    "name": "Balsamic Glazed Pork Chops",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "quick",
+      "date-night",
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "dinner-0052",
+    "name": "Seared Ahi Tuna with Sesame Crust",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "quick",
+      "japanese",
+      "seafood",
+      "keto"
+    ],
+    "difficulty": "medium",
+    "totalTime": 15,
+    "proteinPerServing": 27
+  },
+  {
+    "id": "dinner-0053",
+    "name": "Greek Chicken Souvlaki Bowls",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "mediterranean",
+      "greek",
+      "meal-prep",
+      "bowl"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "dinner-0054",
+    "name": "Cajun Blackened Chicken",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "spicy",
+      "cajun",
+      "quick",
+      "keto"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0055",
+    "name": "Mongolian Beef",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "asian",
+      "chinese",
+      "quick",
+      "comfort-food"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0056",
+    "name": "Herb-Crusted Rack of Lamb",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "date-night",
+      "special-occasion",
+      "gluten-free"
+    ],
+    "difficulty": "hard",
+    "totalTime": 45,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "dinner-0057",
+    "name": "Shrimp Scampi with Linguine",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "italian",
+      "seafood",
+      "date-night",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "dinner-0058",
+    "name": "Chicken Shawarma Wraps",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "middle-eastern",
+      "meal-prep",
+      "family-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 50,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0059",
+    "name": "Beef and Mushroom Stroganoff",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "comfort-food",
+      "russian",
+      "family-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 27
+  },
+  {
+    "id": "dinner-0060",
+    "name": "Coconut Curry Shrimp",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "thai",
+      "seafood",
+      "quick",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "dinner-0061",
+    "name": "BBQ Pulled Pork",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "slow-cooker",
+      "meal-prep",
+      "bbq",
+      "family-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 495,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "dinner-0062",
+    "name": "Lemon Butter Scallops",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "seafood",
+      "date-night",
+      "quick",
+      "keto"
+    ],
+    "difficulty": "medium",
+    "totalTime": 20,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "dinner-0063",
+    "name": "Turkey Taco Lettuce Wraps",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto",
+      "mexican",
+      "quick",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0064",
+    "name": "Tuscan White Bean and Sausage Skillet",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "italian",
+      "one-pan",
+      "comfort-food"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "dinner-0065",
+    "name": "Ginger Soy Glazed Salmon with Bok Choy",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "omega-3",
+      "asian",
+      "quick",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 25
+  },
+  {
+    "id": "dinner-0066",
+    "name": "Chicken Marsala",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "italian",
+      "date-night",
+      "comfort-food"
+    ],
+    "difficulty": "medium",
+    "totalTime": 40,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0067",
+    "name": "Jamaican Jerk Chicken",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "caribbean",
+      "spicy",
+      "grilled",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 65,
+    "proteinPerServing": 23
+  },
+  {
+    "id": "dinner-0068",
+    "name": "One-Pan Garlic Butter Steak and Asparagus",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "one-pan",
+      "keto",
+      "quick",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 27
+  },
+  {
+    "id": "dinner-0069",
+    "name": "Mediterranean Baked Fish with Tomatoes and Olives",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "mediterranean",
+      "seafood",
+      "gluten-free",
+      "one-pan"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "dinner-0070",
+    "name": "Beef and Broccoli",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "chinese",
+      "quick",
+      "meal-prep",
+      "family-friendly"
+    ],
+    "difficulty": "medium",
+    "totalTime": 30,
+    "proteinPerServing": 27
+  },
+  {
+    "id": "dinner-0071",
+    "name": "Spinach and Feta Stuffed Chicken Breast",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto",
+      "date-night",
+      "gluten-free"
+    ],
+    "difficulty": "medium",
+    "totalTime": 50,
+    "proteinPerServing": 29
+  },
+  {
+    "id": "dinner-0072",
+    "name": "Thai Peanut Chicken",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "thai",
+      "meal-prep",
+      "bowl"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 29
+  },
+  {
+    "id": "dinner-0073",
+    "name": "Moroccan Lamb Tagine",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "moroccan",
+      "slow-cooked",
+      "comfort-food",
+      "special-occasion"
+    ],
+    "difficulty": "medium",
+    "totalTime": 145,
+    "proteinPerServing": 22
+  },
+  {
+    "id": "dinner-0074",
+    "name": "Chimichurri Skirt Steak",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "argentinian",
+      "keto",
+      "quick",
+      "gluten-free"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "dinner-0075",
+    "name": "Turkey and Vegetable Meatloaf",
+    "category": "dinner",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "family-friendly",
+      "comfort-food"
+    ],
+    "difficulty": "easy",
+    "totalTime": 75,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "snack-0001",
+    "name": "No-Bake Protein Energy Balls",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 6
+  },
+  {
+    "id": "snack-0002",
+    "name": "Greek Yogurt Protein Parfait",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "post-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "snack-0003",
+    "name": "Savory Cottage Cheese Bowl",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "savory",
+      "low-carb"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "snack-0004",
+    "name": "Hard Boiled Eggs with Hummus",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "savory",
+      "keto-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 14,
+    "proteinPerServing": 21
+  },
+  {
+    "id": "snack-0005",
+    "name": "High-Protein Trail Mix",
+    "category": "snack",
+    "tags": [
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "on-the-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 6
+  },
+  {
+    "id": "snack-0006",
+    "name": "Post-Workout Protein Shake",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "post-workout",
+      "quick",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 50
+  },
+  {
+    "id": "snack-0007",
+    "name": "Veggie Sticks with Hummus",
+    "category": "snack",
+    "tags": [
+      "no-cook",
+      "high-fiber",
+      "low-calorie",
+      "portable",
+      "vegan"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 5
+  },
+  {
+    "id": "snack-0008",
+    "name": "Turkey and Cheese Roll-Ups",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "snack-0009",
+    "name": "Apple Slices with PB Fit",
+    "category": "snack",
+    "tags": [
+      "no-cook",
+      "quick",
+      "sweet",
+      "portable",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 8
+  },
+  {
+    "id": "snack-0010",
+    "name": "Beef Jerky and String Cheese",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "portable",
+      "on-the-go",
+      "savory",
+      "keto-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 0,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "snack-0011",
+    "name": "Steamed Edamame with Sea Salt",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "quick",
+      "vegan",
+      "plant-based"
+    ],
+    "difficulty": "easy",
+    "totalTime": 7,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "snack-0012",
+    "name": "Tuna Cucumber Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "snack-0013",
+    "name": "Pepperoni Sticks with Pickled Eggs",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "savory",
+      "keto-friendly",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 0,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "snack-0014",
+    "name": "BUILT Bar Protein Snack Box",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "portable",
+      "meal-prep",
+      "on-the-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 2,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "snack-0015",
+    "name": "Chocolate Protein Mug Cake",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "quick",
+      "sweet",
+      "low-carb"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "snack-0016",
+    "name": "Sweet Cottage Cheese Bowl",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 3,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "snack-0017",
+    "name": "Protein Rice Cake Stack",
+    "category": "snack",
+    "tags": [
+      "quick",
+      "no-cook",
+      "pre-workout",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "snack-0018",
+    "name": "High-Protein Deviled Eggs",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "keto-friendly",
+      "savory"
+    ],
+    "difficulty": "easy",
+    "totalTime": 27,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "snack-0019",
+    "name": "Frozen Greek Yogurt Bark",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "sweet",
+      "no-cook"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 8
+  },
+  {
+    "id": "snack-0020",
+    "name": "Overnight Protein Oats Cup",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "no-cook",
+      "portable",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "snack-0021",
+    "name": "Protein-Packed Egg Muffins",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "savory",
+      "keto-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 8
+  },
+  {
+    "id": "snack-0022",
+    "name": "Protein Ants on a Log",
+    "category": "snack",
+    "tags": [
+      "no-cook",
+      "quick",
+      "sweet",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 10
+  },
+  {
+    "id": "snack-0023",
+    "name": "Crispy Roasted Chickpeas",
+    "category": "snack",
+    "tags": [
+      "high-fiber",
+      "vegan",
+      "meal-prep",
+      "savory",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 5
+  },
+  {
+    "id": "snack-0024",
+    "name": "Pre-Workout Smoothie Bowl",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "pre-workout",
+      "no-cook",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 35
+  },
+  {
+    "id": "snack-0025",
+    "name": "Caprese Protein Skewers",
+    "category": "snack",
+    "tags": [
+      "no-cook",
+      "quick",
+      "savory",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 10
+  },
+  {
+    "id": "snack-0026",
+    "name": "Protein Energy Balls",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "pre-workout",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 20
+  },
+  {
+    "id": "snack-0027",
+    "name": "Greek Yogurt Parfait",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 24
+  },
+  {
+    "id": "snack-0028",
+    "name": "Turkey & Cheese Roll-Ups",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly",
+      "portable",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "snack-0029",
+    "name": "Deviled Eggs",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "meal-prep",
+      "savory",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 22,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "snack-0030",
+    "name": "Cottage Cheese with Fruit",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 3,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "snack-0031",
+    "name": "Beef Jerky Trail Mix",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "portable",
+      "on-the-go",
+      "meal-prep",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "snack-0032",
+    "name": "Tuna Cucumber Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "snack-0033",
+    "name": "Protein Mug Cake",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "quick",
+      "sweet",
+      "low-carb",
+      "grab-and-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 32
+  },
+  {
+    "id": "snack-0034",
+    "name": "Pumpkin Seed Butter Rice Cakes",
+    "category": "snack",
+    "tags": [
+      "nut-free",
+      "no-cook",
+      "quick",
+      "pre-workout",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 3,
+    "proteinPerServing": 10
+  },
+  {
+    "id": "snack-0035",
+    "name": "Spicy Pickled Eggs",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "savory",
+      "keto-friendly",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 2,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "snack-0036",
+    "name": "Savory Cottage Cheese Dip",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "meal-prep",
+      "savory"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 18
+  },
+  {
+    "id": "snack-0037",
+    "name": "Sunflower Seed Protein Balls",
+    "category": "snack",
+    "tags": [
+      "nut-free",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 6
+  },
+  {
+    "id": "snack-0038",
+    "name": "Pepperoni Pizza Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "savory",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 13,
+    "proteinPerServing": 10
+  },
+  {
+    "id": "snack-0039",
+    "name": "Greek Yogurt Ranch Dip",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "savory",
+      "low-fat"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 7
+  },
+  {
+    "id": "snack-0040",
+    "name": "Beef Jerky Cheese Plate",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "savory",
+      "portable",
+      "on-the-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "snack-0041",
+    "name": "Chocolate PB Fit Smoothie",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "post-workout",
+      "no-cook",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 35
+  },
+  {
+    "id": "snack-0042",
+    "name": "Yellow Kiwi Cottage Cheese Bowl",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "snack-0043",
+    "name": "Turkey Pepperoni Roll-Ups",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "keto-friendly",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "snack-0044",
+    "name": "Chocolate Protein Chia Pudding",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "meal-prep",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 15
+  },
+  {
+    "id": "snack-0045",
+    "name": "Edamame Hummus Plate",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "vegan",
+      "no-cook",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 7
+  },
+  {
+    "id": "snack-0046",
+    "name": "BUILT Bar Protein Shake",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "post-workout",
+      "sweet",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 45
+  },
+  {
+    "id": "snack-0047",
+    "name": "Smoked Salmon Cucumber Rounds",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 9
+  },
+  {
+    "id": "snack-0048",
+    "name": "Cinnamon Roasted Almonds",
+    "category": "snack",
+    "tags": [
+      "meal-prep",
+      "portable",
+      "sweet",
+      "on-the-go"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 4
+  },
+  {
+    "id": "snack-0049",
+    "name": "Protein Cookie Dough Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "meal-prep",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 7
+  },
+  {
+    "id": "snack-0050",
+    "name": "Jalapeño Popper Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "savory",
+      "meal-prep"
+    ],
+    "difficulty": "medium",
+    "totalTime": 35,
+    "proteinPerServing": 6
+  },
+  {
+    "id": "snack-0051",
+    "name": "Pumpkin Spice Protein Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 5
+  },
+  {
+    "id": "snack-0052",
+    "name": "Stuffed Mini Bell Peppers",
+    "category": "snack",
+    "tags": [
+      "no-cook",
+      "quick",
+      "savory",
+      "portable",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 3
+  },
+  {
+    "id": "snack-0053",
+    "name": "Homemade Protein Granola Clusters",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "pre-workout",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 5
+  },
+  {
+    "id": "snack-0054",
+    "name": "Prosciutto Wrapped Mozzarella",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "keto-friendly",
+      "savory"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 16
+  },
+  {
+    "id": "snack-0055",
+    "name": "Spiced Roasted Pumpkin Seeds",
+    "category": "snack",
+    "tags": [
+      "nut-free",
+      "savory",
+      "meal-prep",
+      "portable",
+      "vegan"
+    ],
+    "difficulty": "easy",
+    "totalTime": 25,
+    "proteinPerServing": 4
+  },
+  {
+    "id": "snack-0056",
+    "name": "Greek Yogurt Tzatziki",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "savory"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 6
+  },
+  {
+    "id": "snack-0057",
+    "name": "Egg Salad Lettuce Wraps",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 27,
+    "proteinPerServing": 14
+  },
+  {
+    "id": "snack-0058",
+    "name": "Chocolate Avocado Protein Mousse",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 14
+  },
+  {
+    "id": "snack-0059",
+    "name": "Mini Turkey Meatball Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "savory",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 33,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "snack-0060",
+    "name": "Frozen Protein Yogurt Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 7
+  },
+  {
+    "id": "snack-0061",
+    "name": "Bacon Wrapped Stuffed Dates",
+    "category": "snack",
+    "tags": [
+      "sweet",
+      "savory",
+      "meal-prep",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 5
+  },
+  {
+    "id": "snack-0062",
+    "name": "Nut-Free Seeded Energy Bars",
+    "category": "snack",
+    "tags": [
+      "nut-free",
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 35,
+    "proteinPerServing": 6
+  },
+  {
+    "id": "snack-0063",
+    "name": "Cinnamon Apple Cottage Cheese",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "quick",
+      "sweet"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 30
+  },
+  {
+    "id": "snack-0064",
+    "name": "Buffalo Chicken Celery Sticks",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "savory",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 26
+  },
+  {
+    "id": "snack-0065",
+    "name": "No-Bake Protein Brownie Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "sweet",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 5
+  },
+  {
+    "id": "snack-0066",
+    "name": "Deli Meat Pickle Roll-Ups",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "keto-friendly",
+      "quick"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 12
+  },
+  {
+    "id": "snack-0067",
+    "name": "Protein Oat Muffins",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 30,
+    "proteinPerServing": 8
+  },
+  {
+    "id": "snack-0068",
+    "name": "Spicy Tuna Avocado Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 15
+  },
+  {
+    "id": "snack-0069",
+    "name": "Salted Caramel Protein Balls",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "meal-prep",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 5
+  },
+  {
+    "id": "snack-0070",
+    "name": "Ham and Cheese Pinwheels",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "keto-friendly",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 10,
+    "proteinPerServing": 15
+  },
+  {
+    "id": "snack-0071",
+    "name": "Mediterranean Chickpea Bites",
+    "category": "snack",
+    "tags": [
+      "high-fiber",
+      "savory",
+      "meal-prep",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 4
+  },
+  {
+    "id": "snack-0072",
+    "name": "Chocolate Protein Nice Cream",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "post-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 28
+  },
+  {
+    "id": "snack-0073",
+    "name": "Baked Parmesan Zucchini Chips",
+    "category": "snack",
+    "tags": [
+      "low-carb",
+      "savory",
+      "keto-friendly",
+      "meal-prep"
+    ],
+    "difficulty": "easy",
+    "totalTime": 40,
+    "proteinPerServing": 4
+  },
+  {
+    "id": "snack-0074",
+    "name": "Lemon Protein Bites",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "meal-prep",
+      "portable"
+    ],
+    "difficulty": "easy",
+    "totalTime": 15,
+    "proteinPerServing": 4
+  },
+  {
+    "id": "snack-0075",
+    "name": "Cottage Cheese Protein Fluff",
+    "category": "snack",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet",
+      "post-workout"
+    ],
+    "difficulty": "easy",
+    "totalTime": 5,
+    "proteinPerServing": 40
+  }
+]

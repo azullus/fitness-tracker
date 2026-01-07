@@ -1,218 +1,149 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { resetPassword } from '@/lib/auth';
 import { useAuth } from '@/components/providers';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { Dumbbell, Mail, AlertCircle, CheckCircle, ArrowLeft } from 'lucide-react';
 
 export default function ResetPasswordPage() {
-  const { resetPassword, updatePassword, isAuthEnabled, isAuthenticated } = useAuth();
-
+  const router = useRouter();
+  const { isAuthEnabled, isLoading: authLoading } = useAuth();
   const [email, setEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
-  const [passwordUpdated, setPasswordUpdated] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Check if user arrived via reset link (they'll be authenticated by Supabase)
-  const isResetMode = isAuthenticated;
-
-  if (!isAuthEnabled) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="card max-w-md w-full text-center">
-          <h1 className="text-xl font-bold text-gray-900 mb-2">Auth Not Configured</h1>
-          <p className="text-gray-500">
-            Please set up your Supabase environment variables to enable authentication.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  async function handleRequestReset(e: React.FormEvent) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    setLoading(true);
+    setError(null);
+    setIsLoading(true);
 
     try {
-      await resetPassword(email);
-      setEmailSent(true);
-    } catch (err: any) {
-      setError(err.message || 'Failed to send reset email');
+      const result = await resetPassword(email);
+      if (result.success) {
+        setSuccess(true);
+      } else {
+        setError(result.error || 'Failed to send reset email');
+      }
+    } catch {
+      setError('An unexpected error occurred');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
+  };
+
+  // If auth is not enabled, redirect to home
+  if (!authLoading && !isAuthEnabled) {
+    router.push('/');
+    return null;
   }
 
-  async function handleUpdatePassword(e: React.FormEvent) {
-    e.preventDefault();
-    setError('');
-
-    if (newPassword !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-
-    if (newPassword.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      await updatePassword(newPassword);
-      setPasswordUpdated(true);
-    } catch (err: any) {
-      setError(err.message || 'Failed to update password');
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  // Success state after password update
-  if (passwordUpdated) {
+  if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="card max-w-md w-full text-center">
-          <div className="text-4xl mb-4">&#10003;</div>
-          <h1 className="text-xl font-bold text-gray-900 mb-2">Password Updated</h1>
-          <p className="text-gray-500 mb-4">
-            Your password has been successfully updated.
-          </p>
-          <Link href="/" className="btn-primary inline-block">
-            Go to Dashboard
-          </Link>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+        <LoadingSpinner size="lg" />
       </div>
     );
   }
 
-  // Success state after email sent
-  if (emailSent) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="card max-w-md w-full text-center">
-          <div className="text-4xl mb-4">&#9993;</div>
-          <h1 className="text-xl font-bold text-gray-900 mb-2">Check Your Email</h1>
-          <p className="text-gray-500 mb-4">
-            We&apos;ve sent a password reset link to <strong>{email}</strong>.
-            Click the link in the email to reset your password.
-          </p>
-          <Link href="/auth/login" className="text-blue-600 hover:underline">
-            Back to Login
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  // Update password form (when user clicks reset link)
-  if (isResetMode) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="card max-w-md w-full">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">Set New Password</h1>
-
-          <form onSubmit={handleUpdatePassword} className="space-y-4">
-            <div>
-              <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 mb-1">
-                New Password
-              </label>
-              <input
-                id="newPassword"
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                className="input-field w-full"
-                placeholder="At least 6 characters"
-                required
-                minLength={6}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-                Confirm New Password
-              </label>
-              <input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="input-field w-full"
-                placeholder="Confirm your new password"
-                required
-              />
-            </div>
-
-            {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
-                {error}
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary w-full"
-            >
-              {loading ? 'Updating...' : 'Update Password'}
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
-
-  // Request reset form
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="card max-w-md w-full">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2 text-center">Reset Password</h1>
-        <p className="text-gray-500 text-center mb-6">
-          Enter your email and we&apos;ll send you a link to reset your password.
-        </p>
-
-        <form onSubmit={handleRequestReset} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input-field w-full"
-              placeholder="you@example.com"
-              required
-            />
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
+      <div className="w-full max-w-md">
+        {/* Logo and Title */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white mb-4">
+            <Dumbbell className="w-8 h-8" />
           </div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Reset Password
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">
+            {success ? 'Check your email' : 'Enter your email to reset your password'}
+          </p>
+        </div>
 
-          {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
-              {error}
+        {/* Reset Form */}
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+          {success ? (
+            <div className="text-center py-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mb-4">
+                <CheckCircle className="w-8 h-8" />
+              </div>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                Email Sent!
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                If an account exists with that email, you&apos;ll receive a password reset link shortly.
+              </p>
+              <Link href="/auth/login">
+                <Button variant="secondary" className="w-full">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Sign In
+                </Button>
+              </Link>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg text-sm">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <div className="space-y-1">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Email
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    required
+                    className="pl-10"
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <LoadingSpinner size="sm" />
+                    Sending...
+                  </span>
+                ) : (
+                  'Send Reset Link'
+                )}
+              </Button>
+            </form>
           )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary w-full"
-          >
-            {loading ? 'Sending...' : 'Send Reset Link'}
-          </button>
-        </form>
-
-        <p className="mt-4 text-center text-sm text-gray-500">
-          Remember your password?{' '}
-          <Link href="/auth/login" className="text-blue-600 hover:underline">
-            Log in
-          </Link>
-        </p>
+          {!success && (
+            <div className="mt-6 text-center">
+              <Link
+                href="/auth/login"
+                className="text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 flex items-center justify-center gap-1"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Sign In
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

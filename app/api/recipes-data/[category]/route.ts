@@ -13,9 +13,9 @@ import path from 'path';
  */
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ category: string }> }
+  { params }: { params: { category: string } }
 ) {
-  const { category } = await params;
+  const category = params.category;
 
   // Validate category to prevent path traversal
   const validCategories = ['index', 'breakfast', 'lunch', 'dinner', 'snack'];

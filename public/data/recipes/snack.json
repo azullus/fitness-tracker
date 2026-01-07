@@ -1,154 +1,5390 @@
 [
   {
-    "id": "snack-001",
-    "name": "Protein Energy Balls",
-    "category": "Snack",
-    "prep_time_min": 15,
-    "cook_time_min": 0,
+    "id": "snack-0001",
+    "name": "No-Bake Protein Energy Balls",
+    "description": "Chewy protein-packed bites perfect for pre-workout fuel or afternoon snacking",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
     "servings": 12,
-    "calories": 120,
-    "protein_g": 6,
-    "carbs_g": 14,
-    "fat_g": 6,
-    "fiber_g": 2,
+    "baseServings": 12,
     "ingredients": [
-      { "amount": "1", "unit": "cup", "item": "rolled oats" },
-      { "amount": "1/2", "unit": "cup", "item": "peanut butter" },
-      { "amount": "1/3", "unit": "cup", "item": "honey" },
-      { "amount": "1", "unit": "scoop", "item": "chocolate protein powder" },
-      { "amount": "1/4", "unit": "cup", "item": "mini chocolate chips" },
-      { "amount": "2", "unit": "tbsp", "item": "chia seeds" }
+      {
+        "item": "Rolled Oats",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Honey",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Mini Chocolate Chips",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Chia Seeds",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "as needed for binding"
+      }
     ],
     "instructions": [
-      "Combine all ingredients in a large bowl and mix well.",
-      "Refrigerate for 15-30 minutes to firm up.",
-      "Roll into 12 balls, about 1 inch each.",
-      "Store in the refrigerator for up to 1 week."
+      "Combine oats, protein powder, PB Fit, and chia seeds in a large bowl.",
+      "Add honey and vanilla extract, mix until combined.",
+      "Fold in chocolate chips.",
+      "Add almond milk one tablespoon at a time until mixture holds together when pressed.",
+      "Roll into 12 balls, about 1.5 inches each.",
+      "Refrigerate for at least 30 minutes before serving.",
+      "Store in an airtight container in the fridge for up to 1 week."
     ],
-    "tags": ["no-cook", "meal-prep-friendly", "portable"]
+    "nutrition": {
+      "calories": 1440,
+      "protein_g": 72,
+      "carbs_g": 168,
+      "fat_g": 48,
+      "fiber_g": 24
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 6,
+      "carbs": 14,
+      "fat": 4,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
   },
   {
-    "id": "snack-002",
-    "name": "Greek Yogurt with Almonds",
-    "category": "Snack",
-    "prep_time_min": 2,
-    "cook_time_min": 0,
+    "id": "snack-0002",
+    "name": "Greek Yogurt Protein Parfait",
+    "description": "Layered parfait with Greek yogurt, berries, and granola for a protein-rich treat",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
     "servings": 1,
-    "calories": 220,
-    "protein_g": 18,
-    "carbs_g": 12,
-    "fat_g": 12,
-    "fiber_g": 2,
+    "baseServings": 1,
     "ingredients": [
-      { "amount": "1", "unit": "cup", "item": "Greek yogurt (plain, 2%)" },
-      { "amount": "1/4", "unit": "cup", "item": "almonds" },
-      { "amount": "1", "unit": "tsp", "item": "honey" }
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Mixed Berries",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Low-Sugar Granola",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 0.5,
+        "unit": "scoop",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Honey",
+        "quantity": 1,
+        "unit": "tsp",
+        "notes": "optional"
+      }
     ],
     "instructions": [
-      "Add Greek yogurt to a bowl.",
-      "Top with almonds.",
-      "Drizzle with honey and serve."
+      "Stir protein powder into Greek yogurt until smooth.",
+      "Layer half the yogurt mixture in a glass or jar.",
+      "Add half the berries, then half the granola.",
+      "Repeat layers with remaining ingredients.",
+      "Drizzle with honey if desired.",
+      "Serve immediately or refrigerate for up to 24 hours."
     ],
-    "tags": ["no-cook", "quick", "high-protein"]
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 32,
+      "carbs_g": 35,
+      "fat_g": 6,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 320,
+      "protein": 32,
+      "carbs": 35,
+      "fat": 6,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "post-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
   },
   {
-    "id": "snack-003",
-    "name": "Hummus with Veggie Sticks",
-    "category": "Snack",
-    "prep_time_min": 10,
-    "cook_time_min": 0,
-    "servings": 2,
-    "calories": 180,
-    "protein_g": 6,
-    "carbs_g": 22,
-    "fat_g": 8,
-    "fiber_g": 6,
-    "ingredients": [
-      { "amount": "1/2", "unit": "cup", "item": "hummus" },
-      { "amount": "1", "unit": "medium", "item": "carrot, cut into sticks" },
-      { "amount": "1", "unit": "medium", "item": "cucumber, cut into sticks" },
-      { "amount": "1", "unit": "medium", "item": "bell pepper, sliced" },
-      { "amount": "1", "unit": "cup", "item": "cherry tomatoes" }
-    ],
-    "instructions": [
-      "Wash and cut all vegetables into sticks or bite-sized pieces.",
-      "Place hummus in a small bowl.",
-      "Arrange vegetables around the hummus for dipping."
-    ],
-    "tags": ["no-cook", "vegan", "high-fiber"]
-  },
-  {
-    "id": "snack-004",
-    "name": "Cottage Cheese with Fruit",
-    "category": "Snack",
-    "prep_time_min": 3,
-    "cook_time_min": 0,
+    "id": "snack-0003",
+    "name": "Savory Cottage Cheese Bowl",
+    "description": "High-protein cottage cheese topped with savory toppings for a satisfying snack",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
     "servings": 1,
-    "calories": 200,
-    "protein_g": 20,
-    "carbs_g": 18,
-    "fat_g": 4,
-    "fiber_g": 2,
+    "baseServings": 1,
     "ingredients": [
-      { "amount": "1", "unit": "cup", "item": "cottage cheese (low-fat)" },
-      { "amount": "1/2", "unit": "cup", "item": "pineapple chunks" },
-      { "amount": "1", "unit": "tbsp", "item": "sunflower seeds" }
+      {
+        "item": "Cottage Cheese (Low-Fat)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Cherry Tomatoes",
+        "quantity": 0.5,
+        "unit": "cup",
+        "notes": "halved"
+      },
+      {
+        "item": "Cucumber",
+        "quantity": 0.25,
+        "unit": "cup",
+        "notes": "diced"
+      },
+      {
+        "item": "Everything Bagel Seasoning",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Olive Oil",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Black Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
     ],
     "instructions": [
-      "Add cottage cheese to a bowl.",
-      "Top with pineapple chunks.",
-      "Sprinkle sunflower seeds on top."
+      "Place cottage cheese in a bowl.",
+      "Top with cherry tomatoes and cucumber.",
+      "Sprinkle everything bagel seasoning over the top.",
+      "Drizzle with olive oil and add black pepper.",
+      "Serve immediately."
     ],
-    "tags": ["no-cook", "quick", "high-protein"]
+    "nutrition": {
+      "calories": 220,
+      "protein_g": 28,
+      "carbs_g": 12,
+      "fat_g": 7,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 220,
+      "protein": 28,
+      "carbs": 12,
+      "fat": 7,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "savory",
+      "low-carb"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
   },
   {
-    "id": "snack-005",
-    "name": "Apple Slices with Almond Butter",
-    "category": "Snack",
-    "prep_time_min": 5,
-    "cook_time_min": 0,
+    "id": "snack-0004",
+    "name": "Hard Boiled Eggs with Hummus",
+    "description": "Classic high-protein snack with creamy hummus for dipping",
+    "category": "snack",
+    "prep_time_minutes": 2,
+    "cook_time_minutes": 12,
     "servings": 1,
-    "calories": 280,
-    "protein_g": 7,
-    "carbs_g": 32,
-    "fat_g": 16,
-    "fiber_g": 5,
+    "baseServings": 1,
     "ingredients": [
-      { "amount": "1", "unit": "medium", "item": "apple" },
-      { "amount": "2", "unit": "tbsp", "item": "almond butter" },
-      { "amount": "1", "unit": "tsp", "item": "cinnamon" }
+      {
+        "item": "Eggs",
+        "quantity": 3,
+        "unit": "large"
+      },
+      {
+        "item": "Hummus",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Paprika",
+        "quantity": 1,
+        "unit": "pinch"
+      },
+      {
+        "item": "Salt",
+        "quantity": 1,
+        "unit": "pinch"
+      }
     ],
     "instructions": [
-      "Core and slice apple into wedges.",
-      "Serve with almond butter for dipping.",
-      "Sprinkle with cinnamon if desired."
-    ],
-    "tags": ["no-cook", "quick", "healthy-fats"]
-  },
-  {
-    "id": "snack-006",
-    "name": "Hard Boiled Eggs",
-    "category": "Snack",
-    "prep_time_min": 2,
-    "cook_time_min": 12,
-    "servings": 2,
-    "calories": 140,
-    "protein_g": 12,
-    "carbs_g": 1,
-    "fat_g": 10,
-    "fiber_g": 0,
-    "ingredients": [
-      { "amount": "2", "unit": "large", "item": "eggs" },
-      { "amount": "1", "unit": "pinch", "item": "salt" },
-      { "amount": "1", "unit": "pinch", "item": "pepper" }
-    ],
-    "instructions": [
-      "Place eggs in a single layer in a saucepan and cover with water by 1 inch.",
+      "Place eggs in a single layer in a saucepan, cover with cold water.",
       "Bring to a boil over high heat.",
-      "Remove from heat, cover, and let stand for 10-12 minutes.",
-      "Transfer eggs to ice water bath for 5 minutes.",
-      "Peel and season with salt and pepper."
+      "Once boiling, remove from heat and cover. Let sit for 10-12 minutes.",
+      "Transfer eggs to an ice bath for 5 minutes.",
+      "Peel eggs and slice in half.",
+      "Serve with hummus, sprinkled with paprika and salt."
     ],
-    "tags": ["high-protein", "low-carb", "meal-prep-friendly", "keto-friendly"]
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 21,
+      "carbs_g": 6,
+      "fat_g": 19,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 280,
+      "protein": 21,
+      "carbs": 6,
+      "fat": 19,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "savory",
+      "keto-friendly"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0005",
+    "name": "High-Protein Trail Mix",
+    "description": "Custom trail mix loaded with protein-rich nuts and seeds",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 8,
+    "baseServings": 8,
+    "ingredients": [
+      {
+        "item": "Almonds",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Walnuts",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Pumpkin Seeds",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Sunflower Seeds",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Dark Chocolate Chips",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Unsweetened Coconut Flakes",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Dried Cranberries",
+        "quantity": 0.25,
+        "unit": "cup",
+        "notes": "reduced sugar"
+      }
+    ],
+    "instructions": [
+      "Combine all ingredients in a large bowl.",
+      "Mix well to distribute evenly.",
+      "Divide into 8 portions (about 1/3 cup each).",
+      "Store in airtight containers or bags.",
+      "Keeps for up to 2 weeks at room temperature."
+    ],
+    "nutrition": {
+      "calories": 1600,
+      "protein_g": 48,
+      "carbs_g": 96,
+      "fat_g": 120,
+      "fiber_g": 24
+    },
+    "macrosPerServing": {
+      "calories": 200,
+      "protein": 6,
+      "carbs": 12,
+      "fat": 15,
+      "fiber": 3
+    },
+    "difficulty": "easy",
+    "tags": [
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "on-the-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0006",
+    "name": "Post-Workout Protein Shake",
+    "description": "Quick and creamy protein shake for optimal recovery after training",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "chocolate or vanilla"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Ice Cubes",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Spinach",
+        "quantity": 1,
+        "unit": "handful",
+        "notes": "optional, for greens"
+      }
+    ],
+    "instructions": [
+      "Add almond milk to blender first.",
+      "Add protein powder, PB Fit, and spinach if using.",
+      "Add ice cubes last.",
+      "Blend on high for 30-60 seconds until smooth.",
+      "Pour into a shaker bottle or glass.",
+      "Consume within 30 minutes of workout."
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 50,
+      "carbs_g": 12,
+      "fat_g": 5,
+      "fiber_g": 3
+    },
+    "macrosPerServing": {
+      "calories": 280,
+      "protein": 50,
+      "carbs": 12,
+      "fat": 5,
+      "fiber": 3
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "post-workout",
+      "quick",
+      "no-cook"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0007",
+    "name": "Veggie Sticks with Hummus",
+    "description": "Fresh crunchy vegetables with protein-rich hummus for a fiber-filled snack",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Carrots",
+        "quantity": 2,
+        "unit": "medium",
+        "notes": "cut into sticks"
+      },
+      {
+        "item": "Celery",
+        "quantity": 3,
+        "unit": "stalks",
+        "notes": "cut into sticks"
+      },
+      {
+        "item": "Bell Pepper",
+        "quantity": 1,
+        "unit": "medium",
+        "notes": "sliced"
+      },
+      {
+        "item": "Cucumber",
+        "quantity": 1,
+        "unit": "small",
+        "notes": "sliced"
+      },
+      {
+        "item": "Hummus",
+        "quantity": 0.5,
+        "unit": "cup"
+      }
+    ],
+    "instructions": [
+      "Wash and prep all vegetables.",
+      "Cut carrots and celery into 3-inch sticks.",
+      "Slice bell pepper and cucumber into strips.",
+      "Divide hummus between two small bowls.",
+      "Arrange vegetables around hummus for dipping.",
+      "Store prepped veggies in water in the fridge for up to 3 days."
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 10,
+      "carbs_g": 36,
+      "fat_g": 12,
+      "fiber_g": 10
+    },
+    "macrosPerServing": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 18,
+      "fat": 6,
+      "fiber": 5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "no-cook",
+      "high-fiber",
+      "low-calorie",
+      "portable",
+      "vegan"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0008",
+    "name": "Turkey and Cheese Roll-Ups",
+    "description": "Simple low-carb roll-ups with lean turkey and cheese",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Turkey Breast (Deli)",
+        "quantity": 4,
+        "unit": "slices"
+      },
+      {
+        "item": "Swiss Cheese",
+        "quantity": 2,
+        "unit": "slices"
+      },
+      {
+        "item": "Dijon Mustard",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Spinach Leaves",
+        "quantity": 4,
+        "unit": "leaves"
+      }
+    ],
+    "instructions": [
+      "Lay out turkey slices flat.",
+      "Spread a thin layer of mustard on each slice.",
+      "Place half a slice of cheese on each turkey slice.",
+      "Add a spinach leaf on top.",
+      "Roll up tightly.",
+      "Secure with toothpicks if needed."
+    ],
+    "nutrition": {
+      "calories": 240,
+      "protein_g": 32,
+      "carbs_g": 4,
+      "fat_g": 10,
+      "fiber_g": 1
+    },
+    "macrosPerServing": {
+      "calories": 240,
+      "protein": 32,
+      "carbs": 4,
+      "fat": 10,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0009",
+    "name": "Apple Slices with PB Fit",
+    "description": "Classic sweet snack with lower-calorie powdered peanut butter",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Apple",
+        "quantity": 1,
+        "unit": "medium"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Water",
+        "quantity": 1.5,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Cinnamon",
+        "quantity": 1,
+        "unit": "pinch",
+        "notes": "optional"
+      }
+    ],
+    "instructions": [
+      "Mix PB Fit with water until smooth and creamy.",
+      "Add more water if needed for desired consistency.",
+      "Stir in cinnamon if using.",
+      "Core and slice apple into 8-10 wedges.",
+      "Serve apple slices with PB Fit dip on the side."
+    ],
+    "nutrition": {
+      "calories": 180,
+      "protein_g": 8,
+      "carbs_g": 32,
+      "fat_g": 3,
+      "fiber_g": 5
+    },
+    "macrosPerServing": {
+      "calories": 180,
+      "protein": 8,
+      "carbs": 32,
+      "fat": 3,
+      "fiber": 5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "no-cook",
+      "quick",
+      "sweet",
+      "portable",
+      "pre-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0010",
+    "name": "Beef Jerky and String Cheese",
+    "description": "Portable high-protein combo perfect for on-the-go snacking",
+    "category": "snack",
+    "prep_time_minutes": 0,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Beef Jerky",
+        "quantity": 1,
+        "unit": "oz",
+        "notes": "low sodium preferred"
+      },
+      {
+        "item": "String Cheese",
+        "quantity": 2,
+        "unit": "sticks"
+      }
+    ],
+    "instructions": [
+      "No preparation needed.",
+      "Pair beef jerky with string cheese.",
+      "Great for meal prep - pack into containers for the week."
+    ],
+    "nutrition": {
+      "calories": 240,
+      "protein_g": 26,
+      "carbs_g": 4,
+      "fat_g": 14,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 240,
+      "protein": 26,
+      "carbs": 4,
+      "fat": 14,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "portable",
+      "on-the-go",
+      "savory",
+      "keto-friendly"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0011",
+    "name": "Steamed Edamame with Sea Salt",
+    "description": "Simple plant-based protein snack with satisfying crunch",
+    "category": "snack",
+    "prep_time_minutes": 2,
+    "cook_time_minutes": 5,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Frozen Edamame (In Shell)",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "item": "Sea Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Sesame Seeds",
+        "quantity": 1,
+        "unit": "tsp",
+        "notes": "optional"
+      },
+      {
+        "item": "Red Pepper Flakes",
+        "quantity": 1,
+        "unit": "pinch",
+        "notes": "optional"
+      }
+    ],
+    "instructions": [
+      "Bring a pot of salted water to boil.",
+      "Add frozen edamame and cook for 4-5 minutes.",
+      "Drain well.",
+      "Toss with sea salt.",
+      "Sprinkle with sesame seeds and red pepper flakes if desired.",
+      "Serve warm or at room temperature."
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 24,
+      "carbs_g": 20,
+      "fat_g": 12,
+      "fiber_g": 8
+    },
+    "macrosPerServing": {
+      "calories": 140,
+      "protein": 12,
+      "carbs": 10,
+      "fat": 6,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "quick",
+      "vegan",
+      "plant-based"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0012",
+    "name": "Tuna Cucumber Bites",
+    "description": "Light and refreshing high-protein bites with no bread needed",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Canned Tuna",
+        "quantity": 1,
+        "unit": "can",
+        "notes": "5 oz, drained"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Cucumber",
+        "quantity": 1,
+        "unit": "large"
+      },
+      {
+        "item": "Dijon Mustard",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Dill",
+        "quantity": 1,
+        "unit": "tsp",
+        "notes": "fresh, chopped"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Drain tuna and place in a bowl.",
+      "Mix in Greek yogurt, mustard, dill, salt, and pepper.",
+      "Slice cucumber into 1/2-inch thick rounds.",
+      "Top each cucumber round with a spoonful of tuna mixture.",
+      "Serve immediately or refrigerate for up to 24 hours."
+    ],
+    "nutrition": {
+      "calories": 220,
+      "protein_g": 36,
+      "carbs_g": 8,
+      "fat_g": 4,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 110,
+      "protein": 18,
+      "carbs": 4,
+      "fat": 2,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0013",
+    "name": "Pepperoni Sticks with Pickled Eggs",
+    "description": "Savory high-protein snack with tangy pickled eggs and pepperoni",
+    "category": "snack",
+    "prep_time_minutes": 0,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Pepperoni Sticks",
+        "quantity": 2,
+        "unit": "sticks"
+      },
+      {
+        "item": "Pickled Eggs",
+        "quantity": 2,
+        "unit": "eggs"
+      },
+      {
+        "item": "Hot Sauce",
+        "quantity": 1,
+        "unit": "tsp",
+        "notes": "optional"
+      }
+    ],
+    "instructions": [
+      "Remove pickled eggs from jar.",
+      "Slice eggs in half if desired.",
+      "Serve alongside pepperoni sticks.",
+      "Add hot sauce for extra kick."
+    ],
+    "nutrition": {
+      "calories": 340,
+      "protein_g": 24,
+      "carbs_g": 2,
+      "fat_g": 26,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 340,
+      "protein": 24,
+      "carbs": 2,
+      "fat": 26,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "savory",
+      "keto-friendly",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0014",
+    "name": "BUILT Bar Protein Snack Box",
+    "description": "Costco BUILT bar paired with protein-rich additions",
+    "category": "snack",
+    "prep_time_minutes": 2,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "BUILT Marshmallow Bar",
+        "quantity": 1,
+        "unit": "bar"
+      },
+      {
+        "item": "String Cheese",
+        "quantity": 1,
+        "unit": "stick"
+      },
+      {
+        "item": "Almonds",
+        "quantity": 10,
+        "unit": "count"
+      }
+    ],
+    "instructions": [
+      "Arrange BUILT bar, string cheese, and almonds on a plate or in a container.",
+      "Can be prepped ahead for grab-and-go snacking.",
+      "Store in refrigerator for up to 5 days."
+    ],
+    "nutrition": {
+      "calories": 310,
+      "protein_g": 26,
+      "carbs_g": 22,
+      "fat_g": 14,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 310,
+      "protein": 26,
+      "carbs": 22,
+      "fat": 14,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "portable",
+      "meal-prep",
+      "on-the-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0015",
+    "name": "Chocolate Protein Mug Cake",
+    "description": "Quick microwave dessert that satisfies sweet cravings with added protein",
+    "category": "snack",
+    "prep_time_minutes": 3,
+    "cook_time_minutes": 2,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "chocolate"
+      },
+      {
+        "item": "Egg",
+        "quantity": 1,
+        "unit": "large"
+      },
+      {
+        "item": "Cocoa Powder",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Baking Powder",
+        "quantity": 0.25,
+        "unit": "tsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Sweetener",
+        "quantity": 1,
+        "unit": "packet",
+        "notes": "stevia or monk fruit"
+      }
+    ],
+    "instructions": [
+      "Whisk egg in a microwave-safe mug.",
+      "Add protein powder, cocoa powder, baking powder, and sweetener. Mix well.",
+      "Stir in almond milk and vanilla extract until smooth.",
+      "Microwave on high for 60-90 seconds until set.",
+      "Let cool for 1 minute before eating.",
+      "Top with a dollop of Greek yogurt if desired."
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein_g": 30,
+      "carbs_g": 8,
+      "fat_g": 6,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 200,
+      "protein": 30,
+      "carbs": 8,
+      "fat": 6,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "quick",
+      "sweet",
+      "low-carb"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0016",
+    "name": "Sweet Cottage Cheese Bowl",
+    "description": "Creamy cottage cheese with fresh berries and a drizzle of honey",
+    "category": "snack",
+    "prep_time_minutes": 3,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Cottage Cheese (Low-Fat)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Mixed Berries",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Honey",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Chia Seeds",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Place cottage cheese in a bowl.",
+      "Top with mixed berries.",
+      "Drizzle with honey.",
+      "Sprinkle chia seeds on top.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 240,
+      "protein_g": 28,
+      "carbs_g": 24,
+      "fat_g": 4,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 240,
+      "protein": 28,
+      "carbs": 24,
+      "fat": 4,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0017",
+    "name": "Protein Rice Cake Stack",
+    "description": "Crispy rice cakes topped with protein-rich spreads",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Rice Cakes",
+        "quantity": 2,
+        "unit": "cakes"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Water",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 0.5,
+        "unit": "scoop",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Yellow Kiwi",
+        "quantity": 1,
+        "unit": "small",
+        "notes": "sliced"
+      }
+    ],
+    "instructions": [
+      "Mix PB Fit with water until smooth.",
+      "Stir in half scoop of protein powder.",
+      "Spread mixture on rice cakes.",
+      "Top with sliced yellow kiwi.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 210,
+      "protein_g": 18,
+      "carbs_g": 28,
+      "fat_g": 3,
+      "fiber_g": 3
+    },
+    "macrosPerServing": {
+      "calories": 210,
+      "protein": 18,
+      "carbs": 28,
+      "fat": 3,
+      "fiber": 3
+    },
+    "difficulty": "easy",
+    "tags": [
+      "quick",
+      "no-cook",
+      "pre-workout",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0018",
+    "name": "High-Protein Deviled Eggs",
+    "description": "Classic deviled eggs with Greek yogurt for extra protein",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 12,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Eggs",
+        "quantity": 6,
+        "unit": "large"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Dijon Mustard",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Apple Cider Vinegar",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Paprika",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      },
+      {
+        "item": "Chives",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "fresh, chopped"
+      }
+    ],
+    "instructions": [
+      "Hard boil eggs: place in cold water, bring to boil, remove from heat, cover for 12 minutes.",
+      "Transfer to ice bath and let cool.",
+      "Peel eggs and slice in half lengthwise.",
+      "Remove yolks and place in a bowl.",
+      "Mash yolks with Greek yogurt, mustard, vinegar, salt, and pepper.",
+      "Pipe or spoon mixture back into egg whites.",
+      "Sprinkle with paprika and chives."
+    ],
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 36,
+      "carbs_g": 4,
+      "fat_g": 28,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 210,
+      "protein": 18,
+      "carbs": 2,
+      "fat": 14,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "keto-friendly",
+      "savory"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0019",
+    "name": "Frozen Greek Yogurt Bark",
+    "description": "Crunchy frozen treat packed with protein and toppings",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 6,
+    "baseServings": 6,
+    "ingredients": [
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Honey",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Mixed Berries",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Mini Chocolate Chips",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Sliced Almonds",
+        "quantity": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Line a baking sheet with parchment paper.",
+      "Mix Greek yogurt with protein powder and honey until smooth.",
+      "Spread yogurt mixture evenly on parchment, about 1/4 inch thick.",
+      "Scatter berries, chocolate chips, and almonds on top.",
+      "Freeze for at least 2 hours until solid.",
+      "Break into pieces and store in freezer bags."
+    ],
+    "nutrition": {
+      "calories": 600,
+      "protein_g": 48,
+      "carbs_g": 60,
+      "fat_g": 18,
+      "fiber_g": 6
+    },
+    "macrosPerServing": {
+      "calories": 100,
+      "protein": 8,
+      "carbs": 10,
+      "fat": 3,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "sweet",
+      "no-cook"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0020",
+    "name": "Overnight Protein Oats Cup",
+    "description": "Make-ahead oats with protein powder for a grab-and-go snack",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Rolled Oats",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Chia Seeds",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Mixed Berries",
+        "quantity": 0.25,
+        "unit": "cup"
+      }
+    ],
+    "instructions": [
+      "Combine oats, protein powder, Greek yogurt, and almond milk in a jar.",
+      "Stir in chia seeds.",
+      "Top with berries.",
+      "Cover and refrigerate overnight (at least 6 hours).",
+      "Eat cold straight from the jar.",
+      "Keeps in fridge for up to 3 days."
+    ],
+    "nutrition": {
+      "calories": 350,
+      "protein_g": 32,
+      "carbs_g": 40,
+      "fat_g": 8,
+      "fiber_g": 8
+    },
+    "macrosPerServing": {
+      "calories": 350,
+      "protein": 32,
+      "carbs": 40,
+      "fat": 8,
+      "fiber": 8
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "no-cook",
+      "portable",
+      "pre-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0021",
+    "name": "Protein-Packed Egg Muffins",
+    "description": "Baked egg cups perfect for meal prep and on-the-go eating",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 20,
+    "servings": 6,
+    "baseServings": 6,
+    "ingredients": [
+      {
+        "item": "Eggs",
+        "quantity": 6,
+        "unit": "large"
+      },
+      {
+        "item": "Turkey Bacon",
+        "quantity": 4,
+        "unit": "strips",
+        "notes": "chopped"
+      },
+      {
+        "item": "Spinach",
+        "quantity": 1,
+        "unit": "cup",
+        "notes": "chopped"
+      },
+      {
+        "item": "Bell Pepper",
+        "quantity": 0.5,
+        "unit": "cup",
+        "notes": "diced"
+      },
+      {
+        "item": "Shredded Cheese",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 350F (175C).",
+      "Spray a 6-cup muffin tin with cooking spray.",
+      "Cook turkey bacon until crispy, then chop.",
+      "Divide spinach, bell pepper, bacon, and cheese among muffin cups.",
+      "Whisk eggs with salt and pepper, pour over vegetables.",
+      "Bake for 18-20 minutes until set.",
+      "Store in fridge for up to 5 days. Reheat in microwave."
+    ],
+    "nutrition": {
+      "calories": 600,
+      "protein_g": 48,
+      "carbs_g": 6,
+      "fat_g": 42,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 100,
+      "protein": 8,
+      "carbs": 1,
+      "fat": 7,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "savory",
+      "keto-friendly"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0022",
+    "name": "Protein Ants on a Log",
+    "description": "Classic childhood snack upgraded with PB Fit for added protein",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Celery",
+        "quantity": 4,
+        "unit": "stalks"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Water",
+        "quantity": 1.5,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Raisins",
+        "quantity": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Mix PB Fit with water until smooth and spreadable.",
+      "Wash celery and cut into 4-inch pieces.",
+      "Fill the groove of each celery stalk with PB Fit mixture.",
+      "Top with raisins (the ants).",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 160,
+      "protein_g": 10,
+      "carbs_g": 24,
+      "fat_g": 3,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 160,
+      "protein": 10,
+      "carbs": 24,
+      "fat": 3,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "no-cook",
+      "quick",
+      "sweet",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0023",
+    "name": "Crispy Roasted Chickpeas",
+    "description": "Crunchy, seasoned chickpeas for a high-fiber protein snack",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 35,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Chickpeas",
+        "quantity": 2,
+        "unit": "cans",
+        "notes": "15 oz each, drained and rinsed"
+      },
+      {
+        "item": "Olive Oil",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Paprika",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Cumin",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Cayenne Pepper",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "notes": "optional"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 400F (200C).",
+      "Pat chickpeas very dry with paper towels.",
+      "Toss chickpeas with olive oil and spread on a baking sheet.",
+      "Roast for 25-30 minutes, shaking pan halfway, until crispy.",
+      "Remove from oven and immediately toss with spices.",
+      "Let cool completely for maximum crunch.",
+      "Store in an open container at room temperature for up to 3 days."
+    ],
+    "nutrition": {
+      "calories": 480,
+      "protein_g": 20,
+      "carbs_g": 56,
+      "fat_g": 20,
+      "fiber_g": 16
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 5,
+      "carbs": 14,
+      "fat": 5,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-fiber",
+      "vegan",
+      "meal-prep",
+      "savory",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0024",
+    "name": "Pre-Workout Smoothie Bowl",
+    "description": "Thick and creamy smoothie bowl loaded with carbs and protein for energy",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Frozen Mixed Berries",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Rolled Oats",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "for topping"
+      },
+      {
+        "item": "Chia Seeds",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "for topping"
+      },
+      {
+        "item": "Sliced Almonds",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "for topping"
+      }
+    ],
+    "instructions": [
+      "Blend frozen berries, protein powder, Greek yogurt, and almond milk until thick.",
+      "Use minimal liquid for a thick, spoonable consistency.",
+      "Pour into a bowl.",
+      "Top with oats, chia seeds, and almonds.",
+      "Eat immediately with a spoon."
+    ],
+    "nutrition": {
+      "calories": 380,
+      "protein_g": 35,
+      "carbs_g": 40,
+      "fat_g": 10,
+      "fiber_g": 8
+    },
+    "macrosPerServing": {
+      "calories": 380,
+      "protein": 35,
+      "carbs": 40,
+      "fat": 10,
+      "fiber": 8
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "pre-workout",
+      "no-cook",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0025",
+    "name": "Caprese Protein Skewers",
+    "description": "Fresh mozzarella, tomatoes, and basil on skewers for a light savory snack",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Fresh Mozzarella Balls",
+        "quantity": 8,
+        "unit": "balls",
+        "notes": "bocconcini size"
+      },
+      {
+        "item": "Cherry Tomatoes",
+        "quantity": 8,
+        "unit": "count"
+      },
+      {
+        "item": "Fresh Basil Leaves",
+        "quantity": 8,
+        "unit": "leaves"
+      },
+      {
+        "item": "Balsamic Glaze",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Olive Oil",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Thread each skewer with: tomato, basil leaf (folded), mozzarella ball.",
+      "Repeat to make 8 skewers.",
+      "Arrange on a plate.",
+      "Drizzle with olive oil and balsamic glaze.",
+      "Season with salt and pepper.",
+      "Serve immediately or refrigerate for up to 4 hours."
+    ],
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 20,
+      "carbs_g": 14,
+      "fat_g": 22,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 160,
+      "protein": 10,
+      "carbs": 7,
+      "fat": 11,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "no-cook",
+      "quick",
+      "savory",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0026",
+    "name": "Protein Energy Balls",
+    "description": "Chewy no-bake protein balls with oats, peanut butter, and chocolate chips for quick energy",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Rolled Oats",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1.5,
+        "unit": "scoops",
+        "notes": "vanilla or chocolate"
+      },
+      {
+        "item": "Natural Peanut Butter",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Mini Chocolate Chips",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Water",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "if needed for binding"
+      }
+    ],
+    "instructions": [
+      "Combine oats and protein powder in a mixing bowl.",
+      "Add peanut butter and honey, mix until a thick dough forms.",
+      "If mixture is too dry, add water 1 teaspoon at a time.",
+      "Fold in chocolate chips.",
+      "Roll into 6 balls, about 1 inch each (3 per serving).",
+      "Refrigerate for 15 minutes to firm up.",
+      "Store in airtight container in fridge for up to 1 week."
+    ],
+    "nutrition": {
+      "calories": 520,
+      "protein_g": 40,
+      "carbs_g": 48,
+      "fat_g": 22,
+      "fiber_g": 6
+    },
+    "macrosPerServing": {
+      "calories": 260,
+      "protein": 20,
+      "carbs": 24,
+      "fat": 11,
+      "fiber": 3
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "pre-workout",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0027",
+    "name": "Greek Yogurt Parfait",
+    "description": "Layered Greek yogurt with crunchy granola, fresh berries, and a honey drizzle",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Greek Yogurt (Plain, 2%)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Low-Sugar Granola",
+        "quantity": 0.33,
+        "unit": "cup"
+      },
+      {
+        "item": "Mixed Berries",
+        "quantity": 0.5,
+        "unit": "cup",
+        "notes": "strawberries, blueberries, raspberries"
+      },
+      {
+        "item": "Honey",
+        "quantity": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Add half the Greek yogurt to a jar or glass.",
+      "Top with half the granola and half the berries.",
+      "Add remaining yogurt on top.",
+      "Finish with remaining granola and berries.",
+      "Drizzle honey over the top.",
+      "Serve immediately for crunchiest granola, or prep night before."
+    ],
+    "nutrition": {
+      "calories": 340,
+      "protein_g": 24,
+      "carbs_g": 42,
+      "fat_g": 8,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 340,
+      "protein": 24,
+      "carbs": 42,
+      "fat": 8,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0028",
+    "name": "Turkey & Cheese Roll-Ups",
+    "description": "Simple low-carb roll-ups with deli turkey, cheese, and tangy mustard",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Deli Turkey Breast",
+        "quantity": 6,
+        "unit": "slices",
+        "notes": "about 4 oz"
+      },
+      {
+        "item": "Provolone Cheese",
+        "quantity": 2,
+        "unit": "slices"
+      },
+      {
+        "item": "Spicy Brown Mustard",
+        "quantity": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Lay out turkey slices flat on a cutting board.",
+      "Cut each cheese slice in thirds.",
+      "Spread a thin layer of mustard on each turkey slice.",
+      "Place a piece of cheese on each turkey slice.",
+      "Roll up tightly from one end.",
+      "Secure with toothpicks if needed for transport.",
+      "Pack in container for grab-and-go snacking."
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 32,
+      "carbs_g": 3,
+      "fat_g": 14,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 280,
+      "protein": 32,
+      "carbs": 3,
+      "fat": 14,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly",
+      "portable",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0029",
+    "name": "Deviled Eggs",
+    "description": "Classic deviled eggs with creamy mayo filling and a sprinkle of paprika",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 12,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Eggs",
+        "quantity": 4,
+        "unit": "large"
+      },
+      {
+        "item": "Mayonnaise",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Yellow Mustard",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Paprika",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      },
+      {
+        "item": "Black Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Place eggs in a pot and cover with cold water by 1 inch.",
+      "Bring to a boil, then remove from heat and cover for 12 minutes.",
+      "Transfer eggs to ice bath for 5 minutes to stop cooking.",
+      "Peel eggs and slice in half lengthwise.",
+      "Scoop yolks into a bowl and mash with a fork.",
+      "Mix yolks with mayo, mustard, salt, and pepper until smooth.",
+      "Spoon or pipe filling back into egg white halves.",
+      "Sprinkle paprika on top. Refrigerate until serving."
+    ],
+    "nutrition": {
+      "calories": 360,
+      "protein_g": 24,
+      "carbs_g": 2,
+      "fat_g": 28,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 180,
+      "protein": 12,
+      "carbs": 1,
+      "fat": 14,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "meal-prep",
+      "savory",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0030",
+    "name": "Cottage Cheese with Fruit",
+    "description": "Creamy cottage cheese topped with sweet peaches or tropical pineapple",
+    "category": "snack",
+    "prep_time_minutes": 3,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Cottage Cheese (Low-Fat)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Canned Peaches or Pineapple",
+        "quantity": 0.5,
+        "unit": "cup",
+        "notes": "drained, in juice not syrup"
+      },
+      {
+        "item": "Cinnamon",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "notes": "optional"
+      }
+    ],
+    "instructions": [
+      "Scoop cottage cheese into a bowl or container.",
+      "Top with drained peaches or pineapple chunks.",
+      "Sprinkle with cinnamon if desired.",
+      "Serve immediately or pack for later.",
+      "Can prep multiple servings for the week."
+    ],
+    "nutrition": {
+      "calories": 220,
+      "protein_g": 28,
+      "carbs_g": 20,
+      "fat_g": 3,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 220,
+      "protein": 28,
+      "carbs": 20,
+      "fat": 3,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0031",
+    "name": "Beef Jerky Trail Mix",
+    "description": "Savory-sweet trail mix with protein-packed beef jerky, crunchy almonds, and dried cranberries",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Beef Jerky",
+        "quantity": 2,
+        "unit": "oz",
+        "notes": "torn into bite-size pieces"
+      },
+      {
+        "item": "Almonds",
+        "quantity": 0.25,
+        "unit": "cup",
+        "notes": "roasted, salted"
+      },
+      {
+        "item": "Dried Cranberries",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "reduced sugar preferred"
+      }
+    ],
+    "instructions": [
+      "Tear or cut beef jerky into bite-sized pieces.",
+      "Combine jerky, almonds, and cranberries in a bowl.",
+      "Toss to mix evenly.",
+      "Divide into 2 portions and store in snack bags or containers.",
+      "Keeps at room temperature for up to 2 weeks."
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein_g": 36,
+      "carbs_g": 24,
+      "fat_g": 18,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 200,
+      "protein": 18,
+      "carbs": 12,
+      "fat": 9,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "portable",
+      "on-the-go",
+      "meal-prep",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0032",
+    "name": "Tuna Cucumber Bites",
+    "description": "Fresh cucumber rounds topped with seasoned tuna salad and everything bagel seasoning",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Canned Tuna",
+        "quantity": 1,
+        "unit": "can",
+        "notes": "5 oz, drained well"
+      },
+      {
+        "item": "Mayonnaise",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Cucumber",
+        "quantity": 1,
+        "unit": "large"
+      },
+      {
+        "item": "Everything Bagel Seasoning",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Lemon Juice",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Drain tuna well and place in a bowl.",
+      "Mix in mayo, Greek yogurt, lemon juice, salt, and pepper.",
+      "Slice cucumber into 1/2-inch thick rounds (about 12-14 slices).",
+      "Pat cucumber rounds dry with paper towel.",
+      "Top each cucumber round with a spoonful of tuna mixture.",
+      "Sprinkle everything bagel seasoning on top of each bite.",
+      "Serve immediately or refrigerate up to 4 hours."
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 36,
+      "carbs_g": 8,
+      "fat_g": 10,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 140,
+      "protein": 18,
+      "carbs": 4,
+      "fat": 5,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0033",
+    "name": "Protein Mug Cake",
+    "description": "Quick microwave chocolate cake made with protein powder and egg for a guilt-free treat",
+    "category": "snack",
+    "prep_time_minutes": 3,
+    "cook_time_minutes": 2,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "chocolate"
+      },
+      {
+        "item": "Egg",
+        "quantity": 1,
+        "unit": "large"
+      },
+      {
+        "item": "Cocoa Powder",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Baking Powder",
+        "quantity": 0.25,
+        "unit": "tsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Sweetener",
+        "quantity": 1,
+        "unit": "packet",
+        "notes": "stevia or monk fruit, optional"
+      }
+    ],
+    "instructions": [
+      "Crack egg into a large microwave-safe mug and whisk well.",
+      "Add protein powder, cocoa powder, and baking powder. Stir to combine.",
+      "Pour in almond milk and sweetener if using. Mix until smooth.",
+      "Microwave on high for 60-90 seconds until cake rises and is set.",
+      "Let cool for 1 minute (careful, mug will be hot!).",
+      "Eat directly from mug or flip onto a plate.",
+      "Optional: top with a dollop of Greek yogurt or sugar-free whipped cream."
+    ],
+    "nutrition": {
+      "calories": 220,
+      "protein_g": 32,
+      "carbs_g": 8,
+      "fat_g": 7,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 220,
+      "protein": 32,
+      "carbs": 8,
+      "fat": 7,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "quick",
+      "sweet",
+      "low-carb",
+      "grab-and-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0034",
+    "name": "Pumpkin Seed Butter Rice Cakes",
+    "description": "Nut-free rice cakes topped with creamy pumpkin seed butter and honey",
+    "category": "snack",
+    "prep_time_minutes": 3,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Rice Cakes",
+        "quantity": 2,
+        "unit": "cakes"
+      },
+      {
+        "item": "Pumpkin Seed Butter",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Chia Seeds",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Sea Salt",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Spread pumpkin seed butter evenly on each rice cake.",
+      "Drizzle with honey.",
+      "Sprinkle chia seeds and a pinch of sea salt on top.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 260,
+      "protein_g": 10,
+      "carbs_g": 28,
+      "fat_g": 14,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 260,
+      "protein": 10,
+      "carbs": 28,
+      "fat": 14,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "nut-free",
+      "no-cook",
+      "quick",
+      "pre-workout",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0035",
+    "name": "Spicy Pickled Eggs",
+    "description": "Tangy pickled eggs with a kick of hot sauce and everything seasoning",
+    "category": "snack",
+    "prep_time_minutes": 2,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Pickled Eggs",
+        "quantity": 3,
+        "unit": "eggs"
+      },
+      {
+        "item": "Hot Sauce",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Everything Bagel Seasoning",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Remove pickled eggs from jar and pat dry.",
+      "Slice eggs in half lengthwise.",
+      "Arrange on a plate and drizzle with hot sauce.",
+      "Sprinkle everything bagel seasoning on top.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 210,
+      "protein_g": 18,
+      "carbs_g": 2,
+      "fat_g": 15,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 210,
+      "protein": 18,
+      "carbs": 2,
+      "fat": 15,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "savory",
+      "keto-friendly",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0036",
+    "name": "Savory Cottage Cheese Dip",
+    "description": "Blended cottage cheese dip with herbs served with fresh vegetables",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Cottage Cheese (Low-Fat)",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Dried Dill",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Lemon Juice",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      },
+      {
+        "item": "Carrots",
+        "quantity": 2,
+        "unit": "medium",
+        "notes": "cut into sticks"
+      },
+      {
+        "item": "Celery",
+        "quantity": 3,
+        "unit": "stalks",
+        "notes": "cut into sticks"
+      },
+      {
+        "item": "Bell Pepper",
+        "quantity": 1,
+        "unit": "medium",
+        "notes": "sliced"
+      }
+    ],
+    "instructions": [
+      "Blend cottage cheese in a food processor until smooth.",
+      "Add garlic powder, dill, lemon juice, salt, and pepper.",
+      "Blend until well combined.",
+      "Transfer to a serving bowl.",
+      "Arrange vegetable sticks around the dip.",
+      "Store dip in fridge for up to 5 days."
+    ],
+    "nutrition": {
+      "calories": 300,
+      "protein_g": 36,
+      "carbs_g": 28,
+      "fat_g": 4,
+      "fiber_g": 8
+    },
+    "macrosPerServing": {
+      "calories": 150,
+      "protein": 18,
+      "carbs": 14,
+      "fat": 2,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "meal-prep",
+      "savory"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0037",
+    "name": "Sunflower Seed Protein Balls",
+    "description": "Nut-free protein balls made with sunflower seed butter and oats",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 10,
+    "baseServings": 10,
+    "ingredients": [
+      {
+        "item": "Sunflower Seed Butter",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Rolled Oats",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Honey",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Mini Chocolate Chips",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Combine oats and protein powder in a large bowl.",
+      "Add sunflower seed butter, honey, and vanilla extract.",
+      "Mix until a thick dough forms.",
+      "Fold in chocolate chips.",
+      "Roll into 10 balls, about 1.5 inches each.",
+      "Refrigerate for 30 minutes to firm up.",
+      "Store in airtight container in fridge for up to 10 days."
+    ],
+    "nutrition": {
+      "calories": 1200,
+      "protein_g": 60,
+      "carbs_g": 110,
+      "fat_g": 60,
+      "fiber_g": 15
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 6,
+      "carbs": 11,
+      "fat": 6,
+      "fiber": 1.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "nut-free",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0038",
+    "name": "Pepperoni Pizza Bites",
+    "description": "Low-carb pizza bites with pepperoni, cheese, and marinara",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 8,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Pepperoni Slices",
+        "quantity": 24,
+        "unit": "slices"
+      },
+      {
+        "item": "Mozzarella Cheese",
+        "quantity": 0.5,
+        "unit": "cup",
+        "notes": "shredded"
+      },
+      {
+        "item": "Marinara Sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "for dipping"
+      },
+      {
+        "item": "Italian Seasoning",
+        "quantity": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 400F (200C).",
+      "Arrange pepperoni slices in mini muffin tin.",
+      "Top each with a pinch of shredded mozzarella.",
+      "Sprinkle with Italian seasoning.",
+      "Bake for 6-8 minutes until cheese is melted and edges crispy.",
+      "Serve with marinara sauce for dipping."
+    ],
+    "nutrition": {
+      "calories": 360,
+      "protein_g": 20,
+      "carbs_g": 4,
+      "fat_g": 30,
+      "fiber_g": 1
+    },
+    "macrosPerServing": {
+      "calories": 180,
+      "protein": 10,
+      "carbs": 2,
+      "fat": 15,
+      "fiber": 0.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "savory",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0039",
+    "name": "Greek Yogurt Ranch Dip",
+    "description": "Protein-packed ranch dip made with Greek yogurt and fresh herbs",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "Dried Dill",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Onion Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Dried Parsley",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Lemon Juice",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      },
+      {
+        "item": "Baby Carrots",
+        "quantity": 2,
+        "unit": "cups"
+      }
+    ],
+    "instructions": [
+      "Combine Greek yogurt with all seasonings in a bowl.",
+      "Add lemon juice and mix well.",
+      "Taste and adjust salt and pepper.",
+      "Refrigerate for at least 30 minutes for flavors to meld.",
+      "Serve with baby carrots or other vegetables.",
+      "Keeps in fridge for up to 1 week."
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 28,
+      "carbs_g": 32,
+      "fat_g": 4,
+      "fiber_g": 8
+    },
+    "macrosPerServing": {
+      "calories": 70,
+      "protein": 7,
+      "carbs": 8,
+      "fat": 1,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "savory",
+      "low-fat"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0040",
+    "name": "Beef Jerky Cheese Plate",
+    "description": "Assorted beef jerky with cheese cubes and olives for a savory protein snack",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Beef Jerky",
+        "quantity": 1.5,
+        "unit": "oz"
+      },
+      {
+        "item": "Cheddar Cheese",
+        "quantity": 1,
+        "unit": "oz",
+        "notes": "cubed"
+      },
+      {
+        "item": "Green Olives",
+        "quantity": 6,
+        "unit": "count"
+      },
+      {
+        "item": "Whole Grain Crackers",
+        "quantity": 4,
+        "unit": "crackers",
+        "notes": "optional"
+      }
+    ],
+    "instructions": [
+      "Arrange beef jerky pieces on a small plate or snack board.",
+      "Add cheese cubes alongside the jerky.",
+      "Place olives in a small bowl or on the plate.",
+      "Add crackers if desired.",
+      "Serve immediately or pack for on-the-go."
+    ],
+    "nutrition": {
+      "calories": 310,
+      "protein_g": 28,
+      "carbs_g": 8,
+      "fat_g": 18,
+      "fiber_g": 1
+    },
+    "macrosPerServing": {
+      "calories": 310,
+      "protein": 28,
+      "carbs": 8,
+      "fat": 18,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "savory",
+      "portable",
+      "on-the-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0041",
+    "name": "Chocolate PB Fit Smoothie",
+    "description": "Rich chocolate smoothie with PB Fit for a post-workout recovery drink",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "chocolate"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "Ice Cubes",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Cocoa Powder",
+        "quantity": 1,
+        "unit": "tsp",
+        "notes": "optional for extra chocolate"
+      }
+    ],
+    "instructions": [
+      "Add almond milk to blender.",
+      "Add protein powder, PB Fit, and cocoa powder.",
+      "Add ice cubes.",
+      "Blend until smooth and creamy.",
+      "Pour into glass and enjoy immediately."
+    ],
+    "nutrition": {
+      "calories": 240,
+      "protein_g": 35,
+      "carbs_g": 14,
+      "fat_g": 5,
+      "fiber_g": 3
+    },
+    "macrosPerServing": {
+      "calories": 240,
+      "protein": 35,
+      "carbs": 14,
+      "fat": 5,
+      "fiber": 3
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "post-workout",
+      "no-cook",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0042",
+    "name": "Yellow Kiwi Cottage Cheese Bowl",
+    "description": "Sweet and tangy cottage cheese topped with sliced yellow kiwi and honey",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Cottage Cheese (Low-Fat)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Yellow Kiwi",
+        "quantity": 2,
+        "unit": "small",
+        "notes": "peeled and sliced"
+      },
+      {
+        "item": "Honey",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Sliced Almonds",
+        "quantity": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Place cottage cheese in a bowl.",
+      "Peel and slice yellow kiwis.",
+      "Arrange kiwi slices on top of cottage cheese.",
+      "Drizzle with honey.",
+      "Top with sliced almonds.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 280,
+      "protein_g": 30,
+      "carbs_g": 28,
+      "fat_g": 6,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 280,
+      "protein": 30,
+      "carbs": 28,
+      "fat": 6,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0043",
+    "name": "Turkey Pepperoni Roll-Ups",
+    "description": "Savory roll-ups combining turkey, pepperoni, and cream cheese",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Deli Turkey Breast",
+        "quantity": 4,
+        "unit": "slices"
+      },
+      {
+        "item": "Pepperoni Slices",
+        "quantity": 8,
+        "unit": "slices"
+      },
+      {
+        "item": "Cream Cheese",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "softened"
+      },
+      {
+        "item": "Black Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Lay turkey slices flat.",
+      "Spread thin layer of cream cheese on each slice.",
+      "Place 2 pepperoni slices on each turkey slice.",
+      "Sprinkle with black pepper.",
+      "Roll up tightly.",
+      "Slice in half or serve whole."
+    ],
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 26,
+      "carbs_g": 3,
+      "fat_g": 22,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 320,
+      "protein": 26,
+      "carbs": 3,
+      "fat": 22,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "keto-friendly",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0044",
+    "name": "Chocolate Protein Chia Pudding",
+    "description": "Creamy chocolate chia pudding with added protein powder",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Chia Seeds",
+        "quantity": 4,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "chocolate"
+      },
+      {
+        "item": "Cocoa Powder",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Whisk together almond milk, protein powder, cocoa powder, honey, and vanilla.",
+      "Stir in chia seeds.",
+      "Cover and refrigerate for at least 4 hours or overnight.",
+      "Stir well before serving.",
+      "Top with fresh berries if desired.",
+      "Keeps in fridge for up to 5 days."
+    ],
+    "nutrition": {
+      "calories": 340,
+      "protein_g": 30,
+      "carbs_g": 32,
+      "fat_g": 14,
+      "fiber_g": 16
+    },
+    "macrosPerServing": {
+      "calories": 170,
+      "protein": 15,
+      "carbs": 16,
+      "fat": 7,
+      "fiber": 8
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "meal-prep",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0045",
+    "name": "Edamame Hummus Plate",
+    "description": "Protein-rich edamame hummus served with fresh vegetables and pita",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Frozen Edamame (Shelled)",
+        "quantity": 2,
+        "unit": "cups",
+        "notes": "thawed"
+      },
+      {
+        "item": "Tahini",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Lemon Juice",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Garlic",
+        "quantity": 2,
+        "unit": "cloves"
+      },
+      {
+        "item": "Olive Oil",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Cucumber",
+        "quantity": 1,
+        "unit": "medium",
+        "notes": "sliced"
+      },
+      {
+        "item": "Bell Pepper",
+        "quantity": 1,
+        "unit": "medium",
+        "notes": "sliced"
+      }
+    ],
+    "instructions": [
+      "Add thawed edamame, tahini, lemon juice, garlic, and salt to food processor.",
+      "Blend while drizzling in olive oil until smooth.",
+      "Add water 1 tablespoon at a time if too thick.",
+      "Transfer to serving bowl.",
+      "Serve with sliced cucumber and bell pepper.",
+      "Store hummus in fridge for up to 5 days."
+    ],
+    "nutrition": {
+      "calories": 440,
+      "protein_g": 28,
+      "carbs_g": 28,
+      "fat_g": 28,
+      "fiber_g": 12
+    },
+    "macrosPerServing": {
+      "calories": 110,
+      "protein": 7,
+      "carbs": 7,
+      "fat": 7,
+      "fiber": 3
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "vegan",
+      "no-cook",
+      "meal-prep"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0046",
+    "name": "BUILT Bar Protein Shake",
+    "description": "Blended BUILT Marshmallow Bar with protein powder for a dessert-like shake",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "BUILT Marshmallow Bar",
+        "quantity": 1,
+        "unit": "bar"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "Ice Cubes",
+        "quantity": 0.5,
+        "unit": "cup"
+      }
+    ],
+    "instructions": [
+      "Break BUILT bar into small pieces.",
+      "Add almond milk and ice to blender.",
+      "Add protein powder and bar pieces.",
+      "Blend on high until smooth and creamy.",
+      "Pour into glass and serve immediately."
+    ],
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 45,
+      "carbs_g": 22,
+      "fat_g": 6,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 320,
+      "protein": 45,
+      "carbs": 22,
+      "fat": 6,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "post-workout",
+      "sweet",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0047",
+    "name": "Smoked Salmon Cucumber Rounds",
+    "description": "Elegant cucumber rounds topped with cream cheese and smoked salmon",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Cucumber",
+        "quantity": 1,
+        "unit": "large"
+      },
+      {
+        "item": "Cream Cheese",
+        "quantity": 3,
+        "unit": "tbsp",
+        "notes": "softened"
+      },
+      {
+        "item": "Smoked Salmon",
+        "quantity": 3,
+        "unit": "oz"
+      },
+      {
+        "item": "Fresh Dill",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "chopped"
+      },
+      {
+        "item": "Capers",
+        "quantity": 1,
+        "unit": "tsp",
+        "notes": "optional"
+      },
+      {
+        "item": "Black Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Slice cucumber into 1/2-inch thick rounds.",
+      "Pat cucumber rounds dry with paper towel.",
+      "Spread cream cheese on each round.",
+      "Top with a piece of smoked salmon.",
+      "Garnish with fresh dill and capers.",
+      "Add a crack of black pepper.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 240,
+      "protein_g": 18,
+      "carbs_g": 8,
+      "fat_g": 16,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 9,
+      "carbs": 4,
+      "fat": 8,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0048",
+    "name": "Cinnamon Roasted Almonds",
+    "description": "Sweet and spiced roasted almonds perfect for portion-controlled snacking",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 20,
+    "servings": 6,
+    "baseServings": 6,
+    "ingredients": [
+      {
+        "item": "Raw Almonds",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "item": "Egg White",
+        "quantity": 1,
+        "unit": "large"
+      },
+      {
+        "item": "Cinnamon",
+        "quantity": 2,
+        "unit": "tsp"
+      },
+      {
+        "item": "Coconut Sugar",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 325F (165C).",
+      "Whisk egg white until frothy.",
+      "Add vanilla and toss almonds in egg white to coat.",
+      "Mix cinnamon, coconut sugar, and salt.",
+      "Toss coated almonds in spice mixture.",
+      "Spread on lined baking sheet in single layer.",
+      "Bake 20 minutes, stirring halfway.",
+      "Let cool completely before storing."
+    ],
+    "nutrition": {
+      "calories": 660,
+      "protein_g": 24,
+      "carbs_g": 36,
+      "fat_g": 54,
+      "fiber_g": 12
+    },
+    "macrosPerServing": {
+      "calories": 110,
+      "protein": 4,
+      "carbs": 6,
+      "fat": 9,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "meal-prep",
+      "portable",
+      "sweet",
+      "on-the-go"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0049",
+    "name": "Protein Cookie Dough Bites",
+    "description": "Safe-to-eat cookie dough balls packed with protein",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 8,
+    "baseServings": 8,
+    "ingredients": [
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Almond Flour",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Mini Chocolate Chips",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Combine protein powder, almond flour, and PB Fit in a bowl.",
+      "Add honey, vanilla extract, and almond milk.",
+      "Mix until a thick dough forms.",
+      "Fold in chocolate chips.",
+      "Roll into 8 balls.",
+      "Refrigerate for 30 minutes.",
+      "Store in fridge for up to 1 week."
+    ],
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 56,
+      "carbs_g": 56,
+      "fat_g": 32,
+      "fiber_g": 8
+    },
+    "macrosPerServing": {
+      "calories": 90,
+      "protein": 7,
+      "carbs": 7,
+      "fat": 4,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "meal-prep",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0050",
+    "name": "Jalapeño Popper Bites",
+    "description": "Spicy stuffed jalapeños with cream cheese and bacon",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 20,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Jalapeño Peppers",
+        "quantity": 6,
+        "unit": "medium"
+      },
+      {
+        "item": "Cream Cheese",
+        "quantity": 4,
+        "unit": "oz",
+        "notes": "softened"
+      },
+      {
+        "item": "Shredded Cheddar Cheese",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Turkey Bacon",
+        "quantity": 4,
+        "unit": "strips",
+        "notes": "cooked and crumbled"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 375F (190C).",
+      "Cut jalapeños in half lengthwise and remove seeds.",
+      "Mix cream cheese, cheddar, half the bacon, and garlic powder.",
+      "Fill each jalapeño half with cheese mixture.",
+      "Place on baking sheet.",
+      "Bake 18-20 minutes until cheese is bubbly.",
+      "Top with remaining bacon crumbles."
+    ],
+    "nutrition": {
+      "calories": 440,
+      "protein_g": 24,
+      "carbs_g": 8,
+      "fat_g": 34,
+      "fiber_g": 2
+    },
+    "macrosPerServing": {
+      "calories": 110,
+      "protein": 6,
+      "carbs": 2,
+      "fat": 8.5,
+      "fiber": 0.5
+    },
+    "difficulty": "medium",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "savory",
+      "meal-prep"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0051",
+    "name": "Pumpkin Spice Protein Bites",
+    "description": "Fall-flavored protein balls with pumpkin puree and warming spices",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 12,
+    "baseServings": 12,
+    "ingredients": [
+      {
+        "item": "Rolled Oats",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Pumpkin Puree",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Pumpkin Pie Spice",
+        "quantity": 1.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Mini Chocolate Chips",
+        "quantity": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Combine oats, protein powder, and pumpkin pie spice in a bowl.",
+      "Add pumpkin puree, PB Fit, and honey.",
+      "Mix until well combined.",
+      "Fold in chocolate chips.",
+      "Roll into 12 balls.",
+      "Refrigerate for at least 1 hour.",
+      "Store in fridge for up to 1 week."
+    ],
+    "nutrition": {
+      "calories": 960,
+      "protein_g": 60,
+      "carbs_g": 132,
+      "fat_g": 24,
+      "fiber_g": 18
+    },
+    "macrosPerServing": {
+      "calories": 80,
+      "protein": 5,
+      "carbs": 11,
+      "fat": 2,
+      "fiber": 1.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "portable",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0052",
+    "name": "Stuffed Mini Bell Peppers",
+    "description": "Colorful mini peppers filled with seasoned cream cheese",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Mini Bell Peppers",
+        "quantity": 12,
+        "unit": "count"
+      },
+      {
+        "item": "Cream Cheese",
+        "quantity": 6,
+        "unit": "oz",
+        "notes": "softened"
+      },
+      {
+        "item": "Everything Bagel Seasoning",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Fresh Chives",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "chopped"
+      }
+    ],
+    "instructions": [
+      "Cut mini peppers in half lengthwise and remove seeds.",
+      "Mix softened cream cheese with everything bagel seasoning.",
+      "Fill each pepper half with cream cheese mixture.",
+      "Top with chopped chives.",
+      "Refrigerate until ready to serve.",
+      "Best eaten within 2 days."
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein_g": 12,
+      "carbs_g": 16,
+      "fat_g": 34,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 100,
+      "protein": 3,
+      "carbs": 4,
+      "fat": 8.5,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "no-cook",
+      "quick",
+      "savory",
+      "portable",
+      "meal-prep"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0053",
+    "name": "Homemade Protein Granola Clusters",
+    "description": "Crunchy granola clusters with added protein powder for sustained energy",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 25,
+    "servings": 10,
+    "baseServings": 10,
+    "ingredients": [
+      {
+        "item": "Rolled Oats",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Sliced Almonds",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Honey",
+        "quantity": 0.33,
+        "unit": "cup"
+      },
+      {
+        "item": "Coconut Oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "melted"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 325F (165C).",
+      "Mix oats, protein powder, almonds, and salt in a bowl.",
+      "Whisk honey, melted coconut oil, and vanilla together.",
+      "Pour wet ingredients over dry and mix until coated.",
+      "Press mixture firmly onto lined baking sheet.",
+      "Bake 20-25 minutes until golden.",
+      "Let cool completely before breaking into clusters.",
+      "Store in airtight container for up to 2 weeks."
+    ],
+    "nutrition": {
+      "calories": 1200,
+      "protein_g": 50,
+      "carbs_g": 150,
+      "fat_g": 50,
+      "fiber_g": 15
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 5,
+      "carbs": 15,
+      "fat": 5,
+      "fiber": 1.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "pre-workout",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0054",
+    "name": "Prosciutto Wrapped Mozzarella",
+    "description": "Italian-inspired snack with salty prosciutto and creamy fresh mozzarella",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Prosciutto",
+        "quantity": 4,
+        "unit": "slices"
+      },
+      {
+        "item": "Fresh Mozzarella Balls",
+        "quantity": 8,
+        "unit": "balls",
+        "notes": "bocconcini"
+      },
+      {
+        "item": "Fresh Basil",
+        "quantity": 8,
+        "unit": "leaves"
+      },
+      {
+        "item": "Balsamic Glaze",
+        "quantity": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Cut prosciutto slices in half lengthwise.",
+      "Place a basil leaf on each mozzarella ball.",
+      "Wrap each mozzarella ball with prosciutto strip.",
+      "Secure with a toothpick if needed.",
+      "Drizzle with balsamic glaze.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein_g": 32,
+      "carbs_g": 8,
+      "fat_g": 28,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 200,
+      "protein": 16,
+      "carbs": 4,
+      "fat": 14,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "keto-friendly",
+      "savory"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0055",
+    "name": "Spiced Roasted Pumpkin Seeds",
+    "description": "Crunchy roasted pumpkin seeds with savory spice blend",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 20,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Raw Pumpkin Seeds",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Olive Oil",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Cumin",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Cayenne Pepper",
+        "quantity": 0.25,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 350F (175C).",
+      "Toss pumpkin seeds with olive oil.",
+      "Mix all spices together.",
+      "Coat seeds with spice mixture.",
+      "Spread on baking sheet in single layer.",
+      "Roast 15-20 minutes, stirring halfway.",
+      "Cool completely before storing."
+    ],
+    "nutrition": {
+      "calories": 360,
+      "protein_g": 16,
+      "carbs_g": 12,
+      "fat_g": 32,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 90,
+      "protein": 4,
+      "carbs": 3,
+      "fat": 8,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "nut-free",
+      "savory",
+      "meal-prep",
+      "portable",
+      "vegan"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0056",
+    "name": "Greek Yogurt Tzatziki",
+    "description": "Cool and refreshing cucumber yogurt dip with fresh dill and garlic",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "Cucumber",
+        "quantity": 1,
+        "unit": "medium",
+        "notes": "grated and drained"
+      },
+      {
+        "item": "Garlic",
+        "quantity": 2,
+        "unit": "cloves",
+        "notes": "minced"
+      },
+      {
+        "item": "Fresh Dill",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "chopped"
+      },
+      {
+        "item": "Lemon Juice",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Olive Oil",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Whole Wheat Pita",
+        "quantity": 2,
+        "unit": "pitas",
+        "notes": "cut into triangles"
+      }
+    ],
+    "instructions": [
+      "Grate cucumber and squeeze out excess water.",
+      "Combine Greek yogurt, cucumber, garlic, dill, and lemon juice.",
+      "Drizzle in olive oil and add salt.",
+      "Mix well and refrigerate for 30 minutes.",
+      "Serve with pita triangles.",
+      "Keeps in fridge for up to 5 days."
+    ],
+    "nutrition": {
+      "calories": 360,
+      "protein_g": 24,
+      "carbs_g": 44,
+      "fat_g": 12,
+      "fiber_g": 6
+    },
+    "macrosPerServing": {
+      "calories": 90,
+      "protein": 6,
+      "carbs": 11,
+      "fat": 3,
+      "fiber": 1.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "savory"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0057",
+    "name": "Egg Salad Lettuce Wraps",
+    "description": "Protein-packed egg salad served in crisp lettuce cups",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 12,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Eggs",
+        "quantity": 4,
+        "unit": "large"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Dijon Mustard",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Butter Lettuce",
+        "quantity": 4,
+        "unit": "leaves"
+      },
+      {
+        "item": "Chives",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "chopped"
+      },
+      {
+        "item": "Paprika",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt and Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Hard boil eggs, cool, and peel.",
+      "Chop eggs and place in a bowl.",
+      "Add Greek yogurt, mustard, chives, salt, and pepper.",
+      "Mix until well combined.",
+      "Divide egg salad among lettuce leaves.",
+      "Sprinkle with paprika.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 340,
+      "protein_g": 28,
+      "carbs_g": 4,
+      "fat_g": 24,
+      "fiber_g": 1
+    },
+    "macrosPerServing": {
+      "calories": 170,
+      "protein": 14,
+      "carbs": 2,
+      "fat": 12,
+      "fiber": 0.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "keto-friendly",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0058",
+    "name": "Chocolate Avocado Protein Mousse",
+    "description": "Creamy chocolate mousse made with avocado and protein powder",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Avocado",
+        "quantity": 1,
+        "unit": "medium",
+        "notes": "ripe"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "chocolate"
+      },
+      {
+        "item": "Cocoa Powder",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Honey",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Scoop avocado flesh into food processor or blender.",
+      "Add protein powder, cocoa powder, almond milk, honey, and vanilla.",
+      "Blend until completely smooth and creamy.",
+      "Scrape down sides and blend again if needed.",
+      "Divide into 2 bowls.",
+      "Refrigerate for 30 minutes or serve immediately.",
+      "Top with berries if desired."
+    ],
+    "nutrition": {
+      "calories": 420,
+      "protein_g": 28,
+      "carbs_g": 40,
+      "fat_g": 22,
+      "fiber_g": 12
+    },
+    "macrosPerServing": {
+      "calories": 210,
+      "protein": 14,
+      "carbs": 20,
+      "fat": 11,
+      "fiber": 6
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0059",
+    "name": "Mini Turkey Meatball Bites",
+    "description": "Bite-sized turkey meatballs perfect for meal prep and snacking",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 18,
+    "servings": 6,
+    "baseServings": 6,
+    "ingredients": [
+      {
+        "item": "Ground Turkey",
+        "quantity": 1,
+        "unit": "lb"
+      },
+      {
+        "item": "Almond Flour",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Egg",
+        "quantity": 1,
+        "unit": "large"
+      },
+      {
+        "item": "Italian Seasoning",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Onion Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Marinara Sauce",
+        "quantity": 0.5,
+        "unit": "cup",
+        "notes": "for dipping"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 400F (200C).",
+      "Combine turkey, almond flour, egg, and all seasonings.",
+      "Mix until just combined (do not overmix).",
+      "Roll into 24 mini meatballs.",
+      "Place on lined baking sheet.",
+      "Bake 15-18 minutes until cooked through.",
+      "Serve warm with marinara for dipping.",
+      "Store in fridge for up to 5 days."
+    ],
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 72,
+      "carbs_g": 18,
+      "fat_g": 36,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 12,
+      "carbs": 3,
+      "fat": 6,
+      "fiber": 0.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "savory",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0060",
+    "name": "Frozen Protein Yogurt Bites",
+    "description": "Frozen Greek yogurt drops for a refreshing protein-packed treat",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 6,
+    "baseServings": 6,
+    "ingredients": [
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 2,
+        "unit": "cups"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "vanilla or chocolate"
+      },
+      {
+        "item": "Honey",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 1,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Mix Greek yogurt with protein powder, honey, and vanilla.",
+      "Stir until smooth and well combined.",
+      "Line a baking sheet with parchment paper.",
+      "Drop tablespoon-sized dollops onto the sheet.",
+      "Freeze for at least 2 hours until solid.",
+      "Transfer to freezer bag for storage.",
+      "Keeps frozen for up to 1 month."
+    ],
+    "nutrition": {
+      "calories": 360,
+      "protein_g": 42,
+      "carbs_g": 36,
+      "fat_g": 6,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 60,
+      "protein": 7,
+      "carbs": 6,
+      "fat": 1,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "meal-prep",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0061",
+    "name": "Bacon Wrapped Stuffed Dates",
+    "description": "Sweet dates stuffed with cheese and wrapped in crispy bacon",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 15,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Medjool Dates",
+        "quantity": 12,
+        "unit": "count"
+      },
+      {
+        "item": "Goat Cheese",
+        "quantity": 3,
+        "unit": "oz"
+      },
+      {
+        "item": "Turkey Bacon",
+        "quantity": 6,
+        "unit": "strips",
+        "notes": "cut in half"
+      },
+      {
+        "item": "Toothpicks",
+        "quantity": 12,
+        "unit": "count"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 400F (200C).",
+      "Slice dates lengthwise and remove pits.",
+      "Stuff each date with about 1 tsp goat cheese.",
+      "Wrap each date with half a bacon strip.",
+      "Secure with toothpick.",
+      "Place on baking sheet.",
+      "Bake 12-15 minutes until bacon is crispy.",
+      "Let cool slightly before serving."
+    ],
+    "nutrition": {
+      "calories": 560,
+      "protein_g": 20,
+      "carbs_g": 64,
+      "fat_g": 24,
+      "fiber_g": 6
+    },
+    "macrosPerServing": {
+      "calories": 140,
+      "protein": 5,
+      "carbs": 16,
+      "fat": 6,
+      "fiber": 1.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "sweet",
+      "savory",
+      "meal-prep",
+      "pre-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0062",
+    "name": "Nut-Free Seeded Energy Bars",
+    "description": "Chewy energy bars made with seeds for a nut-free protein option",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 20,
+    "servings": 8,
+    "baseServings": 8,
+    "ingredients": [
+      {
+        "item": "Pumpkin Seeds",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Sunflower Seeds",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Rolled Oats",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Honey",
+        "quantity": 0.33,
+        "unit": "cup"
+      },
+      {
+        "item": "Sunflower Seed Butter",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Mini Chocolate Chips",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 325F (165C).",
+      "Mix pumpkin seeds, sunflower seeds, oats, protein powder, and salt.",
+      "Heat honey and sunflower seed butter until combined.",
+      "Pour over dry ingredients and mix well.",
+      "Fold in chocolate chips.",
+      "Press into lined 8x8 baking dish.",
+      "Bake 18-20 minutes until edges are golden.",
+      "Cool completely before cutting into 8 bars."
+    ],
+    "nutrition": {
+      "calories": 960,
+      "protein_g": 48,
+      "carbs_g": 96,
+      "fat_g": 48,
+      "fiber_g": 12
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 6,
+      "carbs": 12,
+      "fat": 6,
+      "fiber": 1.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "nut-free",
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0063",
+    "name": "Cinnamon Apple Cottage Cheese",
+    "description": "Warm cinnamon apples over creamy cottage cheese",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 5,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Cottage Cheese (Low-Fat)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Apple",
+        "quantity": 1,
+        "unit": "medium",
+        "notes": "diced"
+      },
+      {
+        "item": "Cinnamon",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Walnuts",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "chopped"
+      }
+    ],
+    "instructions": [
+      "Dice apple into small pieces.",
+      "Heat a small pan and add apples with cinnamon.",
+      "Cook 3-4 minutes until slightly softened.",
+      "Drizzle honey over apples.",
+      "Place cottage cheese in a bowl.",
+      "Top with warm cinnamon apples.",
+      "Sprinkle with chopped walnuts."
+    ],
+    "nutrition": {
+      "calories": 310,
+      "protein_g": 30,
+      "carbs_g": 36,
+      "fat_g": 6,
+      "fiber_g": 5
+    },
+    "macrosPerServing": {
+      "calories": 310,
+      "protein": 30,
+      "carbs": 36,
+      "fat": 6,
+      "fiber": 5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "quick",
+      "sweet"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0064",
+    "name": "Buffalo Chicken Celery Sticks",
+    "description": "Crunchy celery filled with spicy buffalo chicken salad",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Canned Chicken",
+        "quantity": 1,
+        "unit": "can",
+        "notes": "12 oz, drained"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Hot Sauce",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Celery",
+        "quantity": 6,
+        "unit": "stalks"
+      },
+      {
+        "item": "Blue Cheese Crumbles",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "optional"
+      }
+    ],
+    "instructions": [
+      "Drain and shred canned chicken.",
+      "Mix chicken with Greek yogurt and hot sauce.",
+      "Cut celery stalks into 4-inch pieces.",
+      "Fill each celery piece with buffalo chicken mixture.",
+      "Top with blue cheese crumbles if desired.",
+      "Serve immediately or refrigerate for up to 2 days."
+    ],
+    "nutrition": {
+      "calories": 360,
+      "protein_g": 52,
+      "carbs_g": 8,
+      "fat_g": 12,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 180,
+      "protein": 26,
+      "carbs": 4,
+      "fat": 6,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "savory",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0065",
+    "name": "No-Bake Protein Brownie Bites",
+    "description": "Fudgy brownie bites made with protein powder and black beans",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 12,
+    "baseServings": 12,
+    "ingredients": [
+      {
+        "item": "Black Beans",
+        "quantity": 1,
+        "unit": "can",
+        "notes": "15 oz, drained and rinsed"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "chocolate"
+      },
+      {
+        "item": "Cocoa Powder",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Rolled Oats",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Add black beans to food processor and blend until smooth.",
+      "Add protein powder, cocoa, honey, oats, vanilla, and salt.",
+      "Blend until a thick dough forms.",
+      "Roll into 12 balls.",
+      "Flatten slightly into brownie bite shapes.",
+      "Refrigerate for at least 1 hour.",
+      "Store in fridge for up to 1 week."
+    ],
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 60,
+      "carbs_g": 108,
+      "fat_g": 12,
+      "fiber_g": 24
+    },
+    "macrosPerServing": {
+      "calories": 60,
+      "protein": 5,
+      "carbs": 9,
+      "fat": 1,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "high-fiber",
+      "no-cook",
+      "sweet",
+      "meal-prep"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0066",
+    "name": "Deli Meat Pickle Roll-Ups",
+    "description": "Crunchy pickles wrapped in cream cheese and deli meat",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Deli Turkey Breast",
+        "quantity": 4,
+        "unit": "slices"
+      },
+      {
+        "item": "Dill Pickles",
+        "quantity": 4,
+        "unit": "spears"
+      },
+      {
+        "item": "Cream Cheese",
+        "quantity": 4,
+        "unit": "tbsp",
+        "notes": "softened"
+      },
+      {
+        "item": "Black Pepper",
+        "quantity": 1,
+        "unit": "pinch"
+      }
+    ],
+    "instructions": [
+      "Lay turkey slices flat.",
+      "Spread 1 tbsp cream cheese on each slice.",
+      "Sprinkle with black pepper.",
+      "Place a pickle spear at one end.",
+      "Roll up tightly around the pickle.",
+      "Slice in half if desired.",
+      "Serve immediately or refrigerate."
+    ],
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 24,
+      "carbs_g": 6,
+      "fat_g": 22,
+      "fiber_g": 1
+    },
+    "macrosPerServing": {
+      "calories": 160,
+      "protein": 12,
+      "carbs": 3,
+      "fat": 11,
+      "fiber": 0.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "keto-friendly",
+      "quick"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0067",
+    "name": "Protein Oat Muffins",
+    "description": "Moist oat muffins with added protein for a portable snack",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 20,
+    "servings": 6,
+    "baseServings": 6,
+    "ingredients": [
+      {
+        "item": "Rolled Oats",
+        "quantity": 1.5,
+        "unit": "cups"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Eggs",
+        "quantity": 2,
+        "unit": "large"
+      },
+      {
+        "item": "Greek Yogurt (Plain)",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Honey",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Baking Powder",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Cinnamon",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Blueberries",
+        "quantity": 0.5,
+        "unit": "cup"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 350F (175C).",
+      "Blend oats in food processor until flour-like.",
+      "Mix oat flour, protein powder, baking powder, and cinnamon.",
+      "Whisk eggs, Greek yogurt, and honey.",
+      "Combine wet and dry ingredients.",
+      "Fold in blueberries.",
+      "Divide batter into 6 lined muffin cups.",
+      "Bake 18-20 minutes until golden."
+    ],
+    "nutrition": {
+      "calories": 720,
+      "protein_g": 48,
+      "carbs_g": 96,
+      "fat_g": 18,
+      "fiber_g": 12
+    },
+    "macrosPerServing": {
+      "calories": 120,
+      "protein": 8,
+      "carbs": 16,
+      "fat": 3,
+      "fiber": 2
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "meal-prep",
+      "portable",
+      "pre-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0068",
+    "name": "Spicy Tuna Avocado Bites",
+    "description": "Spicy tuna served in avocado halves for a low-carb treat",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Canned Tuna",
+        "quantity": 1,
+        "unit": "can",
+        "notes": "5 oz, drained"
+      },
+      {
+        "item": "Avocado",
+        "quantity": 1,
+        "unit": "large",
+        "notes": "halved and pitted"
+      },
+      {
+        "item": "Mayonnaise",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Sriracha",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Soy Sauce",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Sesame Seeds",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Green Onion",
+        "quantity": 1,
+        "unit": "tbsp",
+        "notes": "sliced"
+      }
+    ],
+    "instructions": [
+      "Drain tuna and place in a bowl.",
+      "Mix with mayonnaise, sriracha, and soy sauce.",
+      "Cut avocado in half and remove pit.",
+      "Fill each avocado half with spicy tuna mixture.",
+      "Top with sesame seeds and green onion.",
+      "Serve immediately."
+    ],
+    "nutrition": {
+      "calories": 380,
+      "protein_g": 30,
+      "carbs_g": 12,
+      "fat_g": 26,
+      "fiber_g": 10
+    },
+    "macrosPerServing": {
+      "calories": 190,
+      "protein": 15,
+      "carbs": 6,
+      "fat": 13,
+      "fiber": 5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "quick",
+      "keto-friendly"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0069",
+    "name": "Salted Caramel Protein Balls",
+    "description": "Sweet and salty protein balls with caramel flavor",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 10,
+    "baseServings": 10,
+    "ingredients": [
+      {
+        "item": "Medjool Dates",
+        "quantity": 1,
+        "unit": "cup",
+        "notes": "pitted"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Almond Flour",
+        "quantity": 0.5,
+        "unit": "cup"
+      },
+      {
+        "item": "Vanilla Extract",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Sea Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 2,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Process dates in food processor until sticky paste forms.",
+      "Add protein powder, PB Fit, almond flour, vanilla, and half the salt.",
+      "Add almond milk and blend until dough forms.",
+      "Roll into 10 balls.",
+      "Sprinkle remaining sea salt on top.",
+      "Refrigerate for 30 minutes.",
+      "Store in fridge for up to 10 days."
+    ],
+    "nutrition": {
+      "calories": 800,
+      "protein_g": 50,
+      "carbs_g": 120,
+      "fat_g": 20,
+      "fiber_g": 15
+    },
+    "macrosPerServing": {
+      "calories": 80,
+      "protein": 5,
+      "carbs": 12,
+      "fat": 2,
+      "fiber": 1.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "meal-prep",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0070",
+    "name": "Ham and Cheese Pinwheels",
+    "description": "Low-carb pinwheels with ham, cheese, and cream cheese",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 0,
+    "servings": 2,
+    "baseServings": 2,
+    "ingredients": [
+      {
+        "item": "Deli Ham",
+        "quantity": 6,
+        "unit": "slices"
+      },
+      {
+        "item": "Swiss Cheese",
+        "quantity": 3,
+        "unit": "slices"
+      },
+      {
+        "item": "Cream Cheese",
+        "quantity": 3,
+        "unit": "tbsp",
+        "notes": "softened"
+      },
+      {
+        "item": "Dijon Mustard",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Fresh Spinach",
+        "quantity": 6,
+        "unit": "leaves"
+      }
+    ],
+    "instructions": [
+      "Lay ham slices flat, overlapping slightly to form a rectangle.",
+      "Spread cream cheese evenly over ham.",
+      "Spread a thin layer of mustard.",
+      "Lay cheese slices on top.",
+      "Add spinach leaves.",
+      "Roll up tightly from one end.",
+      "Slice into 1-inch pinwheels.",
+      "Secure with toothpicks if needed."
+    ],
+    "nutrition": {
+      "calories": 400,
+      "protein_g": 30,
+      "carbs_g": 4,
+      "fat_g": 28,
+      "fiber_g": 1
+    },
+    "macrosPerServing": {
+      "calories": 200,
+      "protein": 15,
+      "carbs": 2,
+      "fat": 14,
+      "fiber": 0.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "low-carb",
+      "no-cook",
+      "keto-friendly",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0071",
+    "name": "Mediterranean Chickpea Bites",
+    "description": "Roasted chickpeas tossed with Mediterranean seasonings and feta",
+    "category": "snack",
+    "prep_time_minutes": 10,
+    "cook_time_minutes": 30,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Chickpeas",
+        "quantity": 1,
+        "unit": "can",
+        "notes": "15 oz, drained"
+      },
+      {
+        "item": "Olive Oil",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Oregano",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Lemon Zest",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Feta Cheese",
+        "quantity": 0.25,
+        "unit": "cup",
+        "notes": "crumbled"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.5,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 400F (200C).",
+      "Pat chickpeas very dry.",
+      "Toss with olive oil, oregano, garlic powder, and salt.",
+      "Spread on baking sheet.",
+      "Roast 25-30 minutes until crispy.",
+      "Toss with lemon zest.",
+      "Top with crumbled feta before serving."
+    ],
+    "nutrition": {
+      "calories": 320,
+      "protein_g": 16,
+      "carbs_g": 36,
+      "fat_g": 14,
+      "fiber_g": 10
+    },
+    "macrosPerServing": {
+      "calories": 80,
+      "protein": 4,
+      "carbs": 9,
+      "fat": 3.5,
+      "fiber": 2.5
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-fiber",
+      "savory",
+      "meal-prep",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0072",
+    "name": "Chocolate Protein Nice Cream",
+    "description": "Creamy frozen dessert made with frozen fruit and protein powder",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Frozen Strawberries",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 1,
+        "unit": "scoop",
+        "notes": "chocolate"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "PB Fit (Powdered Peanut Butter)",
+        "quantity": 1,
+        "unit": "tbsp"
+      }
+    ],
+    "instructions": [
+      "Add frozen strawberries to food processor or high-powered blender.",
+      "Add protein powder, almond milk, and PB Fit.",
+      "Blend until thick and creamy, scraping sides as needed.",
+      "Add more almond milk 1 tablespoon at a time if too thick.",
+      "Serve immediately in a bowl.",
+      "Top with additional fruit if desired."
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein_g": 28,
+      "carbs_g": 20,
+      "fat_g": 3,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 200,
+      "protein": 28,
+      "carbs": 20,
+      "fat": 3,
+      "fiber": 4
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "post-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0073",
+    "name": "Baked Parmesan Zucchini Chips",
+    "description": "Crispy baked zucchini chips coated with parmesan and herbs",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 25,
+    "servings": 4,
+    "baseServings": 4,
+    "ingredients": [
+      {
+        "item": "Zucchini",
+        "quantity": 2,
+        "unit": "medium"
+      },
+      {
+        "item": "Parmesan Cheese",
+        "quantity": 0.5,
+        "unit": "cup",
+        "notes": "grated"
+      },
+      {
+        "item": "Italian Seasoning",
+        "quantity": 1,
+        "unit": "tsp"
+      },
+      {
+        "item": "Garlic Powder",
+        "quantity": 0.5,
+        "unit": "tsp"
+      },
+      {
+        "item": "Olive Oil Spray",
+        "quantity": 1,
+        "unit": "spray"
+      },
+      {
+        "item": "Salt",
+        "quantity": 0.25,
+        "unit": "tsp"
+      }
+    ],
+    "instructions": [
+      "Preheat oven to 425F (220C).",
+      "Slice zucchini into thin 1/8-inch rounds.",
+      "Pat slices very dry with paper towels.",
+      "Mix parmesan, Italian seasoning, garlic powder, and salt.",
+      "Spray baking sheet with olive oil.",
+      "Arrange zucchini in single layer.",
+      "Sprinkle cheese mixture on each slice.",
+      "Bake 20-25 minutes until golden and crispy."
+    ],
+    "nutrition": {
+      "calories": 200,
+      "protein_g": 16,
+      "carbs_g": 12,
+      "fat_g": 12,
+      "fiber_g": 4
+    },
+    "macrosPerServing": {
+      "calories": 50,
+      "protein": 4,
+      "carbs": 3,
+      "fat": 3,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "low-carb",
+      "savory",
+      "keto-friendly",
+      "meal-prep"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0074",
+    "name": "Lemon Protein Bites",
+    "description": "Bright and zesty lemon protein balls for a refreshing snack",
+    "category": "snack",
+    "prep_time_minutes": 15,
+    "cook_time_minutes": 0,
+    "servings": 12,
+    "baseServings": 12,
+    "ingredients": [
+      {
+        "item": "Rolled Oats",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 2,
+        "unit": "scoops",
+        "notes": "vanilla"
+      },
+      {
+        "item": "Lemon Zest",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Lemon Juice",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Honey",
+        "quantity": 3,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Almond Flour",
+        "quantity": 0.25,
+        "unit": "cup"
+      },
+      {
+        "item": "Coconut Oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "notes": "melted"
+      }
+    ],
+    "instructions": [
+      "Combine oats, protein powder, and almond flour in a bowl.",
+      "Add lemon zest and mix.",
+      "Stir in honey, lemon juice, and melted coconut oil.",
+      "Mix until dough holds together.",
+      "Roll into 12 balls.",
+      "Refrigerate for at least 1 hour.",
+      "Store in fridge for up to 1 week."
+    ],
+    "nutrition": {
+      "calories": 840,
+      "protein_g": 48,
+      "carbs_g": 96,
+      "fat_g": 36,
+      "fiber_g": 12
+    },
+    "macrosPerServing": {
+      "calories": 70,
+      "protein": 4,
+      "carbs": 8,
+      "fat": 3,
+      "fiber": 1
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "sweet",
+      "meal-prep",
+      "portable"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "snack-0075",
+    "name": "Cottage Cheese Protein Fluff",
+    "description": "Light and fluffy whipped cottage cheese with protein powder",
+    "category": "snack",
+    "prep_time_minutes": 5,
+    "cook_time_minutes": 0,
+    "servings": 1,
+    "baseServings": 1,
+    "ingredients": [
+      {
+        "item": "Cottage Cheese (Low-Fat)",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "item": "Whey Protein Powder",
+        "quantity": 0.5,
+        "unit": "scoop",
+        "notes": "vanilla or chocolate"
+      },
+      {
+        "item": "Sugar-Free Pudding Mix",
+        "quantity": 1,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Almond Milk",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "item": "Ice",
+        "quantity": 4,
+        "unit": "cubes"
+      }
+    ],
+    "instructions": [
+      "Add cottage cheese to blender.",
+      "Add protein powder, pudding mix, and almond milk.",
+      "Add ice cubes.",
+      "Blend until smooth and fluffy (about 1-2 minutes).",
+      "Pour into a bowl.",
+      "Serve immediately - volume is best when fresh.",
+      "Top with berries or sugar-free whipped cream if desired."
+    ],
+    "nutrition": {
+      "calories": 240,
+      "protein_g": 40,
+      "carbs_g": 14,
+      "fat_g": 3,
+      "fiber_g": 0
+    },
+    "macrosPerServing": {
+      "calories": 240,
+      "protein": 40,
+      "carbs": 14,
+      "fat": 3,
+      "fiber": 0
+    },
+    "difficulty": "easy",
+    "tags": [
+      "high-protein",
+      "no-cook",
+      "quick",
+      "sweet",
+      "post-workout"
+    ],
+    "created_at": "2024-01-01T00:00:00Z"
   }
 ]

@@ -4,105 +4,171 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/components/providers';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { Dumbbell, Mail, Lock, AlertCircle } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { signIn, isAuthEnabled } = useAuth();
+  const { signIn, isAuthEnabled, isLoading: authLoading } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  if (!isAuthEnabled) {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const result = await signIn(email, password);
+      if (result.success) {
+        router.push('/');
+      } else {
+        setError(result.error || 'Failed to sign in');
+      }
+    } catch {
+      setError('An unexpected error occurred');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // If auth is not enabled, redirect to home
+  if (!authLoading && !isAuthEnabled) {
+    router.push('/');
+    return null;
+  }
+
+  if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="card max-w-md w-full text-center">
-          <h1 className="text-xl font-bold text-gray-900 mb-2">Auth Not Configured</h1>
-          <p className="text-gray-500">
-            Please set up your Supabase environment variables to enable authentication.
-          </p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+        <LoadingSpinner size="lg" />
       </div>
     );
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    try {
-      await signIn(email, password);
-      router.push('/');
-    } catch (err: any) {
-      setError(err.message || 'Failed to sign in');
-    } finally {
-      setLoading(false);
-    }
-  }
-
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="card max-w-md w-full">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">Welcome Back</h1>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input-field w-full"
-              placeholder="you@example.com"
-              required
-            />
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
+      <div className="w-full max-w-md">
+        {/* Logo and Title */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white mb-4">
+            <Dumbbell className="w-8 h-8" />
           </div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Fitness Tracker
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">
+            Sign in to your account
+          </p>
+        </div>
 
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+        {/* Login Form */}
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-lg text-sm">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <span>{error}</span>
+              </div>
+            )}
+
+            <div className="space-y-1">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Email
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  required
+                  className="pl-10"
+                  disabled={isLoading}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Password
               </label>
-              <Link href="/auth/reset-password" className="text-sm text-blue-600 hover:underline">
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  required
+                  className="pl-10"
+                  disabled={isLoading}
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end">
+              <Link
+                href="/auth/reset-password"
+                className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
                 Forgot password?
               </Link>
             </div>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="input-field w-full"
-              placeholder="Your password"
-              required
-            />
+
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <LoadingSpinner size="sm" />
+                  Signing in...
+                </span>
+              ) : (
+                'Sign In'
+              )}
+            </Button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Don&apos;t have an account?{' '}
+              <Link
+                href="/auth/signup"
+                className="font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                Sign up
+              </Link>
+            </p>
           </div>
+        </div>
 
-          {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
-              {error}
-            </div>
-          )}
-
+        {/* Demo Mode Link */}
+        <div className="mt-4 text-center">
           <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary w-full"
+            type="button"
+            onClick={() => {
+              // Do NOT sign out - preserve any existing session
+              // Just set demo mode flag and redirect to home with demo data
+              localStorage.setItem('fitness-tracker-demo-mode', 'true');
+              // Mark onboarding as complete to show demo data immediately
+              localStorage.setItem('fitness-tracker-onboarding-complete', 'true');
+              window.location.href = '/';
+            }}
+            className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
           >
-            {loading ? 'Signing in...' : 'Log In'}
+            Skip for now (Demo Mode)
           </button>
-        </form>
-
-        <p className="mt-4 text-center text-sm text-gray-500">
-          Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="text-blue-600 hover:underline">
-            Sign up
-          </Link>
-        </p>
+        </div>
       </div>
     </div>
   );

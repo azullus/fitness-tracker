@@ -1,222 +1,419 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { format, startOfWeek, addDays } from 'date-fns';
-import { ShoppingCart, Flame, BookOpen, RefreshCw } from 'lucide-react';
-import MealCard from '@/components/MealCard';
-import ProtectedRoute from '@/components/ProtectedRoute';
-import { cn } from '@/lib/utils';
+import { format, addDays, subDays, isToday } from 'date-fns';
+import { ChevronLeft, ChevronRight, UtensilsCrossed, BookOpen, CheckCircle2, Plus } from 'lucide-react';
+import { clsx } from 'clsx';
+import Header from '@/components/navigation/Header';
+import { MealCard } from '@/components/cards';
+import { getMealsByDate, getMealsByPersonAndDate } from '@/lib/demo-data';
+import { useCurrentPerson } from '@/components/providers/PersonProvider';
+import { getNutritionTargets, addFoodEntry, addRecentFood } from '@/lib/food-log';
+import type { Meal } from '@/lib/types';
 
-const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack';
+
+const mealTypeOrder: MealType[] = ['breakfast', 'lunch', 'dinner', 'snack'];
+
+const mealTypeLabels: Record<MealType, string> = {
+  breakfast: 'Breakfast',
+  lunch: 'Lunch',
+  dinner: 'Dinner',
+  snack: 'Snacks',
+};
+
+interface NutritionTotals {
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  fiber: number;
+}
 
 export default function MealsPage() {
-  const today = new Date();
-  const [selectedDay, setSelectedDay] = useState(daysOfWeek[today.getDay()]);
-  const weekStart = startOfWeek(today, { weekStartsOn: 0 });
-  const [mealsData, setMealsData] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const currentPerson = useCurrentPerson();
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [isLoggingAll, setIsLoggingAll] = useState(false);
+  const [allLogged, setAllLogged] = useState(false);
 
-  useEffect(() => {
-    const currentDate = new Date();
-    const todayStr = format(currentDate, 'yyyy-MM-dd');
-    fetch(`/api/meals?date=${todayStr}`)
-      .then(res => res.json())
-      .then(data => {
-        setMealsData(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Error loading meals:', err);
-        setLoading(false);
-      });
-  }, []);
+  const dateString = format(currentDate, 'yyyy-MM-dd');
+  const displayDate = format(currentDate, 'EEEE, MMMM d, yyyy');
 
-  // Find meals for selected day
-  const selectedDate = format(addDays(weekStart, daysOfWeek.indexOf(selectedDay)), 'yyyy-MM-dd');
-  const dayMeals = mealsData.find(d => d.date === selectedDate) || {
-    breakfast: null,
-    lunch: null,
-    dinner: null,
-    snacks: [],
+  // Get meals for the current date filtered by person
+  const meals = useMemo(() => {
+    if (currentPerson) {
+      return getMealsByPersonAndDate(currentPerson.id, dateString);
+    }
+    return getMealsByDate(dateString);
+  }, [dateString, currentPerson]);
+
+  // Group meals by type
+  const mealsByType = useMemo(() => {
+    const grouped: Record<MealType, Meal[]> = {
+      breakfast: [],
+      lunch: [],
+      dinner: [],
+      snack: [],
+    };
+
+    meals.forEach((meal) => {
+      grouped[meal.meal_type].push(meal);
+    });
+
+    return grouped;
+  }, [meals]);
+
+  // Calculate nutrition totals
+  const nutritionTotals = useMemo((): NutritionTotals => {
+    return meals.reduce(
+      (totals, meal) => ({
+        calories: totals.calories + (meal.calories || 0),
+        protein: totals.protein + (meal.protein_g || 0),
+        carbs: totals.carbs + (meal.carbs_g || 0),
+        fat: totals.fat + (meal.fat_g || 0),
+        fiber: totals.fiber + (meal.fiber_g || 0),
+      }),
+      { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }
+    );
+  }, [meals]);
+
+  // Navigation handlers
+  const goToPreviousDay = () => {
+    setCurrentDate((prev) => subDays(prev, 1));
+    setAllLogged(false);
+  };
+  const goToNextDay = () => {
+    setCurrentDate((prev) => addDays(prev, 1));
+    setAllLogged(false);
+  };
+  const goToToday = () => {
+    setCurrentDate(new Date());
+    setAllLogged(false);
   };
 
-  // Calculate daily totals
-  const dailyTotals = {
-    calories: (dayMeals.breakfast?.recipe?.calories || 0) +
-              (dayMeals.lunch?.recipe?.calories || 0) +
-              (dayMeals.dinner?.recipe?.calories || 0),
-    protein: (dayMeals.breakfast?.recipe?.protein_g || 0) +
-             (dayMeals.lunch?.recipe?.protein_g || 0) +
-             (dayMeals.dinner?.recipe?.protein_g || 0),
-    carbs: (dayMeals.breakfast?.recipe?.carbs_g || 0) +
-           (dayMeals.lunch?.recipe?.carbs_g || 0) +
-           (dayMeals.dinner?.recipe?.carbs_g || 0),
-    fat: (dayMeals.breakfast?.recipe?.fat_g || 0) +
-         (dayMeals.lunch?.recipe?.fat_g || 0) +
-         (dayMeals.dinner?.recipe?.fat_g || 0),
-    fiber: (dayMeals.breakfast?.recipe?.fiber_g || 0) +
-           (dayMeals.lunch?.recipe?.fiber_g || 0) +
-           (dayMeals.dinner?.recipe?.fiber_g || 0),
+  // Log all meals for the day
+  const handleLogAllMeals = async () => {
+    if (!currentPerson || isLoggingAll || meals.length === 0) return;
+
+    setIsLoggingAll(true);
+    try {
+      const today = format(new Date(), 'yyyy-MM-dd');
+
+      for (const meal of meals) {
+        // Create food entry from each meal
+        addFoodEntry({
+          personId: currentPerson.id,
+          date: today,
+          mealType: meal.meal_type,
+          name: meal.name,
+          calories: meal.calories || 0,
+          protein: meal.protein_g || 0,
+          carbs: meal.carbs_g || 0,
+          fat: meal.fat_g || 0,
+          fiber: meal.fiber_g || 0,
+          servingSize: '1 serving',
+        });
+
+        // Add to recent foods
+        addRecentFood({
+          name: meal.name,
+          calories: meal.calories || 0,
+          protein: meal.protein_g || 0,
+          carbs: meal.carbs_g || 0,
+          fat: meal.fat_g || 0,
+          fiber: meal.fiber_g || 0,
+          servingSize: '1 serving',
+        }, currentPerson.id);
+      }
+
+      setAllLogged(true);
+
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setAllLogged(false);
+      }, 3000);
+    } catch {
+      // Error already handled by individual meal logging
+    } finally {
+      setIsLoggingAll(false);
+    }
   };
+
+  // Check if we have any meals
+  const hasMeals = meals.length > 0;
+
+  // Get targets from person's settings or use defaults
+  const targets = useMemo(() => {
+    const baseTargets = getNutritionTargets();
+    // Override with person's calorie target if available
+    if (currentPerson?.dailyCalorieTarget) {
+      baseTargets.calories = currentPerson.dailyCalorieTarget;
+    }
+    return baseTargets;
+  }, [currentPerson]);
 
   return (
-    <ProtectedRoute>
-    <div className="px-4 py-6 max-w-lg mx-auto">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Meals</h1>
-        <div className="flex gap-2">
-          <Link href="/recipes" className="btn-secondary btn-sm flex items-center gap-1">
-            <BookOpen className="w-4 h-4" />
-            Recipes
-          </Link>
-          <button className="btn-secondary btn-sm flex items-center gap-1">
-            <ShoppingCart className="w-4 h-4" />
-            Grocery
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-24">
+      <Header title="Meals" showPersonToggle={true} />
+
+      {/* Date Navigation */}
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
+        <div className="flex items-center justify-between">
+          {/* Previous Day Button */}
+          <button
+            onClick={goToPreviousDay}
+            className={clsx(
+              'p-2 rounded-lg',
+              'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white',
+              'hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors'
+            )}
+            aria-label="Previous day"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Current Date Display */}
+          <div className="flex flex-col items-center">
+            <span className="font-semibold text-gray-900 dark:text-white">{displayDate}</span>
+            {!isToday(currentDate) && (
+              <button
+                onClick={goToToday}
+                className={clsx(
+                  'mt-1 px-3 py-1 text-xs font-medium rounded-full',
+                  'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400',
+                  'hover:bg-emerald-200 dark:hover:bg-emerald-900/60 transition-colors'
+                )}
+              >
+                Today
+              </button>
+            )}
+          </div>
+
+          {/* Next Day Button */}
+          <button
+            onClick={goToNextDay}
+            className={clsx(
+              'p-2 rounded-lg',
+              'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white',
+              'hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors'
+            )}
+            aria-label="Next day"
+          >
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>
 
-      {/* Week day selector */}
-      <div className="flex gap-1 mb-6 overflow-x-auto pb-2 -mx-4 px-4">
-        {daysOfWeek.map((day, index) => {
-          const date = addDays(weekStart, index);
-          const isToday = format(date, 'yyyy-MM-dd') === format(today, 'yyyy-MM-dd');
-
-          return (
-            <button
-              key={day}
-              onClick={() => setSelectedDay(day)}
-              className={cn(
-                'flex flex-col items-center min-w-[3.5rem] py-2 px-3 rounded-xl transition-colors',
-                selectedDay === day
-                  ? 'bg-primary-100 text-primary-700'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              )}
-            >
-              <span className="text-xs font-medium">{day.slice(0, 3)}</span>
-              <span className={cn(
-                'text-lg font-bold',
-                isToday && 'underline underline-offset-2'
-              )}>
-                {format(date, 'd')}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      {loading ? (
-        <div className="text-center py-12 text-gray-500">
-          <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-2" />
-          Loading meals...
-        </div>
-      ) : (
-        <>
-          {/* Daily totals summary */}
-          <div className="card mb-6 bg-gradient-to-r from-primary-50 to-blue-50">
-            <div className="flex items-center gap-2 mb-3">
-              <Flame className="w-5 h-5 text-primary-600" />
-              <span className="font-semibold text-gray-900">{selectedDay} Nutrition</span>
-              <span className="text-sm text-gray-500">(per person)</span>
-            </div>
-            {dailyTotals.calories > 0 ? (
+      {/* Log All Meals Button */}
+      {hasMeals && isToday(currentDate) && currentPerson && (
+        <div className="px-4 pt-4">
+          <button
+            onClick={handleLogAllMeals}
+            disabled={isLoggingAll || allLogged}
+            className={clsx(
+              'w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl',
+              'font-semibold text-sm transition-all duration-200',
+              allLogged
+                ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 border-2 border-emerald-300 dark:border-emerald-700'
+                : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white shadow-lg shadow-emerald-500/25',
+              (isLoggingAll || allLogged) && 'cursor-not-allowed'
+            )}
+          >
+            {allLogged ? (
               <>
-                <div className="grid grid-cols-5 gap-2 text-center">
-                  <div>
-                    <p className="text-xl font-bold text-gray-900">{dailyTotals.calories}</p>
-                    <p className="text-xs text-gray-500">Calories</p>
-                  </div>
-                  <div>
-                    <p className="text-xl font-bold text-blue-600">{dailyTotals.protein}g</p>
-                    <p className="text-xs text-gray-500">Protein</p>
-                  </div>
-                  <div>
-                    <p className="text-xl font-bold text-amber-600">{dailyTotals.carbs}g</p>
-                    <p className="text-xs text-gray-500">Carbs</p>
-                  </div>
-                  <div>
-                    <p className="text-xl font-bold text-red-500">{dailyTotals.fat}g</p>
-                    <p className="text-xs text-gray-500">Fat</p>
-                  </div>
-                  <div>
-                    <p className="text-xl font-bold text-green-600">{dailyTotals.fiber}g</p>
-                    <p className="text-xs text-gray-500">Fiber</p>
-                  </div>
-                </div>
+                <CheckCircle2 className="w-5 h-5" />
+                All {meals.length} Meals Logged to Today!
+              </>
+            ) : isLoggingAll ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                Logging {meals.length} meals...
+              </>
+            ) : (
+              <>
+                <Plus className="w-5 h-5" />
+                Log All {meals.length} Meals to Today
+              </>
+            )}
+          </button>
+        </div>
+      )}
 
-                {/* Protein target indicator */}
-                <div className="mt-4">
-                  <div className="flex justify-between text-xs text-gray-600 mb-1">
-                    <span>Protein Target</span>
-                    <span>{dailyTotals.protein}/160g</span>
+      {/* Main Content */}
+      <div className="px-4 py-4 space-y-6">
+        {hasMeals ? (
+          <>
+            {/* Meals Grouped by Type */}
+            {mealTypeOrder.map((mealType) => {
+              const mealsOfType = mealsByType[mealType];
+              if (mealsOfType.length === 0) return null;
+
+              return (
+                <section key={mealType}>
+                  <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
+                    {mealTypeLabels[mealType]}
+                  </h2>
+                  <div className="space-y-3">
+                    {mealsOfType.map((meal) => (
+                      <MealCard key={meal.id} meal={meal} showLogButton={true} />
+                    ))}
                   </div>
-                  <div className="progress-bar">
+                </section>
+              );
+            })}
+
+            {/* Daily Nutrition Summary */}
+            <section className="mt-8">
+              <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
+                Daily Nutrition Summary
+              </h2>
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4">
+                {/* Calories Header */}
+                <div className="text-center mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
+                  <p className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">
+                    {nutritionTotals.calories}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    of {targets.calories} calories
+                  </p>
+                  <div className="mt-2 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                     <div
-                      className="progress-bar-fill bg-blue-500"
-                      style={{ width: `${Math.min((dailyTotals.protein / 160) * 100, 100)}%` }}
+                      className={clsx(
+                        'h-full rounded-full transition-all duration-300',
+                        nutritionTotals.calories > targets.calories
+                          ? 'bg-orange-500'
+                          : 'bg-emerald-500'
+                      )}
+                      style={{
+                        width: `${Math.min((nutritionTotals.calories / targets.calories) * 100, 100)}%`,
+                      }}
                     />
                   </div>
                 </div>
-              </>
-            ) : (
-              <p className="text-center text-gray-500 py-4">No meals planned for this day</p>
-            )}
-          </div>
 
-          {/* Meals list */}
-          <div className="space-y-3">
-            <MealCard mealType="Breakfast" meal={dayMeals.breakfast} />
-            <MealCard mealType="Lunch" meal={dayMeals.lunch} />
-            <MealCard mealType="Dinner" meal={dayMeals.dinner} />
-            <MealCard mealType="Snack" meal={dayMeals.snacks?.[0]} />
-          </div>
-
-          {/* Weekly protein overview */}
-          <div className="mt-6 card">
-            <h3 className="font-semibold text-gray-900 mb-3">Weekly Protein Overview</h3>
-            <div className="space-y-2">
-              {daysOfWeek.map((day, index) => {
-                const dateStr = format(addDays(weekStart, index), 'yyyy-MM-dd');
-                const meals = mealsData.find(d => d.date === dateStr);
-                const protein = meals ?
-                  (meals.breakfast?.recipe?.protein_g || 0) +
-                  (meals.lunch?.recipe?.protein_g || 0) +
-                  (meals.dinner?.recipe?.protein_g || 0) : 0;
-                const isSelected = day === selectedDay;
-
-                return (
-                  <div key={day} className="flex items-center gap-3">
-                    <span className={cn(
-                      'text-sm w-12',
-                      isSelected ? 'font-semibold text-primary-600' : 'text-gray-500'
-                    )}>
-                      {day.slice(0, 3)}
-                    </span>
-                    <div className="flex-1 progress-bar">
+                {/* Macros Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Protein */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Protein</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {nutritionTotals.protein}g / {targets.protein}g
+                      </span>
+                    </div>
+                    <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                       <div
-                        className={cn(
-                          'progress-bar-fill',
-                          protein >= 140 ? 'bg-green-500' : protein >= 100 ? 'bg-amber-500' : 'bg-red-400'
-                        )}
-                        style={{ width: `${Math.min((protein / 160) * 100, 100)}%` }}
+                        className="h-full bg-blue-500 rounded-full transition-all duration-300"
+                        style={{
+                          width: `${Math.min((nutritionTotals.protein / targets.protein) * 100, 100)}%`,
+                        }}
                       />
                     </div>
-                    <span className={cn(
-                      'text-sm font-medium w-12 text-right',
-                      protein >= 140 ? 'text-green-600' : protein >= 100 ? 'text-amber-600' : 'text-red-500'
-                    )}>
-                      {protein}g
-                    </span>
                   </div>
-                );
-              })}
+
+                  {/* Carbs */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Carbs</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {nutritionTotals.carbs}g / {targets.carbs}g
+                      </span>
+                    </div>
+                    <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-yellow-500 rounded-full transition-all duration-300"
+                        style={{
+                          width: `${Math.min((nutritionTotals.carbs / targets.carbs) * 100, 100)}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Fat */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Fat</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {nutritionTotals.fat}g / {targets.fat}g
+                      </span>
+                    </div>
+                    <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-orange-500 rounded-full transition-all duration-300"
+                        style={{
+                          width: `${Math.min((nutritionTotals.fat / targets.fat) * 100, 100)}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Fiber */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Fiber</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {nutritionTotals.fiber}g / {targets.fiber}g
+                      </span>
+                    </div>
+                    <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-purple-500 rounded-full transition-all duration-300"
+                        style={{
+                          width: `${Math.min((nutritionTotals.fiber / targets.fiber) * 100, 100)}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        ) : (
+          /* Empty State */
+          <div className="flex flex-col items-center justify-center py-16 px-4">
+            <div className="w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-4">
+              <UtensilsCrossed className="w-8 h-8 text-gray-400 dark:text-gray-500" />
             </div>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              No meals planned
+            </h3>
+            <p className="text-gray-500 dark:text-gray-400 text-center mb-6 max-w-xs">
+              No meals have been logged for this day. Browse recipes to get meal ideas!
+            </p>
+            <Link
+              href="/recipes"
+              className={clsx(
+                'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl',
+                'bg-emerald-600 dark:bg-emerald-600 text-white font-medium',
+                'hover:bg-emerald-700 dark:hover:bg-emerald-500',
+                'shadow-md hover:shadow-lg transition-all duration-200'
+              )}
+            >
+              <BookOpen className="w-4 h-4" />
+              Browse Recipes
+            </Link>
           </div>
-        </>
-      )}
+        )}
+
+        {/* Browse Recipes Button (shown when there are meals) */}
+        {hasMeals && (
+          <div className="mt-6">
+            <Link
+              href="/recipes"
+              className={clsx(
+                'flex items-center justify-center gap-2 w-full py-3 rounded-lg',
+                'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm',
+                'text-gray-700 dark:text-gray-200 font-medium',
+                'hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors'
+              )}
+            >
+              <BookOpen className="w-5 h-5" />
+              Browse Recipes
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
-    </ProtectedRoute>
   );
 }

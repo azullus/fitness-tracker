@@ -2,28 +2,323 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .card {
-    @apply bg-white rounded-xl p-4 shadow-sm border border-gray-100;
+@layer base {
+  :root {
+    --foreground-rgb: 17, 24, 39;
+    --background-rgb: 249, 250, 251;
+    --card-rgb: 255, 255, 255;
+    --border-rgb: 229, 231, 235;
+
+    /* Color theme variables - Light mode defaults (emerald) */
+    --theme-primary-from: 5, 150, 105; /* emerald-600 */
+    --theme-primary-via: 20, 184, 166; /* teal-500 */
+    --theme-primary-to: 6, 182, 212; /* cyan-500 */
+    --theme-primary-text: 4, 120, 87; /* emerald-700 */
+    --theme-primary-light: 167, 243, 208; /* emerald-200 */
+    --theme-accent: 16, 185, 129; /* emerald-500 */
+    --theme-button-bg: 5, 150, 105; /* emerald-600 */
+    --theme-button-hover: 4, 120, 87; /* emerald-700 */
   }
 
-  .card-header {
-    @apply text-sm font-semibold text-gray-700 mb-3;
+  /* Light mode color themes */
+  :root[data-color-theme="emerald"] {
+    --theme-primary-from: 5, 150, 105; /* emerald-600 */
+    --theme-primary-via: 20, 184, 166; /* teal-500 */
+    --theme-primary-to: 6, 182, 212; /* cyan-500 */
+    --theme-primary-text: 4, 120, 87; /* emerald-700 */
+    --theme-primary-light: 167, 243, 208; /* emerald-200 */
+    --theme-accent: 16, 185, 129; /* emerald-500 */
+    --theme-button-bg: 5, 150, 105; /* emerald-600 */
+    --theme-button-hover: 4, 120, 87; /* emerald-700 */
   }
 
-  .btn-primary {
-    @apply px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  :root[data-color-theme="sky"] {
+    --theme-primary-from: 2, 132, 199; /* sky-600 */
+    --theme-primary-via: 14, 165, 233; /* sky-500 */
+    --theme-primary-to: 56, 189, 248; /* sky-400 */
+    --theme-primary-text: 3, 105, 161; /* sky-700 */
+    --theme-primary-light: 186, 230, 253; /* sky-200 */
+    --theme-accent: 14, 165, 233; /* sky-500 */
+    --theme-button-bg: 2, 132, 199; /* sky-600 */
+    --theme-button-hover: 3, 105, 161; /* sky-700 */
   }
 
-  .btn-secondary {
-    @apply px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  :root[data-color-theme="violet"] {
+    --theme-primary-from: 124, 58, 237; /* violet-600 */
+    --theme-primary-via: 139, 92, 246; /* violet-500 */
+    --theme-primary-to: 167, 139, 250; /* violet-400 */
+    --theme-primary-text: 109, 40, 217; /* violet-700 */
+    --theme-primary-light: 221, 214, 254; /* violet-200 */
+    --theme-accent: 139, 92, 246; /* violet-500 */
+    --theme-button-bg: 124, 58, 237; /* violet-600 */
+    --theme-button-hover: 109, 40, 217; /* violet-700 */
   }
 
-  .btn-sm {
-    @apply px-3 py-1.5 text-sm;
+  :root[data-color-theme="amber"] {
+    --theme-primary-from: 217, 119, 6; /* amber-600 */
+    --theme-primary-via: 245, 158, 11; /* amber-500 */
+    --theme-primary-to: 251, 191, 36; /* amber-400 */
+    --theme-primary-text: 180, 83, 9; /* amber-700 */
+    --theme-primary-light: 253, 230, 138; /* amber-200 */
+    --theme-accent: 245, 158, 11; /* amber-500 */
+    --theme-button-bg: 217, 119, 6; /* amber-600 */
+    --theme-button-hover: 180, 83, 9; /* amber-700 */
   }
 
-  .input-field {
-    @apply px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  .dark {
+    --foreground-rgb: 243, 244, 246;
+    --background-rgb: 17, 24, 39;
+    --card-rgb: 31, 41, 55;
+    --border-rgb: 55, 65, 81;
+
+    /* Dark mode defaults (emerald) */
+    --theme-primary-from: 6, 95, 70; /* emerald-800 */
+    --theme-primary-via: 17, 94, 89; /* teal-700 */
+    --theme-primary-to: 14, 116, 144; /* cyan-700 */
+    --theme-primary-text: 167, 243, 208; /* emerald-200 */
+    --theme-primary-light: 6, 78, 59; /* emerald-900 */
+    --theme-accent: 52, 211, 153; /* emerald-400 */
+    --theme-button-bg: 5, 150, 105; /* emerald-600 */
+    --theme-button-hover: 16, 185, 129; /* emerald-500 */
   }
+
+  /* Dark mode color themes */
+  .dark[data-color-theme="emerald"] {
+    --theme-primary-from: 6, 95, 70; /* emerald-800 */
+    --theme-primary-via: 17, 94, 89; /* teal-700 */
+    --theme-primary-to: 14, 116, 144; /* cyan-700 */
+    --theme-primary-text: 167, 243, 208; /* emerald-200 */
+    --theme-primary-light: 6, 78, 59; /* emerald-900 */
+    --theme-accent: 52, 211, 153; /* emerald-400 */
+    --theme-button-bg: 5, 150, 105; /* emerald-600 */
+    --theme-button-hover: 16, 185, 129; /* emerald-500 */
+  }
+
+  .dark[data-color-theme="indigo"] {
+    --theme-primary-from: 55, 48, 163; /* indigo-800 */
+    --theme-primary-via: 67, 56, 202; /* indigo-700 */
+    --theme-primary-to: 79, 70, 229; /* indigo-600 */
+    --theme-primary-text: 199, 210, 254; /* indigo-200 */
+    --theme-primary-light: 49, 46, 129; /* indigo-900 */
+    --theme-accent: 129, 140, 248; /* indigo-400 */
+    --theme-button-bg: 79, 70, 229; /* indigo-600 */
+    --theme-button-hover: 99, 102, 241; /* indigo-500 */
+  }
+
+  .dark[data-color-theme="violet"] {
+    --theme-primary-from: 91, 33, 182; /* violet-800 */
+    --theme-primary-via: 109, 40, 217; /* violet-700 */
+    --theme-primary-to: 124, 58, 237; /* violet-600 */
+    --theme-primary-text: 221, 214, 254; /* violet-200 */
+    --theme-primary-light: 76, 29, 149; /* violet-900 */
+    --theme-accent: 167, 139, 250; /* violet-400 */
+    --theme-button-bg: 124, 58, 237; /* violet-600 */
+    --theme-button-hover: 139, 92, 246; /* violet-500 */
+  }
+
+  .dark[data-color-theme="rose"] {
+    --theme-primary-from: 159, 18, 57; /* rose-800 */
+    --theme-primary-via: 190, 18, 60; /* rose-700 */
+    --theme-primary-to: 225, 29, 72; /* rose-600 */
+    --theme-primary-text: 254, 205, 211; /* rose-200 */
+    --theme-primary-light: 136, 19, 55; /* rose-900 */
+    --theme-accent: 251, 113, 133; /* rose-400 */
+    --theme-button-bg: 225, 29, 72; /* rose-600 */
+    --theme-button-hover: 244, 63, 94; /* rose-500 */
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar - Light mode */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Hero Section Animations */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes flame-flicker {
+  0%, 100% {
+    transform: scale(1) rotate(-2deg);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.1) rotate(2deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(0.95) rotate(-1deg);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.05) rotate(1deg);
+    opacity: 0.95;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-flame {
+  animation: flame-flicker 0.8s ease-in-out infinite;
+}
+
+/* Stagger animation delays for stats */
+.stat-delay-1 {
+  animation-delay: 0s;
+}
+
+.stat-delay-2 {
+  animation-delay: 0.1s;
+}
+
+.stat-delay-3 {
+  animation-delay: 0.2s;
+}
+
+.stat-delay-4 {
+  animation-delay: 0.3s;
+}
+
+/* Dialog/Modal Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom-in-95 {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-from-bottom-4 {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-from-top-2 {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Combined dialog animation */
+.animate-in {
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+.animate-in.fade-in {
+  animation-name: fade-in;
+}
+
+.animate-in.zoom-in-95 {
+  animation-name: zoom-in-95;
+}
+
+.animate-in.slide-in-from-bottom-4 {
+  animation-name: slide-in-from-bottom-4;
+}
+
+.animate-in.slide-in-from-top-2 {
+  animation-name: slide-in-from-top-2;
+}
+
+/* Apply multiple animations */
+.animate-in.zoom-in-95.slide-in-from-bottom-4 {
+  animation-name: zoom-in-95, slide-in-from-bottom-4;
 }

@@ -30,7 +30,7 @@ export function LowStockAlerts({ lowStockItems }: LowStockAlertsProps) {
               key={item.id}
               className="px-2 py-1 bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 rounded-full text-sm"
             >
-              {item.item}
+              {item.name}
             </span>
           ))}
           {lowStockItems.length > 5 && (
