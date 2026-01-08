@@ -8,6 +8,25 @@ import { withCSRFProtection } from '@/lib/csrf';
 import { applyRateLimit, RateLimitPresets } from '@/lib/rate-limit';
 import type { Person } from '@/lib/types';
 
+// Map Supabase snake_case columns to frontend camelCase
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapPersonFromDb(dbPerson: any): Person {
+  return {
+    id: dbPerson.id,
+    name: dbPerson.name,
+    gender: dbPerson.gender,
+    age: dbPerson.age,
+    height: dbPerson.height,
+    weight: dbPerson.weight,
+    bmi: dbPerson.bmi,
+    dailyCalorieTarget: dbPerson.daily_calorie_target ?? dbPerson.dailyCalorieTarget ?? 2000,
+    training_focus: dbPerson.training_focus,
+    workoutDaysPerWeek: dbPerson.workout_days_per_week ?? dbPerson.workoutDaysPerWeek ?? 4,
+    householdId: dbPerson.household_id ?? dbPerson.householdId ?? '',
+    created_at: dbPerson.created_at,
+  };
+}
+
 /**
  * GET /api/persons
  * Returns list of persons
@@ -59,9 +78,12 @@ export async function GET(request: NextRequest) {
         });
       }
 
+      // Map snake_case DB columns to camelCase frontend fields
+      const mappedPersons = (data || []).map(mapPersonFromDb);
+
       return NextResponse.json({
         success: true,
-        data: data as Person[],
+        data: mappedPersons,
         source: 'supabase',
       });
     }
@@ -81,9 +103,12 @@ export async function GET(request: NextRequest) {
         });
       }
 
+      // Map snake_case DB columns to camelCase frontend fields
+      const mappedPersons = (data || []).map(mapPersonFromDb);
+
       return NextResponse.json({
         success: true,
-        data: data as Person[],
+        data: mappedPersons,
         source: 'supabase',
       });
     }
@@ -244,9 +269,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Map snake_case DB columns to camelCase frontend fields
     return NextResponse.json({
       success: true,
-      data: data as Person,
+      data: mapPersonFromDb(data),
       source: 'supabase',
     }, { status: 201 });
   } catch {
@@ -358,9 +384,10 @@ export async function PUT(request: NextRequest) {
       );
     }
 
+    // Map snake_case DB columns to camelCase frontend fields
     return NextResponse.json({
       success: true,
-      data: data as Person,
+      data: mapPersonFromDb(data),
       source: 'supabase',
     });
   } catch {
