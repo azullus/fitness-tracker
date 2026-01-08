@@ -49,7 +49,7 @@ export default function BottomNav() {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="flex items-center justify-around h-16 max-w-lg mx-auto">
+      <div className="flex items-center justify-around h-20 max-w-lg mx-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.href);
@@ -70,7 +70,7 @@ export default function BottomNav() {
               >
                 <div
                   className={clsx(
-                    'flex items-center justify-center w-14 h-14 rounded-full',
+                    'flex items-center justify-center w-16 h-16 rounded-full',
                     'shadow-lg',
                     'transition-all duration-200',
                     active ? 'scale-105' : 'hover:scale-105 active:scale-95'
@@ -80,10 +80,10 @@ export default function BottomNav() {
                     boxShadow: `0 10px 15px -3px rgba(var(--theme-accent), 0.3)`,
                   }}
                 >
-                  <Icon className="w-7 h-7 text-white" />
+                  <Icon className="w-8 h-8 text-white" />
                 </div>
                 <span
-                  className="text-[11px] font-semibold mt-1"
+                  className="text-xs font-bold mt-1"
                   style={{ color: active ? `rgb(var(--theme-primary-text))` : undefined }}
                 >
                   {item.label}
@@ -117,14 +117,14 @@ export default function BottomNav() {
               {/* Icon with hover background */}
               <div
                 className={clsx(
-                  'relative p-1.5 rounded-xl transition-all duration-200',
+                  'relative p-2 rounded-xl transition-all duration-200',
                   !active && 'group-hover:bg-gray-100 dark:group-hover:bg-gray-800 group-active:scale-95'
                 )}
                 style={active ? { backgroundColor: `rgba(var(--theme-primary-light), 0.8)` } : undefined}
               >
                 <Icon
                   className={clsx(
-                    'w-5 h-5 transition-transform duration-200',
+                    'w-6 h-6 transition-transform duration-200',
                     active && 'scale-110',
                     !active && 'group-hover:scale-105'
                   )}
@@ -133,9 +133,9 @@ export default function BottomNav() {
 
               <span
                 className={clsx(
-                  'text-[11px] font-medium mt-0.5 transition-colors duration-200',
+                  'text-xs font-semibold mt-1 transition-colors duration-200',
                   active
-                    ? 'font-semibold'
+                    ? 'font-bold'
                     : 'group-hover:text-gray-700 dark:group-hover:text-gray-300'
                 )}
               >

@@ -5,10 +5,13 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
   "background_color": "#ffffff",
   "theme_color": "#3b82f6",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
   "categories": ["health", "fitness", "lifestyle"],
+  "prefer_related_applications": false,
+  "handle_links": "preferred",
   "icons": [
     {
       "src": "/icon.svg",
