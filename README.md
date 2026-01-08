@@ -1,11 +1,12 @@
 # Fitness Tracker PWA
 
-> Next.js 14 PWA for household fitness tracking: workouts, nutrition, meal planning, pantry inventory, offline-capable, self-hosted SQLite backend.
+> Next.js 15 PWA for household fitness tracking: workouts, nutrition, meal planning, recipes, offline-capable with Supabase backend.
 
 [![Release](https://img.shields.io/github/v/release/azullus/fitness-tracker?logo=github)](https://github.com/azullus/fitness-tracker/releases)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-3FCF8E?logo=supabase&logoColor=white)](https://supabase.com/)
 [![PWA](https://img.shields.io/badge/PWA-Enabled-5A0FC8?logo=pwa&logoColor=white)]()
 [![License](https://img.shields.io/github/license/azullus/fitness-tracker)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/azullus/fitness-tracker?style=flat)](https://github.com/azullus/fitness-tracker/stargazers)
@@ -13,6 +14,27 @@
 [![Last Commit](https://img.shields.io/github/last-commit/azullus/fitness-tracker)](https://github.com/azullus/fitness-tracker/commits/main)
 
 Designed for individuals or households who want comprehensive fitness and nutrition tracking.
+
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/dashboard.png" alt="Dashboard" width="280"/>
+  <img src="docs/screenshots/logging.png" alt="Nutrition Logging" width="280"/>
+  <img src="docs/screenshots/workouts.png" alt="Workouts" width="280"/>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/meals.png" alt="Meal Planning" width="280"/>
+  <img src="docs/screenshots/recipes.png" alt="Recipe Browser" width="280"/>
+</p>
+
+| View | Description |
+|------|-------------|
+| **Dashboard** | Daily overview with calories, protein, carbs tracking and quick actions |
+| **Logging** | Track nutrition with macro breakdown and calorie distribution charts |
+| **Workouts** | Weekly calendar with streak tracking and workout routines |
+| **Meals** | Plan meals with full nutritional info per meal type |
+| **Recipes** | Browse 300+ recipes with macro info, filtering, and search |
 
 ## Features
 
@@ -29,10 +51,10 @@ Designed for individuals or households who want comprehensive fitness and nutrit
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14 (App Router), React 18, TypeScript
+- **Frontend**: Next.js 15 (App Router), React 18, TypeScript
 - **Styling**: Tailwind CSS, clsx
-- **Database**: SQLite (production) with demo mode fallback
-- **Auth**: Optional Supabase authentication
+- **Database**: Supabase (PostgreSQL) with demo mode fallback
+- **Auth**: Supabase authentication with RLS policies
 - **Security**: Rate limiting, CSRF protection, API authentication
 - **Deployment**: Docker with Traefik reverse proxy
 - **Testing**: Jest + React Testing Library (119 tests)
