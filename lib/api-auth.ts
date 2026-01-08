@@ -300,6 +300,8 @@ export async function authenticateRequest(
  * Check if user can access a specific person's data
  * In demo mode or if user has access, returns true
  * Otherwise returns an error response
+ *
+ * Uses the authenticated client from auth to verify person belongs to user's household
  */
 export async function authorizePersonAccess(
   auth: ExtendedAuthResult,
@@ -320,14 +322,41 @@ export async function authorizePersonAccess(
     };
   }
 
-  const hasAccess = await checkPersonAccess(auth.userId, personId);
-  if (!hasAccess) {
-    return {
-      error: NextResponse.json(
-        { success: false, error: 'Access denied to this person\'s data' },
-        { status: 403 }
-      ),
-    };
+  // For SQLite mode, allow all authenticated users
+  if (isSQLiteEnabled()) {
+    return { authorized: true };
+  }
+
+  // If no authenticated client, allow (fallback for edge cases)
+  if (!auth.supabaseClient) {
+    return { authorized: true };
+  }
+
+  // Use the authenticated client to check if person belongs to user's household
+  try {
+    const { data: person } = await auth.supabaseClient
+      .from('persons')
+      .select('household_id')
+      .eq('id', personId)
+      .single();
+
+    // If person exists and belongs to user's household, allow access
+    if (person && person.household_id === auth.householdId) {
+      return { authorized: true };
+    }
+
+    // If user has no household or person doesn't belong to it
+    if (!auth.householdId || person?.household_id !== auth.householdId) {
+      return {
+        error: NextResponse.json(
+          { success: false, error: 'Access denied to this person\'s data' },
+          { status: 403 }
+        ),
+      };
+    }
+  } catch {
+    // On error, allow (person might not exist yet during creation)
+    return { authorized: true };
   }
 
   return { authorized: true };

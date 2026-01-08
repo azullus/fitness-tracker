@@ -20,6 +20,7 @@ import {
   Target,
   Dumbbell,
   Flame,
+  TrendingDown,
 } from 'lucide-react';
 
 interface ProfileFormData {
@@ -27,7 +28,7 @@ interface ProfileFormData {
   heightFeet: string;
   heightInches: string;
   weight: string;
-  training_focus: 'powerlifting' | 'cardio' | 'mixed';
+  training_focus: 'powerlifting' | 'cardio' | 'mixed' | 'weight_loss';
   workoutDaysPerWeek: number;
   dailyCalorieTarget: string;
 }
@@ -45,6 +46,12 @@ const trainingFocusOptions = [
     label: 'Powerlifting',
     description: 'Strength & muscle building',
     icon: Dumbbell,
+  },
+  {
+    value: 'weight_loss' as const,
+    label: 'Weight Loss',
+    description: 'Burn fat & get lean',
+    icon: TrendingDown,
   },
   {
     value: 'cardio' as const,
@@ -423,7 +430,7 @@ export default function ProfileSettingsPage() {
             Training Focus
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" role="radiogroup" aria-label="Training focus">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" role="radiogroup" aria-label="Training focus">
             {trainingFocusOptions.map((option) => {
               const Icon = option.icon;
               const isSelected = formData.training_focus === option.value;

@@ -25,7 +25,7 @@ interface PersonFormData {
   heightFeet: string;
   heightInches: string;
   weight: string;
-  training_focus: 'powerlifting' | 'cardio' | 'mixed';
+  training_focus: 'powerlifting' | 'cardio' | 'mixed' | 'weight_loss';
   fitness_goal: FitnessGoal;
   workoutDaysPerWeek: number;
 }
@@ -52,7 +52,7 @@ const workoutDaysOptions = [
 ];
 
 // Fitness goal configurations with icons and descriptions
-const fitnessGoalOptions: { value: FitnessGoal; label: string; description: string; icon: React.ReactNode; trainingFocus: 'powerlifting' | 'cardio' | 'mixed' }[] = [
+const fitnessGoalOptions: { value: FitnessGoal; label: string; description: string; icon: React.ReactNode; trainingFocus: 'powerlifting' | 'cardio' | 'mixed' | 'weight_loss' }[] = [
   {
     value: 'muscle_building',
     label: 'Build Muscle',
@@ -65,7 +65,7 @@ const fitnessGoalOptions: { value: FitnessGoal; label: string; description: stri
     label: 'Lose Weight',
     description: 'Burn fat and get lean',
     icon: <Flame className="h-6 w-6" />,
-    trainingFocus: 'mixed',
+    trainingFocus: 'weight_loss',
   },
   {
     value: 'cardio',
@@ -339,19 +339,24 @@ export function OnboardingWizard({
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Training Focus</label>
-        <div className="grid grid-cols-3 gap-2">
-          {(['powerlifting', 'cardio', 'mixed'] as const).map((focus) => (
+        <div className="grid grid-cols-2 gap-2">
+          {([
+            { value: 'powerlifting', label: 'Powerlifting' },
+            { value: 'weight_loss', label: 'Weight Loss' },
+            { value: 'cardio', label: 'Cardio' },
+            { value: 'mixed', label: 'Mixed' },
+          ] as const).map((focus) => (
             <button
-              key={focus}
+              key={focus.value}
               type="button"
-              onClick={() => onChange('training_focus', focus)}
+              onClick={() => onChange('training_focus', focus.value)}
               className={`py-2 px-3 rounded-lg border-2 text-sm transition-colors ${
-                person.training_focus === focus
+                person.training_focus === focus.value
                   ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
                   : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-900 dark:text-white'
               }`}
             >
-              {focus.charAt(0).toUpperCase() + focus.slice(1)}
+              {focus.label}
             </button>
           ))}
         </div>

@@ -17,7 +17,7 @@ export interface Person {
   weight: number; // current weight in lbs
   bmi: number;
   dailyCalorieTarget: number;
-  training_focus: 'powerlifting' | 'cardio' | 'mixed';
+  training_focus: 'powerlifting' | 'cardio' | 'mixed' | 'weight_loss';
   workoutDaysPerWeek: number; // 3-7 days per week
   householdId: string;
   created_at: string;

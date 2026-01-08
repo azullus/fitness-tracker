@@ -343,7 +343,8 @@ export default function HouseholdSettingsPage() {
                       </p>
                       <p className="text-sm text-gray-500 dark:text-gray-400">
                         {person.training_focus === 'powerlifting' ? 'Powerlifting' :
-                         person.training_focus === 'cardio' ? 'Cardio & Mobility' : 'Mixed Training'}
+                         person.training_focus === 'cardio' ? 'Cardio & Mobility' :
+                         person.training_focus === 'weight_loss' ? 'Weight Loss' : 'Mixed Training'}
                       </p>
                     </div>
                     <div className="flex items-center gap-1">

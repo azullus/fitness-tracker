@@ -118,8 +118,9 @@ export function PersonProvider({ children }: PersonProviderProps) {
     // This allows Supabase auth with SQLite data storage
     try {
       const response = await authFetch('/api/persons');
+      const json = await response.json().catch(() => ({}));
+
       if (response.ok) {
-        const json = await response.json();
         // Handle both direct array response and { data: [] } wrapper
         const data = Array.isArray(json) ? json : json?.data;
         const source = json?.source as 'supabase' | 'sqlite' | 'demo' | undefined;
@@ -135,6 +136,14 @@ export function PersonProvider({ children }: PersonProviderProps) {
           setConnectionError(null);
           return { persons: data, source: 'api' };
         }
+      } else {
+        // Handle error responses (401, 403, etc.)
+        const errorMsg = json?.error || `Request failed with status ${response.status}`;
+        console.warn('loadPersons API error:', errorMsg);
+        if (isAuthenticated && isAuthEnabled) {
+          return { persons: [], source: 'api', error: errorMsg };
+        }
+        return { persons: DEMO_PERSONS, source: 'demo', error: errorMsg };
       }
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : 'Network error';
@@ -496,9 +505,17 @@ export function PersonProvider({ children }: PersonProviderProps) {
       // AUTHENTICATED USER: Load from Supabase, show onboarding if no persons exist
       if (isAuthenticated && isAuthEnabled && supabase) {
         try {
-          // Load persons from Supabase
-          const loadResult = await loadPersons();
-          const loadedPersons = loadResult.persons;
+          // Load persons from Supabase with retry for session timing issues
+          let loadResult = await loadPersons();
+          let loadedPersons = loadResult.persons;
+
+          // If we got empty data or an error, retry after a short delay
+          // This handles the case where session isn't fully synced after login
+          if (loadedPersons.length === 0 && loadResult.error) {
+            await new Promise(resolve => setTimeout(resolve, 500));
+            loadResult = await loadPersons();
+            loadedPersons = loadResult.persons;
+          }
 
           // If authenticated user has no persons, show onboarding WITHOUT skip option
           if (loadedPersons.length === 0) {

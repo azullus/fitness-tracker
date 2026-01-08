@@ -3,7 +3,7 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { clsx } from 'clsx';
-import { Activity, Dumbbell, Flame, ChevronDown, Check, Calendar, LogOut, Settings, User, Users } from 'lucide-react';
+import { Activity, Dumbbell, Flame, ChevronDown, Check, Calendar, LogOut, Settings, User, Users, TrendingDown } from 'lucide-react';
 import { usePerson } from '@/components/providers/PersonProvider';
 import { useAuth } from '@/components/providers/AuthProvider';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
@@ -21,12 +21,14 @@ const trainingFocusLabels: Record<Person['training_focus'], string> = {
   powerlifting: 'Powerlifting',
   cardio: 'Cardio & Mobility',
   mixed: 'Mixed Training',
+  weight_loss: 'Weight Loss',
 };
 
 const trainingFocusIcons: Record<Person['training_focus'], typeof Dumbbell> = {
   powerlifting: Dumbbell,
   cardio: Activity,
   mixed: Flame,
+  weight_loss: TrendingDown,
 };
 
 // Map training focus to activity level for calorie calculation
@@ -34,10 +36,12 @@ const trainingFocusActivityLevel: Record<Person['training_focus'], 'moderate' | 
   cardio: 'active',
   mixed: 'active',
   powerlifting: 'very_active',
+  weight_loss: 'active',
 };
 
 const trainingFocusOptions: { value: Person['training_focus']; label: string; description: string }[] = [
   { value: 'powerlifting', label: 'Powerlifting', description: 'Strength training, heavy compounds' },
+  { value: 'weight_loss', label: 'Weight Loss', description: 'Burn fat, get lean' },
   { value: 'cardio', label: 'Cardio & Mobility', description: 'HIIT, running, yoga, flexibility' },
   { value: 'mixed', label: 'Mixed Training', description: 'Balanced strength and cardio' },
 ];

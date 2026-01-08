@@ -581,7 +581,7 @@ export function validatePersonData(data: PersonValidationData): ValidationError[
 
   // Validate training_focus
   if (data.training_focus !== undefined) {
-    const validFocuses = ['powerlifting', 'cardio', 'mixed'];
+    const validFocuses = ['powerlifting', 'cardio', 'mixed', 'weight_loss'];
     if (!validFocuses.includes(data.training_focus)) {
       errors.push({
         field: 'training_focus',
