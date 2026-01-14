@@ -25,6 +25,15 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
+      animation: {
+        'scanner-line': 'scanner-line 2s ease-in-out infinite',
+      },
+      keyframes: {
+        'scanner-line': {
+          '0%, 100%': { top: '0', opacity: '1' },
+          '50%': { top: 'calc(100% - 2px)', opacity: '0.5' },
+        },
+      },
     },
   },
   plugins: [],

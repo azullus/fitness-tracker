@@ -313,6 +313,44 @@ export const NumericValidators = {
 };
 
 // ============================================================================
+// Barcode Validation
+// ============================================================================
+
+/**
+ * Validates barcode format (UPC-A, UPC-E, EAN-8, EAN-13)
+ */
+export function validateBarcode(barcode: unknown): ValidationResult {
+  if (typeof barcode !== 'string') {
+    return {
+      valid: false,
+      error: 'Barcode must be a string',
+    };
+  }
+
+  // Remove any whitespace
+  const cleaned = barcode.replace(/\s/g, '');
+
+  // Check if it's all digits
+  if (!/^\d+$/.test(cleaned)) {
+    return {
+      valid: false,
+      error: 'Barcode must contain only digits',
+    };
+  }
+
+  // Valid lengths: 8 (UPC-E/EAN-8), 12 (UPC-A), 13 (EAN-13)
+  const validLengths = [8, 12, 13];
+  if (!validLengths.includes(cleaned.length)) {
+    return {
+      valid: false,
+      error: 'Invalid barcode length. Must be 8, 12, or 13 digits.',
+    };
+  }
+
+  return { valid: true };
+}
+
+// ============================================================================
 // Foreign Key Validation
 // ============================================================================
 

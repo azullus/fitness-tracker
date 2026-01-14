@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useCallback, useEffect } from 'react';
-import { X, Plus, ChevronDown, Check, BookOpen, Clock } from 'lucide-react';
+import { X, Plus, ChevronDown, Check, BookOpen, Clock, Camera } from 'lucide-react';
 import { clsx } from 'clsx';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { BarcodeScannerModal } from '@/components/scanner';
 import { addFoodEntry, addRecentFood, getRecentFoods, type MealType, type FoodEntry, type RecentFood } from '@/lib/food-log';
 
 interface QuickAddFoodProps {
@@ -49,6 +50,7 @@ export function QuickAddFood({
   const [showSavePrompt, setShowSavePrompt] = useState(false);
   const [savedEntry, setSavedEntry] = useState<FoodEntry | null>(null);
   const [recentFoods, setRecentFoods] = useState<RecentFood[]>([]);
+  const [showScanner, setShowScanner] = useState(false);
 
   const date = defaultDate || formatDateForInput(new Date());
 
@@ -80,6 +82,26 @@ export function QuickAddFood({
     setFat(food.fat.toString());
     setFiber(food.fiber.toString());
     setServingSize(food.servingSize || '');
+  }, []);
+
+  // Handle scanned food from barcode scanner
+  const handleScannedFood = useCallback((data: {
+    name: string;
+    calories: number;
+    protein: number;
+    carbs: number;
+    fat: number;
+    fiber: number;
+    servingSize: string;
+  }) => {
+    setName(data.name);
+    setCalories(data.calories.toString());
+    setProtein(data.protein.toString());
+    setCarbs(data.carbs.toString());
+    setFat(data.fat.toString());
+    setFiber(data.fiber.toString());
+    setServingSize(data.servingSize);
+    setShowScanner(false);
   }, []);
 
   const handleSubmit = useCallback(
@@ -255,6 +277,25 @@ export function QuickAddFood({
               {error}
             </div>
           )}
+
+          {/* Scan Barcode Button */}
+          <button
+            type="button"
+            onClick={() => setShowScanner(true)}
+            className={clsx(
+              'w-full py-3 px-4 rounded-xl border-2 border-dashed',
+              'border-gray-300 dark:border-gray-600',
+              'hover:border-green-500 dark:hover:border-green-400',
+              'hover:bg-green-50 dark:hover:bg-green-900/20',
+              'flex items-center justify-center gap-2',
+              'text-gray-600 dark:text-gray-400',
+              'hover:text-green-600 dark:hover:text-green-400',
+              'transition-colors'
+            )}
+          >
+            <Camera className="w-5 h-5" />
+            <span className="font-medium">Scan Barcode</span>
+          </button>
 
           {/* Recent Foods Section */}
           {recentFoods.length > 0 && (
@@ -498,6 +539,13 @@ export function QuickAddFood({
           </div>
         </form>
       </div>
+
+      {/* Barcode Scanner Modal */}
+      <BarcodeScannerModal
+        isOpen={showScanner}
+        onClose={() => setShowScanner(false)}
+        onFoodScanned={handleScannedFood}
+      />
     </div>
   );
 }
