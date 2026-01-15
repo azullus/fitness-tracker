@@ -1,14 +1,14 @@
 // Service Worker for Fitness Tracker PWA
 // Provides offline support with strategic caching
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const STATIC_CACHE_NAME = `fitness-tracker-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE_NAME = `fitness-tracker-dynamic-${CACHE_VERSION}`;
 const API_CACHE_NAME = `fitness-tracker-api-${CACHE_VERSION}`;
 
 // Static assets to cache on install
+// NOTE: Do NOT include '/' here - homepage is dynamic and depends on auth state
 const STATIC_ASSETS = [
-  '/',
   '/offline.html',
   '/manifest.json',
   '/icon.svg',
@@ -257,6 +257,20 @@ self.addEventListener('message', (event) => {
         return Promise.all(
           cacheNames.map((cacheName) => caches.delete(cacheName))
         );
+      })
+    );
+  }
+
+  // Clear auth-related caches (API and dynamic) but keep static assets
+  // Call this on login/logout to prevent stale user data
+  if (event.data && event.data.type === 'CLEAR_AUTH_CACHE') {
+    console.log('[SW] Clearing auth-related caches');
+    event.waitUntil(
+      Promise.all([
+        caches.delete(API_CACHE_NAME),
+        caches.delete(DYNAMIC_CACHE_NAME),
+      ]).then(() => {
+        console.log('[SW] Auth caches cleared');
       })
     );
   }

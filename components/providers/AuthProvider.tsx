@@ -37,6 +37,14 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Clear service worker auth-related caches (API responses, dynamic pages)
+// This prevents stale user data from being served after login/logout
+function clearAuthCache(): void {
+  if (typeof window !== 'undefined' && 'serviceWorker' in navigator && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: 'CLEAR_AUTH_CACHE' });
+  }
+}
+
 interface AuthProviderProps {
   children: ReactNode;
 }
@@ -66,6 +74,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const signIn = useCallback(async (email: string, password: string) => {
     const result = await authSignIn(email, password);
     if (result.success && result.user) {
+      // Clear cached data from previous session/demo mode
+      clearAuthCache();
       setUser(result.user);
       setSession(result.session || null);
       await loadProfile();
@@ -77,6 +87,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const signUp = useCallback(async (email: string, password: string, displayName?: string) => {
     const result = await authSignUp(email, password, displayName);
     if (result.success && result.user) {
+      // Clear cached data from demo mode
+      clearAuthCache();
       setUser(result.user);
       setSession(result.session || null);
       // Profile is created automatically by database trigger
@@ -89,6 +101,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const signOut = useCallback(async () => {
     const result = await authSignOut();
     if (result.success) {
+      // Clear cached user data to prevent showing stale content
+      clearAuthCache();
       setUser(null);
       setSession(null);
       setProfile(null);
@@ -134,8 +148,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     if (!isAuthEnabled) return;
 
-    const { data: { subscription } } = onAuthStateChange(async (_event, newSession) => {
+    const { data: { subscription } } = onAuthStateChange(async (event, newSession) => {
       setSession(newSession);
+
+      // Clear cache on auth state changes (handles external changes like token expiry)
+      if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'TOKEN_REFRESHED') {
+        clearAuthCache();
+      }
 
       if (newSession?.user) {
         setUser(newSession.user);
