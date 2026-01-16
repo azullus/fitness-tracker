@@ -5,7 +5,6 @@ import Header from '@/components/navigation/Header';
 import { useCurrentPerson } from '@/components/providers/PersonProvider';
 import { useAuth } from '@/components/providers/AuthProvider';
 import {
-  getLowStockItems,
   getWorkoutsByPerson as getDemoWorkoutsByPerson,
   getWeightEntriesByPerson as getDemoWeightEntriesByPerson
 } from '@/lib/demo-data';
@@ -36,7 +35,6 @@ import {
   NutritionProgress,
   WeightSummary,
   WorkoutStatus,
-  LowStockAlerts,
   QuickActions,
   TodaysMeals,
   WeeklySummary,
@@ -176,8 +174,6 @@ export default function DashboardPage() {
 
     loadData();
   }, [personId, mounted, refreshTrigger, isAuthenticated]);
-
-  const lowStockItems = useMemo(() => getLowStockItems(), []);
 
   // Get today's date string - must be before useMemos that use it
   const todayStr = format(new Date(), 'yyyy-MM-dd');
@@ -369,9 +365,6 @@ export default function DashboardPage() {
           plannedThisWeek={plannedThisWeek}
           weeklyNutritionStats={weeklyNutritionStats}
         />
-
-        {/* Low Stock Alert */}
-        <LowStockAlerts lowStockItems={lowStockItems} />
 
         {/* Demo Mode Notice - only show when not authenticated */}
         {!isAuthenticated && (
