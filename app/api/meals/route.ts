@@ -217,6 +217,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Require person_id to ensure proper data isolation in multi-person households
+    if (!body.person_id) {
+      return NextResponse.json(
+        { success: false, error: 'Missing required field: person_id' },
+        { status: 400 }
+      );
+    }
+
     // Validate meal data (date, meal_type, and macros)
     const validationErrors = validateMealData({
       date,
@@ -246,6 +254,7 @@ export async function POST(request: NextRequest) {
     // Check if SQLite is enabled
     if (isSQLiteEnabled()) {
       const meal = createSQLiteMeal({
+        person_id: body.person_id,
         date,
         meal_type,
         name,
@@ -274,6 +283,7 @@ export async function POST(request: NextRequest) {
 
     // Prepare meal data
     const mealData: Partial<Meal> = {
+      person_id: body.person_id,
       date,
       meal_type,
       name,
@@ -304,6 +314,162 @@ export async function POST(request: NextRequest) {
       data: data as Meal,
       source: 'supabase',
     }, { status: 201 });
+  } catch {
+    return NextResponse.json(
+      { success: false, error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * PATCH /api/meals
+ * Update an existing meal
+ * Body: { id, name?, description?, calories?, protein_g?, carbs_g?, fat_g?, fiber_g? }
+ */
+export async function PATCH(request: NextRequest) {
+  try {
+    // Apply rate limiting - 30 requests per minute for writes
+    const rateLimitResponse = applyRateLimit(request, RateLimitPresets.WRITE);
+    if (rateLimitResponse) {
+      return rateLimitResponse;
+    }
+
+    // Validate CSRF token
+    const csrfResult = withCSRFProtection(request);
+    if (csrfResult.response) {
+      return csrfResult.response;
+    }
+
+    // Authenticate request
+    const authResult = await authenticateRequest(request);
+    if ('error' in authResult) {
+      return authResult.error;
+    }
+    const { auth } = authResult;
+
+    const body = await request.json();
+    const { id, ...updates } = body;
+
+    if (!id) {
+      return NextResponse.json(
+        { success: false, error: 'Missing required field: id' },
+        { status: 400 }
+      );
+    }
+
+    // Validate any provided macro values
+    const validationErrors = validateMealData({
+      date: updates.date,
+      meal_type: updates.meal_type,
+      calories: updates.calories,
+      protein_g: updates.protein_g,
+      carbs_g: updates.carbs_g,
+      fat_g: updates.fat_g,
+      fiber_g: updates.fiber_g,
+    });
+
+    if (validationErrors.length > 0) {
+      return NextResponse.json(
+        { success: false, error: formatValidationErrors(validationErrors) },
+        { status: 400 }
+      );
+    }
+
+    // Check if SQLite is enabled
+    if (isSQLiteEnabled()) {
+      // Verify ownership: fetch meal first
+      const meal = getMealById(id);
+      if (!meal) {
+        return NextResponse.json(
+          { success: false, error: 'Meal not found' },
+          { status: 404 }
+        );
+      }
+
+      // If meal has person_id, verify access
+      if (meal.person_id) {
+        const personAuth = await authorizePersonAccess(auth, meal.person_id);
+        if ('error' in personAuth) {
+          return personAuth.error;
+        }
+      }
+
+      // SQLite doesn't have updateMeal, return not implemented
+      return NextResponse.json(
+        { success: false, error: 'Update not supported in SQLite mode' },
+        { status: 501 }
+      );
+    }
+
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured()) {
+      return NextResponse.json(
+        { success: false, error: 'Database not configured. Running in demo mode.' },
+        { status: 503 }
+      );
+    }
+
+    // Verify ownership: fetch meal first from Supabase
+    const { data: meal, error: fetchError } = await getSupabase()
+      .from('meals')
+      .select('person_id')
+      .eq('id', id)
+      .single();
+
+    if (fetchError || !meal) {
+      return NextResponse.json(
+        { success: false, error: 'Meal not found' },
+        { status: 404 }
+      );
+    }
+
+    // If meal has person_id, verify access
+    if (meal.person_id) {
+      const personAuth = await authorizePersonAccess(auth, meal.person_id);
+      if ('error' in personAuth) {
+        return personAuth.error;
+      }
+    }
+
+    // Prepare update data (only include non-undefined fields)
+    const updateData: Record<string, unknown> = {};
+    if (updates.name !== undefined) updateData.name = updates.name;
+    if (updates.description !== undefined) updateData.description = updates.description;
+    if (updates.date !== undefined) updateData.date = updates.date;
+    if (updates.meal_type !== undefined) updateData.meal_type = updates.meal_type;
+    if (updates.calories !== undefined) updateData.calories = updates.calories;
+    if (updates.protein_g !== undefined) updateData.protein_g = updates.protein_g;
+    if (updates.carbs_g !== undefined) updateData.carbs_g = updates.carbs_g;
+    if (updates.fat_g !== undefined) updateData.fat_g = updates.fat_g;
+    if (updates.fiber_g !== undefined) updateData.fiber_g = updates.fiber_g;
+
+    if (Object.keys(updateData).length === 0) {
+      return NextResponse.json(
+        { success: false, error: 'No fields to update' },
+        { status: 400 }
+      );
+    }
+
+    const { data, error } = await getSupabase()
+      .from('meals')
+      .update(updateData)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json(
+        { success: false, error: 'Failed to update meal' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      data: data as Meal,
+      source: 'supabase',
+    });
   } catch {
     return NextResponse.json(
       { success: false, error: 'Internal server error' },

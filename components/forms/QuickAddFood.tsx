@@ -51,8 +51,43 @@ export function QuickAddFood({
   const [savedEntry, setSavedEntry] = useState<FoodEntry | null>(null);
   const [recentFoods, setRecentFoods] = useState<RecentFood[]>([]);
   const [showScanner, setShowScanner] = useState(false);
+  const [macroWarning, setMacroWarning] = useState<string | null>(null);
 
   const date = defaultDate || formatDateForInput(new Date());
+
+  // Calculate expected calories from macros and show warning if mismatch
+  const checkMacroCalorieMatch = useCallback(() => {
+    const caloriesNum = parseFloat(calories) || 0;
+    const proteinNum = parseFloat(protein) || 0;
+    const carbsNum = parseFloat(carbs) || 0;
+    const fatNum = parseFloat(fat) || 0;
+
+    // Skip check if no meaningful data entered
+    if (caloriesNum === 0 && proteinNum === 0 && carbsNum === 0 && fatNum === 0) {
+      setMacroWarning(null);
+      return;
+    }
+
+    // Calculate expected calories: protein=4cal/g, carbs=4cal/g, fat=9cal/g
+    const expectedCalories = (proteinNum * 4) + (carbsNum * 4) + (fatNum * 9);
+
+    // Only warn if both calories and macros are entered
+    if (caloriesNum > 0 && expectedCalories > 0) {
+      const difference = Math.abs(caloriesNum - expectedCalories);
+      const percentDiff = (difference / Math.max(caloriesNum, expectedCalories)) * 100;
+
+      // Warn if difference is more than 20%
+      if (percentDiff > 20 && difference > 50) {
+        setMacroWarning(
+          `Calories (${caloriesNum}) don't match macros (~${Math.round(expectedCalories)} cal expected). Double-check your values.`
+        );
+      } else {
+        setMacroWarning(null);
+      }
+    } else {
+      setMacroWarning(null);
+    }
+  }, [calories, protein, carbs, fat]);
 
   // Reset form when opened and load recent foods
   useEffect(() => {
@@ -66,12 +101,18 @@ export function QuickAddFood({
       setServingSize('');
       setMealType(defaultMealType);
       setError(null);
+      setMacroWarning(null);
       setShowSavePrompt(false);
       setSavedEntry(null);
       // Load recent foods from localStorage for this person
       setRecentFoods(getRecentFoods(personId));
     }
   }, [isOpen, defaultMealType, personId]);
+
+  // Check macro/calorie match when values change
+  useEffect(() => {
+    checkMacroCalorieMatch();
+  }, [checkMacroCalorieMatch]);
 
   // Handle selecting a recent food to pre-fill the form
   const handleSelectRecentFood = useCallback((food: RecentFood) => {
@@ -525,6 +566,16 @@ export function QuickAddFood({
               )}
             />
           </div>
+
+          {/* Macro/Calorie Mismatch Warning */}
+          {macroWarning && (
+            <div
+              className="rounded-lg bg-yellow-50 dark:bg-yellow-900/30 p-3 text-sm text-yellow-700 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-700"
+              role="alert"
+            >
+              {macroWarning}
+            </div>
+          )}
 
           {/* Submit Button */}
           <div className="pt-2">

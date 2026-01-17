@@ -56,10 +56,19 @@ export function WorkoutLogger({ workout, onComplete, onCancel }: WorkoutLoggerPr
     e.preventDefault();
     setError(null);
 
-    const completedExercises = exercises.filter((ex) => ex.completed);
+    // Include exercises that are either checked OR have meaningful data entered
+    const exercisesWithData = exercises.filter((ex) => {
+      // Explicitly completed
+      if (ex.completed) return true;
+      // Has meaningful data (sets, reps, or weight entered)
+      if ((ex.sets && ex.sets > 0) || (ex.reps && ex.reps > 0) || (ex.weight_lbs && ex.weight_lbs > 0)) {
+        return true;
+      }
+      return false;
+    });
 
-    if (completedExercises.length === 0) {
-      setError('Please complete at least one exercise before logging the workout.');
+    if (exercisesWithData.length === 0) {
+      setError('Please complete at least one exercise or enter workout data before logging.');
       return;
     }
 
@@ -67,7 +76,7 @@ export function WorkoutLogger({ workout, onComplete, onCancel }: WorkoutLoggerPr
 
     try {
       // Strip the 'completed' state field before submitting
-      const exercisesToSubmit: Exercise[] = completedExercises.map(
+      const exercisesToSubmit: Exercise[] = exercisesWithData.map(
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         ({ completed: _, ...exercise }) => ({
           ...exercise,

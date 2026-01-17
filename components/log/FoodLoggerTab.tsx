@@ -4,6 +4,7 @@ import { useState, useMemo, useCallback, useEffect } from 'react';
 import { addDays, subDays, format } from 'date-fns';
 import { DateNavigation } from './DateNavigation';
 import { DailyNutritionTracker, FoodLog } from '@/components/tracking';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { WaterIntakeTracker } from '@/components/tracking/WaterIntakeTracker';
 import { QuickAddFood, QuickAddFAB } from '@/components/forms';
 import {
@@ -114,12 +115,14 @@ export function FoodLoggerTab({ personId, currentPerson }: FoodLoggerTabProps) {
       {/* Food Log */}
       <section className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-4">
         <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Food Log</h2>
-        <FoodLog
-          date={foodDateString}
-          personId={personId}
-          onEntryDeleted={handleFoodDeleted}
-          refreshTrigger={foodRefreshTrigger}
-        />
+        <ErrorBoundary componentName="FoodLog">
+          <FoodLog
+            date={foodDateString}
+            personId={personId}
+            onEntryDeleted={handleFoodDeleted}
+            refreshTrigger={foodRefreshTrigger}
+          />
+        </ErrorBoundary>
       </section>
 
       {/* Quick Add FAB */}

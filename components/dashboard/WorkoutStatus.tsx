@@ -4,7 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { Dumbbell, Check } from 'lucide-react';
 import { clsx } from 'clsx';
 import { DashboardWidget } from './shared';
-import { markWorkoutComplete } from '@/lib/workout-log';
+import { markWorkoutCompleteAsync } from '@/lib/workout-log';
 import type { Workout, Person } from '@/lib/types';
 
 export interface ScheduledWorkout {
@@ -30,7 +30,7 @@ export function WorkoutStatus({
 
   const isCompleted = localCompleted || todaysLoggedWorkout?.completed;
 
-  const handleMarkComplete = useCallback((e: React.MouseEvent) => {
+  const handleMarkComplete = useCallback(async (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent navigation to /workouts
     e.stopPropagation();
 
@@ -38,7 +38,7 @@ export function WorkoutStatus({
 
     setIsCompleting(true);
     try {
-      markWorkoutComplete(todaysLoggedWorkout.id);
+      await markWorkoutCompleteAsync(todaysLoggedWorkout.id);
       setLocalCompleted(true);
       onWorkoutComplete?.();
     } catch {

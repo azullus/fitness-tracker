@@ -105,10 +105,14 @@ function fromSupabaseFormat(row: Record<string, unknown>): FoodEntry {
 
 /**
  * Fetch food entries for a date and optional person from Supabase
+ * @param date - Date in YYYY-MM-DD format
+ * @param personId - Optional person ID filter
+ * @param limit - Optional limit for pagination (default: 100, max for a day)
  */
 export async function fetchFoodEntriesForDate(
   date: string,
-  personId?: string
+  personId?: string,
+  limit: number = 100
 ): Promise<FoodEntry[]> {
   if (!isSupabaseConfigured()) {
     return getFoodEntriesForDate(date, personId);
@@ -119,7 +123,8 @@ export async function fetchFoodEntriesForDate(
       .from('meals')
       .select('*')
       .eq('date', date)
-      .order('created_at', { ascending: true });
+      .order('created_at', { ascending: true })
+      .limit(limit);
 
     if (personId) {
       query = query.eq('person_id', personId);
@@ -239,24 +244,46 @@ export async function removeFoodEntry(id: string): Promise<boolean> {
 }
 
 /**
- * Calculate daily totals from Supabase
+ * Calculate daily totals from Supabase (optimized to fetch only macro fields)
  */
 export async function fetchDailyTotals(
   date: string,
   personId?: string
 ): Promise<DailyTotals> {
-  const entries = await fetchFoodEntriesForDate(date, personId);
+  if (!isSupabaseConfigured()) {
+    return calculateDailyTotals(date, personId);
+  }
 
-  return entries.reduce(
-    (totals, entry) => ({
-      calories: totals.calories + entry.calories,
-      protein: totals.protein + entry.protein,
-      carbs: totals.carbs + entry.carbs,
-      fat: totals.fat + entry.fat,
-      fiber: totals.fiber + entry.fiber,
-    }),
-    { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }
-  );
+  try {
+    // Optimized query: only fetch the fields we need for totals
+    let query = getSupabase()
+      .from('meals')
+      .select('calories, protein_g, carbs_g, fat_g, fiber_g')
+      .eq('date', date);
+
+    if (personId) {
+      query = query.eq('person_id', personId);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      return calculateDailyTotals(date, personId);
+    }
+
+    return (data || []).reduce(
+      (totals, row) => ({
+        calories: totals.calories + ((row.calories as number) || 0),
+        protein: totals.protein + ((row.protein_g as number) || 0),
+        carbs: totals.carbs + ((row.carbs_g as number) || 0),
+        fat: totals.fat + ((row.fat_g as number) || 0),
+        fiber: totals.fiber + ((row.fiber_g as number) || 0),
+      }),
+      { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }
+    );
+  } catch {
+    return calculateDailyTotals(date, personId);
+  }
 }
 
 /**
@@ -572,8 +599,9 @@ export function addRecentFood(food: RecentFood, personId?: string): void {
 
     const key = getRecentFoodsKey(personId);
     safeLocalStorageSet(key, JSON.stringify(trimmedFoods));
-  } catch {
-    // Silently fail on save recent food
+  } catch (error) {
+    // Log error for debugging but don't block the user
+    console.warn('[FoodLog] Failed to save recent food:', error instanceof Error ? error.message : 'Unknown error');
   }
 }
 
@@ -588,4 +616,120 @@ export function clearRecentFoods(personId?: string): void {
   } catch {
     // Silently fail on clear
   }
+}
+
+// ============================================================================
+// OFFLINE SYNC FUNCTIONS
+// ============================================================================
+
+const PENDING_SYNC_KEY = 'fitness-tracker-pending-food-sync';
+
+interface PendingSyncEntry {
+  entry: Omit<FoodEntry, 'id' | 'createdAt'>;
+  localId: string;
+  timestamp: number;
+}
+
+/**
+ * Get pending entries that need to be synced to Supabase
+ */
+export function getPendingSyncEntries(): PendingSyncEntry[] {
+  if (typeof window === 'undefined') {
+    return [];
+  }
+
+  try {
+    const stored = localStorage.getItem(PENDING_SYNC_KEY);
+    if (!stored) {
+      return [];
+    }
+    return JSON.parse(stored) as PendingSyncEntry[];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Add an entry to the pending sync queue
+ */
+export function addPendingSyncEntry(entry: Omit<FoodEntry, 'id' | 'createdAt'>, localId: string): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    const pending = getPendingSyncEntries();
+    pending.push({
+      entry,
+      localId,
+      timestamp: Date.now(),
+    });
+    safeLocalStorageSet(PENDING_SYNC_KEY, JSON.stringify(pending));
+  } catch (error) {
+    console.warn('[FoodLog] Failed to queue entry for sync:', error instanceof Error ? error.message : 'Unknown error');
+  }
+}
+
+/**
+ * Remove an entry from the pending sync queue
+ */
+export function removePendingSyncEntry(localId: string): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    const pending = getPendingSyncEntries();
+    const filtered = pending.filter((p) => p.localId !== localId);
+    safeLocalStorageSet(PENDING_SYNC_KEY, JSON.stringify(filtered));
+  } catch {
+    // Silently fail
+  }
+}
+
+/**
+ * Sync pending localStorage entries to Supabase
+ * Call this when the app comes back online or Supabase becomes available
+ * Returns the number of entries successfully synced
+ */
+export async function syncPendingEntriesToSupabase(): Promise<number> {
+  if (!isSupabaseConfigured()) {
+    return 0;
+  }
+
+  const pending = getPendingSyncEntries();
+  if (pending.length === 0) {
+    return 0;
+  }
+
+  let syncedCount = 0;
+
+  for (const item of pending) {
+    try {
+      const { error } = await getSupabase()
+        .from('meals')
+        .insert([toSupabaseFormat(item.entry)]);
+
+      if (!error) {
+        removePendingSyncEntry(item.localId);
+        syncedCount++;
+      }
+    } catch {
+      // Continue trying other entries
+      console.warn('[FoodLog] Failed to sync entry:', item.localId);
+    }
+  }
+
+  if (syncedCount > 0) {
+    console.info(`[FoodLog] Synced ${syncedCount} offline entries to Supabase`);
+  }
+
+  return syncedCount;
+}
+
+/**
+ * Check if there are pending entries to sync
+ */
+export function hasPendingSyncEntries(): boolean {
+  return getPendingSyncEntries().length > 0;
 }
