@@ -246,7 +246,7 @@ export async function POST(request: NextRequest) {
     // Must have authenticated client for Supabase operations
     if (!auth.supabaseClient) {
       return NextResponse.json(
-        { success: false, error: 'Database not configured or authentication failed' },
+        { success: false, error: 'Database not configured. Running in demo mode.' },
         { status: 503 }
       );
     }
@@ -379,7 +379,7 @@ export async function PUT(request: NextRequest) {
     // Must have authenticated client for Supabase operations
     if (!auth.supabaseClient) {
       return NextResponse.json(
-        { success: false, error: 'Database not configured or authentication failed' },
+        { success: false, error: 'Database not configured. Running in demo mode.' },
         { status: 503 }
       );
     }
@@ -474,7 +474,7 @@ export async function DELETE(request: NextRequest) {
     // Must have authenticated client for Supabase operations
     if (!auth.supabaseClient) {
       return NextResponse.json(
-        { success: false, error: 'Database not configured or authentication failed' },
+        { success: false, error: 'Database not configured. Running in demo mode.' },
         { status: 503 }
       );
     }
